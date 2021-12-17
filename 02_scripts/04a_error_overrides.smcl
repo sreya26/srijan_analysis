@@ -1,0 +1,437 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}plog_129
+       {txt}log:  {res}/Users/sreyamajumder/Dropbox/sreya_majumder/srijan_sreya analysis/02_scripts/04a_error_overrides.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}17 Dec 2021, 11:53:28
+{txt}
+{com}. *************************************************************************************************************************************
+. *! version 1.0  | 29 July 2021 | Sreya Majumder
+. *  this file is part of the SRIJAN project headed by Rohini Somanathan, Priyanka Arora and Hemanshu Kumar
+. *************************************************************************************************************************************  
+.         
+. local last_override 48
+{txt}
+{com}. local override_timedate "15 December 2021 18:12pm"
+{txt}
+{com}.         
+. project , uses("../03_processed/srijan_workfile.dta")
+{txt}project srijan > do-file uses: {res}"03_processed/srijan_workfile.dta" filesig(618391556:2255662){txt}
+
+{com}. 
+.         ***************************************************************************************************
+.         **# a tiny program to create the override variable
+.         ***************************************************************************************************
+.         
+.         capture program drop error_override
+{txt}
+{com}.         program define error_override
+{txt}  1{com}.                 syntax [if/], GENerate(name)
+{txt}  2{com}.                 
+.                 confirm new variable `generate'
+{txt}  3{com}.                 
+.                 if "`if'" != "" {c -(}
+{txt}  4{com}.                         qui count if (`if')
+{txt}  5{com}.                         local N = r(N)
+{txt}  6{com}.                         if `N' == 0 {c -(}
+{txt}  7{com}.                                 dis as error "No errors overriden by current condition"
+{txt}  8{com}.                         {c )-}
+{txt}  9{com}.                         gen byte `generate' = (`if')
+{txt} 10{com}.                 {c )-}
+{txt} 11{com}.                 
+.                 if "`if'" == "" {c -(}
+{txt} 12{com}.                         gen byte `generate' = 0
+{txt} 13{com}.                 {c )-}
+{txt} 14{com}.                 
+.                 
+.         end
+{txt}
+{com}.         
+.         
+.         ***************************************************************************************************
+.         * the main code begins here
+.         ***************************************************************************************************
+. 
+.         use "../03_processed/srijan_workfile", clear
+{txt}
+{com}.         notes
+{res}
+_dta:
+{txt}{p 2 6}
+1.
+This dataset has been created from data exported on 12 Dec 2021 07:34 for main questionnaire version V1.
+{p_end}
+{p 2 6}
+2.
+This dataset has been created from data exported on 12 Dec 2021 07:34 for main questionnaire version V2.
+{p_end}
+{p 2 6}
+3.
+This dataset has been created from data exported on 12 Dec 2021 07:34 for asha questionnaire version V1.
+{p_end}
+{p 2 6}
+4.
+This dataset has been created from data exported on 12 Dec 2021 07:35 for asha questionnaire version V2.
+{p_end}
+{p 2 6}
+5.
+This dataset incorporates missing value validations, as specified till 10 August 2021 14:30.
+{p_end}
+
+{res}x_summer_scarcity:
+{txt}{p 2 6}
+1.
+q210_water_suff_summer_1 q210_water_suff_summer_2 q210_water_suff_summer_4 q210_water_suff_summer_5 q210_water_suff_summer_6 q210_water_suff_summer_7 q210_water_suff_summer_3 == 2 3 4
+{p_end}
+
+{res}x_winter_scarcity:
+{txt}{p 2 6}
+1.
+q211_water_suff_winter_1 q211_water_suff_winter_2 q211_water_suff_winter_4 q211_water_suff_winter_5 q211_water_suff_winter_6 q211_water_suff_winter_7 q211_water_suff_winter_3 == 2 3 4
+{p_end}
+
+{com}.         
+.         ***************************************************************************************************
+.         **# Section 1
+.         ***************************************************************************************************
+. 
+.         error_override, gen(overd_sec1_01)
+{txt}
+{com}.         error_override, gen(overd_sec1_02_q103)
+{txt}
+{com}.         error_override if inlist(village_id, 456755), gen(overd_sec1_02_q107)
+{txt}
+{com}.         *Reason: Chadar/Bulkar, SC
+.         
+.         error_override if village_id == 455636 | village_id == 456149 , gen(overd_sec1_02_q111)
+{txt}
+{com}.         *Reason: Holds true for this village. Verified with multiple respondents including the village sarpanch.
+.         
+.         error_override if inlist(village_id,456149,91343), gen(overd_sec1_02_006)
+{txt}
+{com}.         *Reason: Holds true for this village. Verified with multiple respondents including the village sarpanch.
+.         
+.         error_override if inlist(village_id,502065), gen(overd_sec1_03)
+{txt}
+{com}.         *Reason: This village has many large farmers. 
+.         
+.         error_override if inlist(village_id, 494974,456755), gen(overd_sec1_04)
+{txt}
+{com}.         *Reason: The landless work as sharecroppers.
+.         *Reason (456755) : This is correct. Sum is close enough o 120
+.         
+.         error_override if inlist(village_id,431303,433654,495187,456735), gen(overd_sec1_06_class05)
+{txt}
+{com}.         *Reason: Women are indeed more educated than men
+.         
+.         error_override if inlist(village_id,431265,431303,431625,433654,495187,502052,456735), gen(overd_sec1_06_class08)
+{txt}
+{com}.         *Reason: This is indeed true for these areas. Men here start working at an early age and women continue their education. 
+.         
+.         error_override if inlist(village_id,502047,501790,431625,433654,495187,501854,501791,456735), gen(overd_sec1_06_class10)
+{txt}
+{com}.         *Reason: Holds true for this village. Verified
+.         *Reason (501791) : high school  is far, so there are few educated men, married women are more educated
+.         
+.         error_override if inlist(village_id, 431733, 501790, 108768,431625,495187,501854,502290,502061,456735), gen(overd_sec1_06_class12)
+{txt}
+{com}.         *Reason: Holds true for this village. Verified
+.         *Reason 108768 : This is indeed true for these areas. Men here start working at an early age and women continue their education.
+.         
+.         error_override if inlist(village_id, 502047, 495053, 501790, 108768,433654,456735), gen(overd_sec1_06_graduate)
+{txt}
+{com}.         *Reason 502047: One graduate woman. No men who have graduated.
+.         *Reason 495053: Holds true for this village. Verified
+.         *Reason 108768: This is indeed true for these areas. Men here start working at an early age and women continue their education.
+.         
+.         
+.         error_override, gen(overd_sec1_08_01)
+{txt}
+{com}.         error_override, gen(overd_sec1_08_02)
+{txt}
+{com}.         
+.         ***************************************************************************************************
+.         **# Section 2
+.         ***************************************************************************************************
+.         
+.         error_override, gen(overd_sec2_01_1)
+{txt}
+{com}.         error_override if inlist(village_id,501861,91368,108181,108196,431274,431278,501801,501791,456776,456743,433694,105810), gen(overd_sec2_01_2)
+{txt}
+{com}.         
+.         *Reason: Holds true for this village. Verified
+.         *Reason: There are indeed these many handpumps in the village.
+.         *Reason (431274): There are indeed these many handpumps in the village. Used as alternatives for wells.
+.         *Reason (501801,456776,456743,433694,105810): There are indeed more than 25 handpumps in this village. 
+.         
+.         error_override, gen(overd_sec2_01_4)
+{txt}
+{com}.         error_override, gen(overd_sec2_01_5)
+{txt}
+{com}.         error_override, gen(overd_sec2_01_6)
+{txt}
+{com}.         error_override, gen(overd_sec2_01_7)
+{txt}
+{com}.         
+. 
+. 
+.         forval i = 1/6 {c -(}
+{txt}  2{com}.                 error_override, gen(overd_sec2_02_`i')
+{txt}  3{com}.         {c )-}
+{txt}
+{com}.         error_override if inlist(village_id,502078,502188), gen(overd_sec2_02_7)
+{txt}
+{com}.         *Reason: The taps were provided this year before summer. Hence no observation for winter.
+.         *Reason: Jal Nal Yojna was introduced in this village only this summer. Hence it takes a value zero for last winter season.
+.         
+.         
+.         error_override, gen(overd_sec2_03a_1_summer)
+{txt}
+{com}.         error_override, gen(overd_sec2_03b_1_summer)
+{txt}
+{com}.         error_override, gen(overd_sec2_03a_1_winter)
+{txt}
+{com}.         error_override, gen(overd_sec2_03b_1_winter)
+{txt}
+{com}.         
+.         error_override, gen(overd_sec2_03a_2_summer)
+{txt}
+{com}.         error_override, gen(overd_sec2_03b_2_summer)
+{txt}
+{com}.         error_override, gen(overd_sec2_03a_2_winter)
+{txt}
+{com}.         error_override, gen(overd_sec2_03b_2_winter)
+{txt}
+{com}.         
+.         error_override if inlist(village_id,501725), gen(overd_sec2_03a_4_summer)
+{txt}
+{com}.         *Reason: Because none of the wells functions during the summer months
+.         
+.         
+.         error_override, gen(overd_sec2_03b_4_summer)
+{txt}
+{com}.         error_override, gen(overd_sec2_03a_4_winter)
+{txt}
+{com}.         error_override, gen(overd_sec2_03b_4_winter)
+{txt}
+{com}.         
+.         error_override, gen(overd_sec2_03a_5_summer)
+{txt}
+{com}.         error_override, gen(overd_sec2_03b_5_summer)
+{txt}
+{com}.         error_override, gen(overd_sec2_03a_5_winter)
+{txt}
+{com}.         error_override, gen(overd_sec2_03b_5_winter)
+{txt}
+{com}.         
+.         error_override, gen(overd_sec2_03a_6_summer)
+{txt}
+{com}.         error_override, gen(overd_sec2_03b_6_summer)
+{txt}
+{com}.         error_override, gen(overd_sec2_03a_6_winter)
+{txt}
+{com}.         error_override, gen(overd_sec2_03b_6_winter)
+{txt}
+{com}.         
+.         error_override, gen(overd_sec2_03a_7_summer)
+{txt}
+{com}.         error_override, gen(overd_sec2_03b_7_summer)
+{txt}
+{com}.         error_override, gen(overd_sec2_03a_7_winter)
+{txt}
+{com}.         error_override, gen(overd_sec2_03b_7_winter)
+{txt}
+{com}.         
+.         error_override, gen(overd_sec2_05_1)
+{txt}
+{com}.         error_override if village_id == 455659, gen(overd_sec2_05_2)
+{txt}
+{com}.         *Reason: It takes them longer in winter due to cold weather.
+.         
+.         error_override, gen(overd_sec2_05_3)
+{txt}
+{com}.         
+.         error_override if inlist(village_id,455659,501725), gen(overd_sec2_05_4)
+{txt}
+{com}.         *Reason: It takes them longer in winter due to cold weather.
+.         *Reason: Because none of the wells functions during the summer months
+.         
+.         error_override, gen(overd_sec2_05_5)
+{txt}
+{com}.         error_override, gen(overd_sec2_05_6)
+{txt}
+{com}.         error_override, gen(overd_sec2_05_7)
+{txt}
+{com}.         
+.         foreach i of numlist 1/5 7 {c -(}
+{txt}  2{com}.                 error_override, gen(overd_sec2_07_`i')          
+{txt}  3{com}.         {c )-}
+{txt}
+{com}. 
+.         error_override if village_id == 431265, gen(overd_sec2_07_6)
+{txt}
+{com}.         *Reason: The water supply plant is solar powered hence the supply is insufficient during winter.
+.         
+.         error_override, gen(overd_sec2_08)
+{txt}
+{com}.         error_override, gen(overd_sec2_09)
+{txt}
+{com}.         error_override if inlist(village_id, 460858), gen(overd_sec2_10)
+{txt}
+{com}.         *Reason: This is indeed true
+.         
+.         
+.         error_override if village_id == 91359, gen(overd_sec2_11)
+{txt}
+{com}.         *Reason: Primary school is located at the village border and often considered to be a part of the other village
+.         
+.         ***************************************************************************************************
+.         **# Section 4
+.         ***************************************************************************************************
+.         
+.         
+.         error_override, gen(overd_sec4_01)
+{txt}
+{com}.         error_override, gen(overd_sec4_03)
+{txt}
+{com}.         
+.         error_override if inlist(village_id, 91359,108090,108094,105842,105822,108149,108172,108181,108196,105832), gen(overd_sec4_04_RJ)
+{txt}
+{com}.         
+.         *Reason: Most of the people move out to nearby areas in Rajasthan only. They work in workshops that produce material out of stone and marble. Hence not really seasonal. 
+.         
+.         
+.         error_override if inlist(village_id,431244,431631,433674,431303), gen(overd_sec4_04_CG)
+{txt}
+{com}.         
+.         *Reason: They migrate to nearby areas and work as casual labourers. But the work and migration pattern is not seasonal.
+.         
+.         error_override if inlist(village_id,501790,501746,484230,460858,460770), gen(overd_sec4_04_MP)
+{txt}
+{com}.         *Reason 501746: There is no migration at all from here. 
+.         *Reason 484230, 460858, 460770: People migrate to nearby areas within the state such as Bhopal and Indore 
+.         
+.         error_override, gen(overd_sec4_05)
+{txt}
+{com}.         error_override, gen(overd_sec4_07)
+{txt}
+{com}.         
+.         ***************************************************************************************************
+.         **# Section 6
+.         ***************************************************************************************************
+.         
+.         
+.         error_override if inlist(village_id,108094, 108149,108172,108181,108212,495196,460785,460765), gen(overd_sec6_03)
+{txt}
+{com}.         *Reason: Due to the absence of both, they often sell to intermediaries.
+.         *Reason: They themselves make bidi out of it. 
+.         *Reason(460785): They sell bidi's directly 
+.         
+.         
+.         error_override, gen(overd_sec6_04)
+{txt}
+{com}.         
+.         ***************************************************************************************************
+.         **# Section 8
+.         ***************************************************************************************************
+.         
+.         error_override if inlist(village_id, 460765), gen(overd_sec_8_17_p)
+{txt}
+{com}.         error_override if inlist(village_id,77018,91359,91354,108094,105810,105842,108212,431274,431625,433654,433681,501801,501746,502190,495450,495196,495189,495185,495183,495041,460765) , gen(overd_sec_8_17_n)
+{txt}
+{com}. 
+.         *Reason: Only some health workers had received both vaccine doses and they are less than 45 yrs old.
+.         
+.         error_override if inlist(village_id,502190), gen(overd_m_q826_vaccn_start_18plus)
+{txt}
+{com}.         
+. 
+. 
+.         note: This dataset incorporates error overrides 1-`last_override', as specified till `override_timedate'.
+{res}{txt}
+{com}.         
+.         save "../04_temp/errorcheck_workfile_with_overrides", replace
+{txt}{p 0 4 2}
+file {bf}
+../04_temp/errorcheck_workfile_with_overrides.dta{rm}
+saved
+{p_end}
+
+{com}.         
+. project , creates("../04_temp/errorcheck_workfile_with_overrides.dta")   
+{txt}project srijan > do-file creates: {res}"04_temp/errorcheck_workfile_with_overrides.dta" filesig(241457290:2317585){txt}
+
+{com}.                
+.         
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.         
+.         
+. 
+.         
+.         
+.         
+.         
+.          
+.         
+.         
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+.          
+. 
+.         
+. 
+.         
+.         
+. 
+.         
+.         
+.         
+.         
+.         
+.         
+.         
+.         
+.         
+. 
+{txt}end of do-file
+      name:  {res}plog_129
+       {txt}log:  {res}/Users/sreyamajumder/Dropbox/sreya_majumder/srijan_sreya analysis/02_scripts/04a_error_overrides.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}17 Dec 2021, 11:53:28
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

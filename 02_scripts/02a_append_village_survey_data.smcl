@@ -1,0 +1,2406 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}plog_65
+       {txt}log:  {res}/Users/sreyamajumder/Dropbox/sreya_majumder/srijan_sreya analysis/02_scripts/02a_append_village_survey_data.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}13 Dec 2021, 11:31:03
+{txt}
+{com}. *************************************************************************************************************************************
+. *! version 1.0  | 19 July 2021 | Hemanshu Kumar 
+. *  this file is part of the SRIJAN project headed by Rohini Somanathan, Priyanka Arora and Hemanshu Kumar
+. *************************************************************************************************************************************  
+. 
+. 
+. project , original("../01_data/village_survey_data/asha survey/V1/conflicts.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/asha survey/V1/conflicts.dta" filesig(3568121235:4582){txt}
+
+{com}. project , original("../01_data/village_survey_data/asha survey/V1/disease_roster.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/asha survey/V1/disease_roster.dta" filesig(906496877:34460){txt}
+
+{com}. project , original("../01_data/village_survey_data/asha survey/V1/gathering_roster.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/asha survey/V1/gathering_roster.dta" filesig(3792526285:10348){txt}
+
+{com}. project , original("../01_data/village_survey_data/asha survey/V1/health_roster.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/asha survey/V1/health_roster.dta" filesig(3206788070:15101){txt}
+
+{com}. project , original("../01_data/village_survey_data/asha survey/V1/srijan_project_asha.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/asha survey/V1/srijan_project_asha.dta" filesig(15459514:91056){txt}
+
+{com}. project , original("../01_data/village_survey_data/asha survey/V1/vaccn_awareness.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/asha survey/V1/vaccn_awareness.dta" filesig(4001740767:19835){txt}
+
+{com}. project , original("../01_data/village_survey_data/asha survey/V1/wedding_roster.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/asha survey/V1/wedding_roster.dta" filesig(930904033:10554){txt}
+
+{com}. 
+. 
+. project , original("../01_data/village_survey_data/asha survey/V2/conflicts.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/asha survey/V2/conflicts.dta" filesig(3150992464:9577){txt}
+
+{com}. project , original("../01_data/village_survey_data/asha survey/V2/disease_roster.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/asha survey/V2/disease_roster.dta" filesig(1667030414:173398){txt}
+
+{com}. project , original("../01_data/village_survey_data/asha survey/V2/gathering_roster.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/asha survey/V2/gathering_roster.dta" filesig(234195453:32353){txt}
+
+{com}. project , original("../01_data/village_survey_data/asha survey/V2/health_roster.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/asha survey/V2/health_roster.dta" filesig(3461496388:38081){txt}
+
+{com}. project , original("../01_data/village_survey_data/asha survey/V2/srijan_project_asha.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/asha survey/V2/srijan_project_asha.dta" filesig(3278604348:190867){txt}
+
+{com}. project , original("../01_data/village_survey_data/asha survey/V2/vaccn_awareness.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/asha survey/V2/vaccn_awareness.dta" filesig(2629467714:90575){txt}
+
+{com}. project , original("../01_data/village_survey_data/asha survey/V2/wedding_roster.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/asha survey/V2/wedding_roster.dta" filesig(1824536009:21984){txt}
+
+{com}. 
+. 
+. project , original("../01_data/village_survey_data/main survey/V1/conflicts.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/conflicts.dta" filesig(3177685373:3907){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V1/covid.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/covid.dta" filesig(299070571:38850){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V1/disease_roster.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/disease_roster.dta" filesig(2451795934:30928){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V1/drinking_water.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/drinking_water.dta" filesig(1804143081:16533){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V1/edu.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/edu.dta" filesig(4179786823:16855){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V1/facilities.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/facilities.dta" filesig(1528955784:43992){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V1/fuel_source.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/fuel_source.dta" filesig(3366025682:8371){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V1/gathering_roster.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/gathering_roster.dta" filesig(2498916747:13085){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V1/gender.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/gender.dta" filesig(686933547:8740){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V1/health_roster.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/health_roster.dta" filesig(4143519393:16277){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V1/houses.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/houses.dta" filesig(720856711:10583){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V1/marriage_roster.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/marriage_roster.dta" filesig(3862403083:20398){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V1/ntfp.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/ntfp.dta" filesig(54921195:35272){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V1/social_security.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/social_security.dta" filesig(1933028068:32919){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V1/srijan_project.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/srijan_project.dta" filesig(2125294721:867266){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V1/timeline.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/timeline.dta" filesig(2419537336:10304){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V1/vaccn_awareness.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V1/vaccn_awareness.dta" filesig(3809615080:18233){txt}
+
+{com}. 
+. 
+. 
+. project , original("../01_data/village_survey_data/main survey/V2/drinking_water.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V2/drinking_water.dta" filesig(1456958319:23474){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V2/edu.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V2/edu.dta" filesig(2383586188:22657){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V2/facilities.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V2/facilities.dta" filesig(415105898:86286){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V2/fuel_source.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V2/fuel_source.dta" filesig(2115573490:11238){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V2/gender.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V2/gender.dta" filesig(3070340491:12312){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V2/houses.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V2/houses.dta" filesig(4184066145:14047){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V2/ntfp.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V2/ntfp.dta" filesig(1411814134:42574){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V2/social_security.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V2/social_security.dta" filesig(2586599375:47619){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V2/srijan_project.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V2/srijan_project.dta" filesig(1191053862:1008218){txt}
+
+{com}. project , original("../01_data/village_survey_data/main survey/V2/timeline.dta")
+{txt}project srijan > do-file uses original: {res}"01_data/village_survey_data/main survey/V2/timeline.dta" filesig(3269098074:14756){txt}
+
+{com}. 
+. 
+. 
+. project , original("02aa_import_village_survey_programs.do")
+{txt}project srijan > do-file uses original: {res}"02_scripts/02aa_import_village_survey_programs.do" filesig(1925933787:10336){txt}
+
+{com}. 
+. 
+.         run "02aa_import_village_survey_programs.do"
+{txt}
+{com}. 
+. 
+.         ******************************************************************************************************
+.         **# 1. Import data from each version of the main survey, append those, and fix some variables
+.         ******************************************************************************************************  
+.         
+.         local versions V1 V2
+{txt}
+{com}. 
+.         foreach ver of local versions {c -(}
+{txt}  2{com}.                 import_village_data, version(`ver') datafolder("../01_data/village_survey_data/main survey") tempfolder("../04_temp")
+{txt}  3{com}.         {c )-}
+{txt}(j = 1 2)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}          78   {txt}->   {res}39          
+{txt}Number of variables        {res}          16   {txt}->   {res}28          
+{txt}j variable (2 values)           {res}edu__id   {txt}->   (dropped)
+xij variables:
+                           {res}q119_ppl_num   {txt}->   {res}q119_1ppl_num q119_2ppl_num
+                      q125_graduate_n_x   {txt}->   {res}q125_1graduate_n_x q125_2graduate_n_x
+                       q124_class12_p_x   {txt}->   {res}q124_1class12_p_x q124_2class12_p_x
+                       q124_class12_n_x   {txt}->   {res}q124_1class12_n_x q124_2class12_n_x
+                       q123_class10_p_x   {txt}->   {res}q123_1class10_p_x q123_2class10_p_x
+                       q123_class10_n_x   {txt}->   {res}q123_1class10_n_x q123_2class10_n_x
+                        q122_class8_p_x   {txt}->   {res}q122_1class8_p_x q122_2class8_p_x
+                        q122_class8_n_x   {txt}->   {res}q122_1class8_n_x q122_2class8_n_x
+                        q121_class5_p_x   {txt}->   {res}q121_1class5_p_x q121_2class5_p_x
+                        q121_class5_n_x   {txt}->   {res}q121_1class5_n_x q121_2class5_n_x
+                  q120_below_class5_p_x   {txt}->   {res}q120_1below_class5_p_x q120_2below_class5_p_x
+                  q120_below_class5_n_x   {txt}->   {res}q120_1below_class5_n_x q120_2below_class5_n_x
+                              sum_edu_n   {txt}->   {res}sum_e1du_n sum_e2du_n
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_edu_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_edu_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4 5 6 7 8)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         312   {txt}->   {res}39          
+{txt}Number of variables        {res}          22   {txt}->   {res}154         
+{txt}j variable (8 values)         {res}covid__id   {txt}->   (dropped)
+xij variables:
+                               {res}q812_men   {txt}->   {res}q812_1men q812_2men ... q812_8men
+                             q813_women   {txt}->   {res}q813_1women q813_2women ... q813_8women
+                    q814_isolate_men__1   {txt}->   {res}q814_1isolate_men__1 q814_2isolate_men__1 ... q814_8isolate_men__1
+                    q814_isolate_men__2   {txt}->   {res}q814_1isolate_men__2 q814_2isolate_men__2 ... q814_8isolate_men__2
+                    q814_isolate_men__3   {txt}->   {res}q814_1isolate_men__3 q814_2isolate_men__3 ... q814_8isolate_men__3
+                    q814_isolate_men__4   {txt}->   {res}q814_1isolate_men__4 q814_2isolate_men__4 ... q814_8isolate_men__4
+                    q814_isolate_men__5   {txt}->   {res}q814_1isolate_men__5 q814_2isolate_men__5 ... q814_8isolate_men__5
+                    q814_isolate_men__6   {txt}->   {res}q814_1isolate_men__6 q814_2isolate_men__6 ... q814_8isolate_men__6
+                  q815_isolate_women__1   {txt}->   {res}q815_1isolate_women__1 q815_2isolate_women__1 ... q815_8isolate_women__1
+                  q815_isolate_women__2   {txt}->   {res}q815_1isolate_women__2 q815_2isolate_women__2 ... q815_8isolate_women__2
+                  q815_isolate_women__3   {txt}->   {res}q815_1isolate_women__3 q815_2isolate_women__3 ... q815_8isolate_women__3
+                  q815_isolate_women__4   {txt}->   {res}q815_1isolate_women__4 q815_2isolate_women__4 ... q815_8isolate_women__4
+                  q815_isolate_women__5   {txt}->   {res}q815_1isolate_women__5 q815_2isolate_women__5 ... q815_8isolate_women__5
+                  q815_isolate_women__6   {txt}->   {res}q815_1isolate_women__6 q815_2isolate_women__6 ... q815_8isolate_women__6
+                           q816_below18   {txt}->   {res}q816_1below18 q816_2below18 ... q816_8below18
+                            q817_18to44   {txt}->   {res}q817_118to44 q817_218to44 ... q817_818to44
+                           q818_above44   {txt}->   {res}q818_1above44 q818_2above44 ... q818_8above44
+                q819_vaccn_start_18plus   {txt}->   {res}q819_1vaccn_start_18plus q819_2vaccn_start_18plus ... q819_8vaccn_start_18plus
+                q820_vaccn_start_45plus   {txt}->   {res}q820_1vaccn_start_45plus q820_2vaccn_start_45plus ... q820_8vaccn_start_45plus
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_covid_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_covid_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4 5 6 7)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         273   {txt}->   {res}39          
+{txt}Number of variables        {res}          19   {txt}->   {res}114         
+{txt}j variable (7 values){res}disease_roster__id   {txt}->   (dropped)
+xij variables:
+                        {res}q908_trtmnt_now   {txt}->   {res}q908_1trtmnt_now q908_2trtmnt_now ... q908_7trtmnt_now
+                      q909_usual_trtmnt   {txt}->   {res}q909_1usual_trtmnt q909_2usual_trtmnt ... q909_7usual_trtmnt
+                     q910_why_no_public   {txt}->   {res}q910_1why_no_public q910_2why_no_public ... q910_7why_no_public
+                   q910b_why_no_pub_oth   {txt}->   {res}q910b1_why_no_pub_oth q910b2_why_no_pub_oth ... q910b7_why_no_pub_oth
+                    q911_chng_trtmnt__1   {txt}->   {res}q911_1chng_trtmnt__1 q911_2chng_trtmnt__1 ... q911_7chng_trtmnt__1
+                    q911_chng_trtmnt__2   {txt}->   {res}q911_1chng_trtmnt__2 q911_2chng_trtmnt__2 ... q911_7chng_trtmnt__2
+                    q911_chng_trtmnt__3   {txt}->   {res}q911_1chng_trtmnt__3 q911_2chng_trtmnt__3 ... q911_7chng_trtmnt__3
+                    q911_chng_trtmnt__4   {txt}->   {res}q911_1chng_trtmnt__4 q911_2chng_trtmnt__4 ... q911_7chng_trtmnt__4
+                    q911_chng_trtmnt__5   {txt}->   {res}q911_1chng_trtmnt__5 q911_2chng_trtmnt__5 ... q911_7chng_trtmnt__5
+                    q911_chng_trtmnt__6   {txt}->   {res}q911_1chng_trtmnt__6 q911_2chng_trtmnt__6 ... q911_7chng_trtmnt__6
+                    q911_chng_trtmnt__7   {txt}->   {res}q911_1chng_trtmnt__7 q911_2chng_trtmnt__7 ... q911_7chng_trtmnt__7
+                    q911_chng_trtmnt__8   {txt}->   {res}q911_1chng_trtmnt__8 q911_2chng_trtmnt__8 ... q911_7chng_trtmnt__8
+                    q911_chng_trtmnt__9   {txt}->   {res}q911_1chng_trtmnt__9 q911_2chng_trtmnt__9 ... q911_7chng_trtmnt__9
+                   q911_chng_trtmnt__10   {txt}->   {res}q911_1chng_trtmnt__10 q911_2chng_trtmnt__10 ... q911_7chng_trtmnt__10
+                  q911_chng_trtmnt__888   {txt}->   {res}q911_1chng_trtmnt__888 q911_2chng_trtmnt__888 ... q911_7chng_trtmnt__888
+                     q911b_reason_other   {txt}->   {res}q911b1_reason_other q911b2_reason_other ... q911b7_reason_other
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_disease_roster_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_disease_roster_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2 4 5 6 7)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}          81   {txt}->   {res}39          
+{txt}Number of variables        {res}          15   {txt}->   {res}74          
+{txt}j variable (6 values){res}drinking_water__id   {txt}->   (dropped)
+xij variables:
+                        {res}q202_source_num   {txt}->   {res}q202_1source_num q202_2source_num ... q202_7source_num
+                q203_source_func_summer   {txt}->   {res}q203_1source_func_summer q203_2source_func_summer ... q203_7source_func_summer
+                q204_source_func_winter   {txt}->   {res}q204_1source_func_winter q204_2source_func_winter ... q204_7source_func_winter
+                 q205_water_hh_summer_p   {txt}->   {res}q205_1water_hh_summer_p q205_2water_hh_summer_p ... q205_7water_hh_summer_p
+                 q205_water_hh_summer_n   {txt}->   {res}q205_1water_hh_summer_n q205_2water_hh_summer_n ... q205_7water_hh_summer_n
+                 q206_water_hh_winter_p   {txt}->   {res}q206_1water_hh_winter_p q206_2water_hh_winter_p ... q206_7water_hh_winter_p
+                 q206_water_hh_winter_n   {txt}->   {res}q206_1water_hh_winter_n q206_2water_hh_winter_n ... q206_7water_hh_winter_n
+                        q207_water_dist   {txt}->   {res}q207_1water_dist q207_2water_dist ... q207_7water_dist
+                 q208_water_time_summer   {txt}->   {res}q208_1water_time_summer q208_2water_time_summer ... q208_7water_time_summer
+                 q209_water_time_winter   {txt}->   {res}q209_1water_time_winter q209_2water_time_winter ... q209_7water_time_winter
+                 q210_water_suff_summer   {txt}->   {res}q210_1water_suff_summer q210_2water_suff_summer ... q210_7water_suff_summer
+                 q211_water_suff_winter   {txt}->   {res}q211_1water_suff_winter q211_2water_suff_winter ... q211_7water_suff_winter
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_drinking_water_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_drinking_water_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         741   {txt}->   {res}39          
+{txt}Number of variables        {res}           5   {txt}->   {res}40          
+{txt}j variable (19 values)   {res}facilities__id   {txt}->   (dropped)
+xij variables:
+                   {res}q221_number_facility   {txt}->   {res}q221_1number_facility q221_2number_facility ... q221_19number_facility
+                 q222_distance_facility   {txt}->   {res}q222_1distance_facility q222_2distance_facility ... q222_19distance_facility
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_facilities_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_facilities_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4 5 8)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}          85   {txt}->   {res}39          
+{txt}Number of variables        {res}           5   {txt}->   {res}14          
+{txt}j variable (6 values)   {res}fuel_source__id   {txt}->   (dropped)
+xij variables:
+                 {res}q218_fuel_primary_hh_p   {txt}->   {res}q218_1fuel_primary_hh_p q218_2fuel_primary_hh_p ... q218_8fuel_primary_hh_p
+                 q218_fuel_primary_hh_n   {txt}->   {res}q218_1fuel_primary_hh_n q218_2fuel_primary_hh_n ... q218_8fuel_primary_hh_n
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_fuel_source_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_fuel_source_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2 3)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         117   {txt}->   {res}39          
+{txt}Number of variables        {res}           8   {txt}->   {res}17          
+{txt}j variable (3 values){res}gathering_roster__id {txt}->   (dropped)
+xij variables:
+                    {res}q820_gathering_name   {txt}->   {res}q820_1gathering_name q820_2gathering_name q820_3gathering_name
+                        q821_gather_pop   {txt}->   {res}q821_1gather_pop q821_2gather_pop q821_3gather_pop
+                  q822_perc_mask_gather   {txt}->   {res}q822_1perc_mask_gather q822_2perc_mask_gather q822_3perc_mask_gather
+                       q823_social_dist   {txt}->   {res}q823_1social_dist q823_2social_dist q823_3social_dist
+                      q824_gather_place   {txt}->   {res}q824_1gather_place q824_2gather_place q824_3gather_place
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_gathering_roster_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_gathering_roster_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}          78   {txt}->   {res}39          
+{txt}Number of variables        {res}           6   {txt}->   {res}8           
+{txt}j variable (2 values)        {res}gender__id   {txt}->   (dropped)
+xij variables:
+                        {res}q705_empt_nrega   {txt}->   {res}q705_1empt_nrega q705_2empt_nrega
+                         q706_empt_chng   {txt}->   {res}q706_1empt_chng q706_2empt_chng
+                    q707_perc_chng_empt   {txt}->   {res}q707_1perc_chng_empt q707_2perc_chng_empt
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_gender_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_gender_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}          78   {txt}->   {res}39          
+{txt}Number of variables        {res}          16   {txt}->   {res}28          
+{txt}j variable (2 values) {res}health_roster__id   {txt}->   (dropped)
+xij variables:
+                    {res}q901_perc_chld_inst   {txt}->   {res}q901_1perc_chld_inst q901_2perc_chld_inst
+                    q902_chng_hlth_serv   {txt}->   {res}q902_1chng_hlth_serv q902_2chng_hlth_serv
+                    q903_perc_chng_hlth   {txt}->   {res}q903_1perc_chng_hlth q903_2perc_chng_hlth
+                     q904_del_assist__1   {txt}->   {res}q904_1del_assist__1 q904_2del_assist__1
+                     q904_del_assist__2   {txt}->   {res}q904_1del_assist__2 q904_2del_assist__2
+                     q904_del_assist__3   {txt}->   {res}q904_1del_assist__3 q904_2del_assist__3
+                     q904_del_assist__4   {txt}->   {res}q904_1del_assist__4 q904_2del_assist__4
+                     q904_del_assist__5   {txt}->   {res}q904_1del_assist__5 q904_2del_assist__5
+                     q904_del_assist__6   {txt}->   {res}q904_1del_assist__6 q904_2del_assist__6
+                   q904_del_assist__888   {txt}->   {res}q904_1del_assist__888 q904_2del_assist__888
+                 q904b_del_assist_other   {txt}->   {res}q904b1_del_assist_other q904b2_del_assist_other
+                 q906_chld_vaccn_assist   {txt}->   {res}q906_1chld_vaccn_assist q906_2chld_vaccn_assist
+              q906b_chld_vaccn_asst_oth   {txt}->   {res}q906b1_chld_vaccn_asst_oth q906b2_chld_vaccn_asst_oth
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_health_roster_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_health_roster_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         152   {txt}->   {res}38          
+{txt}Number of variables        {res}           4   {txt}->   {res}6           
+{txt}j variable (4 values)        {res}houses__id   {txt}->   (dropped)
+xij variables:
+                        {res}q430_new_houses   {txt}->   {res}q430_1new_houses q430_2new_houses ... q430_4new_houses
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_houses_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_houses_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4 5 6 7)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         273   {txt}->   {res}39          
+{txt}Number of variables        {res}           5   {txt}->   {res}16          
+{txt}j variable (7 values){res}marriage_roster__id  {txt}->   (dropped)
+xij variables:
+                   {res}q1001_marriages_post   {txt}->   {res}q10011_marriages_post q10012_marriages_post ... q10017_marriages_post
+                    q1002_marriages_pre   {txt}->   {res}q10021_marriages_pre q10022_marriages_pre ... q10027_marriages_pre
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_marriage_roster_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_marriage_roster_V1.dta{rm}
+saved
+{p_end}
+(j = 1 3 4 5 6 7 8 9)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}          81   {txt}->   {res}28          
+{txt}Number of variables        {res}          30   {txt}->   {res}218         
+{txt}j variable (8 values)          {res}ntfp__id   {txt}->   (dropped)
+xij variables:
+                         {res}q603_ntfp_hh_p   {txt}->   {res}q603_1ntfp_hh_p q603_3ntfp_hh_p ... q603_9ntfp_hh_p
+                         q603_ntfp_hh_n   {txt}->   {res}q603_1ntfp_hh_n q603_3ntfp_hh_n ... q603_9ntfp_hh_n
+                    q604_ntfp_sale_hh_p   {txt}->   {res}q604_1ntfp_sale_hh_p q604_3ntfp_sale_hh_p ... q604_9ntfp_sale_hh_p
+                    q604_ntfp_sale_hh_n   {txt}->   {res}q604_1ntfp_sale_hh_n q604_3ntfp_sale_hh_n ... q604_9ntfp_sale_hh_n
+                    q603A_ntfp_hh_now_p   {txt}->   {res}q603A1_ntfp_hh_now_p q603A3_ntfp_hh_now_p ... q603A9_ntfp_hh_now_p
+                    q603A_ntfp_hh_now_n   {txt}->   {res}q603A1_ntfp_hh_now_n q603A3_ntfp_hh_now_n ... q603A9_ntfp_hh_now_n
+               q604A_ntfp_sale_hh_now_p   {txt}->   {res}q604A1_ntfp_sale_hh_now_p q604A3_ntfp_sale_hh_now_p ... q604A9_ntfp_sale_hh_now_p
+               q604A_ntfp_sale_hh_now_n   {txt}->   {res}q604A1_ntfp_sale_hh_now_n q604A3_ntfp_sale_hh_now_n ... q604A9_ntfp_sale_hh_now_n
+                q605_ntfp_sale_where__1   {txt}->   {res}q605_1ntfp_sale_where__1 q605_3ntfp_sale_where__1 ... q605_9ntfp_sale_where__1
+                q605_ntfp_sale_where__2   {txt}->   {res}q605_1ntfp_sale_where__2 q605_3ntfp_sale_where__2 ... q605_9ntfp_sale_where__2
+                q605_ntfp_sale_where__3   {txt}->   {res}q605_1ntfp_sale_where__3 q605_3ntfp_sale_where__3 ... q605_9ntfp_sale_where__3
+                q605_ntfp_sale_where__4   {txt}->   {res}q605_1ntfp_sale_where__4 q605_3ntfp_sale_where__4 ... q605_9ntfp_sale_where__4
+                q605_ntfp_sale_where__5   {txt}->   {res}q605_1ntfp_sale_where__5 q605_3ntfp_sale_where__5 ... q605_9ntfp_sale_where__5
+                q605_ntfp_sale_where__6   {txt}->   {res}q605_1ntfp_sale_where__6 q605_3ntfp_sale_where__6 ... q605_9ntfp_sale_where__6
+              q605_ntfp_sale_where__888   {txt}->   {res}q605_1ntfp_sale_where__888 q605_3ntfp_sale_where__888 ... q605_9ntfp_sale_where__888
+                  q605b_ntfp_sale_other   {txt}->   {res}q605b1_ntfp_sale_other q605b3_ntfp_sale_other ... q605b9_ntfp_sale_other
+                 q606_ntfp_sale_diff__0   {txt}->   {res}q606_1ntfp_sale_diff__0 q606_3ntfp_sale_diff__0 ... q606_9ntfp_sale_diff__0
+                 q606_ntfp_sale_diff__1   {txt}->   {res}q606_1ntfp_sale_diff__1 q606_3ntfp_sale_diff__1 ... q606_9ntfp_sale_diff__1
+                 q606_ntfp_sale_diff__2   {txt}->   {res}q606_1ntfp_sale_diff__2 q606_3ntfp_sale_diff__2 ... q606_9ntfp_sale_diff__2
+                 q606_ntfp_sale_diff__3   {txt}->   {res}q606_1ntfp_sale_diff__3 q606_3ntfp_sale_diff__3 ... q606_9ntfp_sale_diff__3
+                 q606_ntfp_sale_diff__4   {txt}->   {res}q606_1ntfp_sale_diff__4 q606_3ntfp_sale_diff__4 ... q606_9ntfp_sale_diff__4
+                 q606_ntfp_sale_diff__5   {txt}->   {res}q606_1ntfp_sale_diff__5 q606_3ntfp_sale_diff__5 ... q606_9ntfp_sale_diff__5
+               q606_ntfp_sale_diff__888   {txt}->   {res}q606_1ntfp_sale_diff__888 q606_3ntfp_sale_diff__888 ... q606_9ntfp_sale_diff__888
+                  q606b_ntfp_diff_other   {txt}->   {res}q606b1_ntfp_diff_other q606b3_ntfp_diff_other ... q606b9_ntfp_diff_other
+                     q607_low_price_why   {txt}->   {res}q607_1low_price_why q607_3low_price_why ... q607_9low_price_why
+                  q607b_low_price_other   {txt}->   {res}q607b1_low_price_other q607b3_low_price_other ... q607b9_low_price_other
+                              NTFP_name   {txt}->   {res}NTFP_1name NTFP_3name ... NTFP_9name
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_ntfp_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_ntfp_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4 5)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         195   {txt}->   {res}39          
+{txt}Number of variables        {res}          28   {txt}->   {res}127         
+{txt}j variable (5 values){res}social_security__id  {txt}->   (dropped)
+xij variables:
+                        {res}q701_received_p   {txt}->   {res}q701_1received_p q701_2received_p ... q701_5received_p
+                        q701_received_n   {txt}->   {res}q701_1received_n q701_2received_n ... q701_5received_n
+                  q702_ration_months__3   {txt}->   {res}q702_1ration_months__3 q702_2ration_months__3 ... q702_5ration_months__3
+                  q702_ration_months__4   {txt}->   {res}q702_1ration_months__4 q702_2ration_months__4 ... q702_5ration_months__4
+                  q702_ration_months__5   {txt}->   {res}q702_1ration_months__5 q702_2ration_months__5 ... q702_5ration_months__5
+                  q702_ration_months__6   {txt}->   {res}q702_1ration_months__6 q702_2ration_months__6 ... q702_5ration_months__6
+                  q702_ration_months__7   {txt}->   {res}q702_1ration_months__7 q702_2ration_months__7 ... q702_5ration_months__7
+                  q702_ration_months__8   {txt}->   {res}q702_1ration_months__8 q702_2ration_months__8 ... q702_5ration_months__8
+                  q702_ration_months__9   {txt}->   {res}q702_1ration_months__9 q702_2ration_months__9 ... q702_5ration_months__9
+                 q702_ration_months__10   {txt}->   {res}q702_1ration_months__10 q702_2ration_months__10 ... q702_5ration_months__10
+                 q702_ration_months__11   {txt}->   {res}q702_1ration_months__11 q702_2ration_months__11 ... q702_5ration_months__11
+                 q702_ration_months__12   {txt}->   {res}q702_1ration_months__12 q702_2ration_months__12 ... q702_5ration_months__12
+                 q702_ration_months__13   {txt}->   {res}q702_1ration_months__13 q702_2ration_months__13 ... q702_5ration_months__13
+                 q702_ration_months__14   {txt}->   {res}q702_1ration_months__14 q702_2ration_months__14 ... q702_5ration_months__14
+                 q702_ration_months__15   {txt}->   {res}q702_1ration_months__15 q702_2ration_months__15 ... q702_5ration_months__15
+                 q702_ration_months__16   {txt}->   {res}q702_1ration_months__16 q702_2ration_months__16 ... q702_5ration_months__16
+                 q702_ration_months__17   {txt}->   {res}q702_1ration_months__17 q702_2ration_months__17 ... q702_5ration_months__17
+                 q702_ration_months__18   {txt}->   {res}q702_1ration_months__18 q702_2ration_months__18 ... q702_5ration_months__18
+                 q702_ration_months__19   {txt}->   {res}q702_1ration_months__19 q702_2ration_months__19 ... q702_5ration_months__19
+                 q702_ration_months__20   {txt}->   {res}q702_1ration_months__20 q702_2ration_months__20 ... q702_5ration_months__20
+                 q702_ration_months__21   {txt}->   {res}q702_1ration_months__21 q702_2ration_months__21 ... q702_5ration_months__21
+                   q703_ration_other__1   {txt}->   {res}q703_1ration_other__1 q703_2ration_other__1 ... q703_5ration_other__1
+                   q703_ration_other__2   {txt}->   {res}q703_1ration_other__2 q703_2ration_other__2 ... q703_5ration_other__2
+                   q703_ration_other__3   {txt}->   {res}q703_1ration_other__3 q703_2ration_other__3 ... q703_5ration_other__3
+                   q703_ration_other__0   {txt}->   {res}q703_1ration_other__0 q703_2ration_other__0 ... q703_5ration_other__0
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_social_security_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_social_security_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}          78   {txt}->   {res}39          
+{txt}Number of variables        {res}           8   {txt}->   {res}12          
+{txt}j variable (2 values)      {res}timeline__id   {txt}->   (dropped)
+xij variables:
+                         {res}q501_agri_hh_p   {txt}->   {res}q501_1agri_hh_p q501_2agri_hh_p
+                         q501_agri_hh_n   {txt}->   {res}q501_1agri_hh_n q501_2agri_hh_n
+                          q502_agri_lab   {txt}->   {res}q502_1agri_lab q502_2agri_lab
+                         q503_agri_days   {txt}->   {res}q503_1agri_days q503_2agri_days
+                        q504_agri_wages   {txt}->   {res}q504_1agri_wages q504_2agri_wages
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_timeline_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_timeline_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         156   {txt}->   {res}39          
+{txt}Number of variables        {res}          13   {txt}->   {res}42          
+{txt}j variable (4 values){res}vaccn_awareness__id  {txt}->   (dropped)
+xij variables:
+                        {res}q810_vaccn_will   {txt}->   {res}q810_1vaccn_will q810_2vaccn_will ... q810_4vaccn_will
+                   q811_no_vaccn_rsn__1   {txt}->   {res}q811_1no_vaccn_rsn__1 q811_2no_vaccn_rsn__1 ... q811_4no_vaccn_rsn__1
+                   q811_no_vaccn_rsn__2   {txt}->   {res}q811_1no_vaccn_rsn__2 q811_2no_vaccn_rsn__2 ... q811_4no_vaccn_rsn__2
+                   q811_no_vaccn_rsn__3   {txt}->   {res}q811_1no_vaccn_rsn__3 q811_2no_vaccn_rsn__3 ... q811_4no_vaccn_rsn__3
+                   q811_no_vaccn_rsn__4   {txt}->   {res}q811_1no_vaccn_rsn__4 q811_2no_vaccn_rsn__4 ... q811_4no_vaccn_rsn__4
+                   q811_no_vaccn_rsn__5   {txt}->   {res}q811_1no_vaccn_rsn__5 q811_2no_vaccn_rsn__5 ... q811_4no_vaccn_rsn__5
+                   q811_no_vaccn_rsn__6   {txt}->   {res}q811_1no_vaccn_rsn__6 q811_2no_vaccn_rsn__6 ... q811_4no_vaccn_rsn__6
+                   q811_no_vaccn_rsn__7   {txt}->   {res}q811_1no_vaccn_rsn__7 q811_2no_vaccn_rsn__7 ... q811_4no_vaccn_rsn__7
+                 q811_no_vaccn_rsn__888   {txt}->   {res}q811_1no_vaccn_rsn__888 q811_2no_vaccn_rsn__888 ... q811_4no_vaccn_rsn__888
+                 q811b_no_vaccn_rsn_oth   {txt}->   {res}q811b1_no_vaccn_rsn_oth q811b2_no_vaccn_rsn_oth ... q811b4_no_vaccn_rsn_oth
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_vaccn_awareness_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_vaccn_awareness_V1.dta{rm}
+saved
+{p_end}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              39{txt}  (_m_edu==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              39{txt}  (_m_drinking_water==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              39{txt}  (_m_facilities==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              39{txt}  (_m_fuel_source==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              39{txt}  (_m_gender==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               1
+{txt}{col 9}from master{col 30}{res}               1{txt}  (_m_houses==1)
+{col 9}from using{col 30}{res}               0{txt}  (_m_houses==2)
+
+{col 5}Matched{col 30}{res}              38{txt}  (_m_houses==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}              11
+{txt}{col 9}from master{col 30}{res}              11{txt}  (_m_ntfp==1)
+{col 9}from using{col 30}{res}               0{txt}  (_m_ntfp==2)
+
+{col 5}Matched{col 30}{res}              28{txt}  (_m_ntfp==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              39{txt}  (_m_social_security==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              39{txt}  (_m_timeline==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              39{txt}  (_m_covid==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              39{txt}  (_m_disease_roster==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              39{txt}  (_m_gathering_roster==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              39{txt}  (_m_health_roster==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              39{txt}  (_m_marriage_roster==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              39{txt}  (_m_vaccn_awareness==3)
+{col 5}{hline 41}
+{res}  {txt}variable {bf}{res}q202_source_num_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q203_source_func_summer_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q204_source_func_winter_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q205_water_hh_summer_n_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q208_water_time_summer_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q202_source_num_2{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q203_source_func_summer_2{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q204_source_func_winter_2{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q203_source_func_summer_4{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q202_source_num_5{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q203_source_func_summer_5{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q204_source_func_winter_5{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q205_water_hh_summer_n_5{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q206_water_hh_winter_n_5{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q208_water_time_summer_5{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q208_water_time_summer_6{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q208_water_time_summer_7{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q218_fuel_primary_hh_n_5{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q218_fuel_primary_hh_n_8{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604A_ntfp_sale_hh_now_n_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q603_ntfp_hh_n_7{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604_ntfp_sale_hh_n_7{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q603A_ntfp_hh_now_n_7{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604A_ntfp_sale_hh_now_n_7{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q603_ntfp_hh_n_9{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604_ntfp_sale_hh_n_9{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q603A_ntfp_hh_now_n_9{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604A_ntfp_sale_hh_now_n_9{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}sum_land_p{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}sum_land_n{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}scarcity{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q213_electricity_winter{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}total_houses{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q804_testing_dist{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q809_vaccn_dist{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}sum_edu_n_1{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}sum_edu_n_2{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}q207_water_dist_1{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q207_water_dist_5{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q207_water_dist_7{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_1{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_3{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_4{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}q222_distance_facility_5{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_6{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_9{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_10{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_11{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}q222_distance_facility_13{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_14{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_15{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_16{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_17{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_19{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}NTFP_name_1{sf}{txt} was {bf}{res}str70{sf}{txt} now {bf}{res}str38{sf}
+  {txt}variable {bf}{res}q606b_ntfp_diff_other_1{sf}{txt} was {bf}{res}str36{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}NTFP_name_3{sf}{txt} was {bf}{res}str70{sf}{txt} now {bf}{res}str31{sf}
+  {txt}variable {bf}{res}NTFP_name_4{sf}{txt} was {bf}{res}str70{sf}{txt} now {bf}{res}str12{sf}
+  {txt}variable {bf}{res}q606b_ntfp_diff_other_4{sf}{txt} was {bf}{res}str36{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}NTFP_name_5{sf}{txt} was {bf}{res}str70{sf}{txt} now {bf}{res}str22{sf}
+  {txt}variable {bf}{res}q606b_ntfp_diff_other_5{sf}{txt} was {bf}{res}str36{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q606b_ntfp_diff_other_6{sf}{txt} was {bf}{res}str36{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}NTFP_name_7{sf}{txt} was {bf}{res}str70{sf}{txt} now {bf}{res}str9{sf}
+  {txt}variable {bf}{res}q606b_ntfp_diff_other_7{sf}{txt} was {bf}{res}str36{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}NTFP_name_8{sf}{txt} was {bf}{res}str70{sf}{txt} now {bf}{res}str39{sf}
+  {txt}variable {bf}{res}q606b_ntfp_diff_other_8{sf}{txt} was {bf}{res}str36{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}NTFP_name_9{sf}{txt} was {bf}{res}str70{sf}{txt} now {bf}{res}str12{sf}
+  {txt}variable {bf}{res}q606b_ntfp_diff_other_9{sf}{txt} was {bf}{res}str36{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q819_vaccn_start_18plus_1{sf}{txt} was {bf}{res}str7{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q820_vaccn_start_45plus_1{sf}{txt} was {bf}{res}str7{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q819_vaccn_start_18plus_2{sf}{txt} was {bf}{res}str7{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q820_vaccn_start_45plus_2{sf}{txt} was {bf}{res}str7{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q819_vaccn_start_18plus_3{sf}{txt} was {bf}{res}str7{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q820_vaccn_start_45plus_3{sf}{txt} was {bf}{res}str7{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q819_vaccn_start_18plus_4{sf}{txt} was {bf}{res}str7{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q820_vaccn_start_45plus_4{sf}{txt} was {bf}{res}str7{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q819_vaccn_start_18plus_5{sf}{txt} was {bf}{res}str7{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q820_vaccn_start_45plus_5{sf}{txt} was {bf}{res}str7{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q819_vaccn_start_18plus_7{sf}{txt} was {bf}{res}str7{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q820_vaccn_start_45plus_7{sf}{txt} was {bf}{res}str7{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q819_vaccn_start_18plus_8{sf}{txt} was {bf}{res}str7{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q820_vaccn_start_45plus_8{sf}{txt} was {bf}{res}str7{sf}{txt} now {bf}{res}str1{sf}
+{txt}  (33,579 bytes saved)
+{p 0 4 2}
+file {bf}
+../04_temp/srijan_version_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         162   {txt}->   {res}81          
+{txt}Number of variables        {res}          16   {txt}->   {res}28          
+{txt}j variable (2 values)           {res}edu__id   {txt}->   (dropped)
+xij variables:
+                           {res}q119_ppl_num   {txt}->   {res}q119_1ppl_num q119_2ppl_num
+                      q125_graduate_n_x   {txt}->   {res}q125_1graduate_n_x q125_2graduate_n_x
+                       q124_class12_p_x   {txt}->   {res}q124_1class12_p_x q124_2class12_p_x
+                       q124_class12_n_x   {txt}->   {res}q124_1class12_n_x q124_2class12_n_x
+                       q123_class10_p_x   {txt}->   {res}q123_1class10_p_x q123_2class10_p_x
+                       q123_class10_n_x   {txt}->   {res}q123_1class10_n_x q123_2class10_n_x
+                        q122_class8_p_x   {txt}->   {res}q122_1class8_p_x q122_2class8_p_x
+                        q122_class8_n_x   {txt}->   {res}q122_1class8_n_x q122_2class8_n_x
+                        q121_class5_p_x   {txt}->   {res}q121_1class5_p_x q121_2class5_p_x
+                        q121_class5_n_x   {txt}->   {res}q121_1class5_n_x q121_2class5_n_x
+                  q120_below_class5_p_x   {txt}->   {res}q120_1below_class5_p_x q120_2below_class5_p_x
+                  q120_below_class5_n_x   {txt}->   {res}q120_1below_class5_n_x q120_2below_class5_n_x
+                              sum_edu_n   {txt}->   {res}sum_e1du_n sum_e2du_n
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_edu_V2.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_edu_V2.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4 5 6 7)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         179   {txt}->   {res}81          
+{txt}Number of variables        {res}          15   {txt}->   {res}86          
+{txt}j variable (7 values){res}drinking_water__id   {txt}->   (dropped)
+xij variables:
+                        {res}q202_source_num   {txt}->   {res}q202_1source_num q202_2source_num ... q202_7source_num
+                q203_source_func_summer   {txt}->   {res}q203_1source_func_summer q203_2source_func_summer ... q203_7source_func_summer
+                q204_source_func_winter   {txt}->   {res}q204_1source_func_winter q204_2source_func_winter ... q204_7source_func_winter
+                 q205_water_hh_summer_p   {txt}->   {res}q205_1water_hh_summer_p q205_2water_hh_summer_p ... q205_7water_hh_summer_p
+                 q205_water_hh_summer_n   {txt}->   {res}q205_1water_hh_summer_n q205_2water_hh_summer_n ... q205_7water_hh_summer_n
+                 q206_water_hh_winter_p   {txt}->   {res}q206_1water_hh_winter_p q206_2water_hh_winter_p ... q206_7water_hh_winter_p
+                 q206_water_hh_winter_n   {txt}->   {res}q206_1water_hh_winter_n q206_2water_hh_winter_n ... q206_7water_hh_winter_n
+                        q207_water_dist   {txt}->   {res}q207_1water_dist q207_2water_dist ... q207_7water_dist
+                 q208_water_time_summer   {txt}->   {res}q208_1water_time_summer q208_2water_time_summer ... q208_7water_time_summer
+                 q209_water_time_winter   {txt}->   {res}q209_1water_time_winter q209_2water_time_winter ... q209_7water_time_winter
+                 q210_water_suff_summer   {txt}->   {res}q210_1water_suff_summer q210_2water_suff_summer ... q210_7water_suff_summer
+                 q211_water_suff_winter   {txt}->   {res}q211_1water_suff_winter q211_2water_suff_winter ... q211_7water_suff_winter
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_drinking_water_V2.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_drinking_water_V2.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}       1,539   {txt}->   {res}81          
+{txt}Number of variables        {res}           5   {txt}->   {res}40          
+{txt}j variable (19 values)   {res}facilities__id   {txt}->   (dropped)
+xij variables:
+                   {res}q221_number_facility   {txt}->   {res}q221_1number_facility q221_2number_facility ... q221_19number_facility
+                 q222_distance_facility   {txt}->   {res}q222_1distance_facility q222_2distance_facility ... q222_19distance_facility
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_facilities_V2.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_facilities_V2.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4 7 8)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         146   {txt}->   {res}81          
+{txt}Number of variables        {res}           5   {txt}->   {res}14          
+{txt}j variable (6 values)   {res}fuel_source__id   {txt}->   (dropped)
+xij variables:
+                 {res}q218_fuel_primary_hh_p   {txt}->   {res}q218_1fuel_primary_hh_p q218_2fuel_primary_hh_p ... q218_8fuel_primary_hh_p
+                 q218_fuel_primary_hh_n   {txt}->   {res}q218_1fuel_primary_hh_n q218_2fuel_primary_hh_n ... q218_8fuel_primary_hh_n
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_fuel_source_V2.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_fuel_source_V2.dta{rm}
+saved
+{p_end}
+(j = 1 2)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         154   {txt}->   {res}77          
+{txt}Number of variables        {res}           6   {txt}->   {res}8           
+{txt}j variable (2 values)        {res}gender__id   {txt}->   (dropped)
+xij variables:
+                        {res}q705_empt_nrega   {txt}->   {res}q705_1empt_nrega q705_2empt_nrega
+                         q706_empt_chng   {txt}->   {res}q706_1empt_chng q706_2empt_chng
+                    q707_perc_chng_empt   {txt}->   {res}q707_1perc_chng_empt q707_2perc_chng_empt
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_gender_V2.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_gender_V2.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         224   {txt}->   {res}56          
+{txt}Number of variables        {res}           4   {txt}->   {res}6           
+{txt}j variable (4 values)        {res}houses__id   {txt}->   (dropped)
+xij variables:
+                        {res}q430_new_houses   {txt}->   {res}q430_1new_houses q430_2new_houses ... q430_4new_houses
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_houses_V2.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_houses_V2.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4 5 6 7 8 9 888)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         129   {txt}->   {res}46          
+{txt}Number of variables        {res}          30   {txt}->   {res}272         
+{txt}j variable (10 values)         {res}ntfp__id   {txt}->   (dropped)
+xij variables:
+                         {res}q603_ntfp_hh_p   {txt}->   {res}q603_1ntfp_hh_p q603_2ntfp_hh_p ... q603_888ntfp_hh_p
+                         q603_ntfp_hh_n   {txt}->   {res}q603_1ntfp_hh_n q603_2ntfp_hh_n ... q603_888ntfp_hh_n
+                    q604_ntfp_sale_hh_p   {txt}->   {res}q604_1ntfp_sale_hh_p q604_2ntfp_sale_hh_p ... q604_888ntfp_sale_hh_p
+                    q604_ntfp_sale_hh_n   {txt}->   {res}q604_1ntfp_sale_hh_n q604_2ntfp_sale_hh_n ... q604_888ntfp_sale_hh_n
+                    q603A_ntfp_hh_now_p   {txt}->   {res}q603A1_ntfp_hh_now_p q603A2_ntfp_hh_now_p ... q603A888_ntfp_hh_now_p
+                    q603A_ntfp_hh_now_n   {txt}->   {res}q603A1_ntfp_hh_now_n q603A2_ntfp_hh_now_n ... q603A888_ntfp_hh_now_n
+               q604A_ntfp_sale_hh_now_p   {txt}->   {res}q604A1_ntfp_sale_hh_now_p q604A2_ntfp_sale_hh_now_p ... q604A888_ntfp_sale_hh_now_p
+               q604A_ntfp_sale_hh_now_n   {txt}->   {res}q604A1_ntfp_sale_hh_now_n q604A2_ntfp_sale_hh_now_n ... q604A888_ntfp_sale_hh_now_n
+                q605_ntfp_sale_where__1   {txt}->   {res}q605_1ntfp_sale_where__1 q605_2ntfp_sale_where__1 ... q605_888ntfp_sale_where__1
+                q605_ntfp_sale_where__2   {txt}->   {res}q605_1ntfp_sale_where__2 q605_2ntfp_sale_where__2 ... q605_888ntfp_sale_where__2
+                q605_ntfp_sale_where__3   {txt}->   {res}q605_1ntfp_sale_where__3 q605_2ntfp_sale_where__3 ... q605_888ntfp_sale_where__3
+                q605_ntfp_sale_where__4   {txt}->   {res}q605_1ntfp_sale_where__4 q605_2ntfp_sale_where__4 ... q605_888ntfp_sale_where__4
+                q605_ntfp_sale_where__5   {txt}->   {res}q605_1ntfp_sale_where__5 q605_2ntfp_sale_where__5 ... q605_888ntfp_sale_where__5
+                q605_ntfp_sale_where__6   {txt}->   {res}q605_1ntfp_sale_where__6 q605_2ntfp_sale_where__6 ... q605_888ntfp_sale_where__6
+              q605_ntfp_sale_where__888   {txt}->   {res}q605_1ntfp_sale_where__888 q605_2ntfp_sale_where__888 ... q605_888ntfp_sale_where__888
+                  q605b_ntfp_sale_other   {txt}->   {res}q605b1_ntfp_sale_other q605b2_ntfp_sale_other ... q605b888_ntfp_sale_other
+                 q606_ntfp_sale_diff__0   {txt}->   {res}q606_1ntfp_sale_diff__0 q606_2ntfp_sale_diff__0 ... q606_888ntfp_sale_diff__0
+                 q606_ntfp_sale_diff__1   {txt}->   {res}q606_1ntfp_sale_diff__1 q606_2ntfp_sale_diff__1 ... q606_888ntfp_sale_diff__1
+                 q606_ntfp_sale_diff__2   {txt}->   {res}q606_1ntfp_sale_diff__2 q606_2ntfp_sale_diff__2 ... q606_888ntfp_sale_diff__2
+                 q606_ntfp_sale_diff__3   {txt}->   {res}q606_1ntfp_sale_diff__3 q606_2ntfp_sale_diff__3 ... q606_888ntfp_sale_diff__3
+                 q606_ntfp_sale_diff__4   {txt}->   {res}q606_1ntfp_sale_diff__4 q606_2ntfp_sale_diff__4 ... q606_888ntfp_sale_diff__4
+                 q606_ntfp_sale_diff__5   {txt}->   {res}q606_1ntfp_sale_diff__5 q606_2ntfp_sale_diff__5 ... q606_888ntfp_sale_diff__5
+               q606_ntfp_sale_diff__888   {txt}->   {res}q606_1ntfp_sale_diff__888 q606_2ntfp_sale_diff__888 ... q606_888ntfp_sale_diff__888
+                  q606b_ntfp_diff_other   {txt}->   {res}q606b1_ntfp_diff_other q606b2_ntfp_diff_other ... q606b888_ntfp_diff_other
+                     q607_low_price_why   {txt}->   {res}q607_1low_price_why q607_2low_price_why ... q607_888low_price_why
+                  q607b_low_price_other   {txt}->   {res}q607b1_low_price_other q607b2_low_price_other ... q607b888_low_price_other
+                              NTFP_name   {txt}->   {res}NTFP_1name NTFP_2name ... NTFP_888name
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_ntfp_V2.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_ntfp_V2.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4 5)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         405   {txt}->   {res}81          
+{txt}Number of variables        {res}          28   {txt}->   {res}127         
+{txt}j variable (5 values){res}social_security__id  {txt}->   (dropped)
+xij variables:
+                        {res}q701_received_p   {txt}->   {res}q701_1received_p q701_2received_p ... q701_5received_p
+                        q701_received_n   {txt}->   {res}q701_1received_n q701_2received_n ... q701_5received_n
+                  q702_ration_months__3   {txt}->   {res}q702_1ration_months__3 q702_2ration_months__3 ... q702_5ration_months__3
+                  q702_ration_months__4   {txt}->   {res}q702_1ration_months__4 q702_2ration_months__4 ... q702_5ration_months__4
+                  q702_ration_months__5   {txt}->   {res}q702_1ration_months__5 q702_2ration_months__5 ... q702_5ration_months__5
+                  q702_ration_months__6   {txt}->   {res}q702_1ration_months__6 q702_2ration_months__6 ... q702_5ration_months__6
+                  q702_ration_months__7   {txt}->   {res}q702_1ration_months__7 q702_2ration_months__7 ... q702_5ration_months__7
+                  q702_ration_months__8   {txt}->   {res}q702_1ration_months__8 q702_2ration_months__8 ... q702_5ration_months__8
+                  q702_ration_months__9   {txt}->   {res}q702_1ration_months__9 q702_2ration_months__9 ... q702_5ration_months__9
+                 q702_ration_months__10   {txt}->   {res}q702_1ration_months__10 q702_2ration_months__10 ... q702_5ration_months__10
+                 q702_ration_months__11   {txt}->   {res}q702_1ration_months__11 q702_2ration_months__11 ... q702_5ration_months__11
+                 q702_ration_months__12   {txt}->   {res}q702_1ration_months__12 q702_2ration_months__12 ... q702_5ration_months__12
+                 q702_ration_months__13   {txt}->   {res}q702_1ration_months__13 q702_2ration_months__13 ... q702_5ration_months__13
+                 q702_ration_months__14   {txt}->   {res}q702_1ration_months__14 q702_2ration_months__14 ... q702_5ration_months__14
+                 q702_ration_months__15   {txt}->   {res}q702_1ration_months__15 q702_2ration_months__15 ... q702_5ration_months__15
+                 q702_ration_months__16   {txt}->   {res}q702_1ration_months__16 q702_2ration_months__16 ... q702_5ration_months__16
+                 q702_ration_months__17   {txt}->   {res}q702_1ration_months__17 q702_2ration_months__17 ... q702_5ration_months__17
+                 q702_ration_months__18   {txt}->   {res}q702_1ration_months__18 q702_2ration_months__18 ... q702_5ration_months__18
+                 q702_ration_months__19   {txt}->   {res}q702_1ration_months__19 q702_2ration_months__19 ... q702_5ration_months__19
+                 q702_ration_months__20   {txt}->   {res}q702_1ration_months__20 q702_2ration_months__20 ... q702_5ration_months__20
+                 q702_ration_months__21   {txt}->   {res}q702_1ration_months__21 q702_2ration_months__21 ... q702_5ration_months__21
+                   q703_ration_other__1   {txt}->   {res}q703_1ration_other__1 q703_2ration_other__1 ... q703_5ration_other__1
+                   q703_ration_other__2   {txt}->   {res}q703_1ration_other__2 q703_2ration_other__2 ... q703_5ration_other__2
+                   q703_ration_other__3   {txt}->   {res}q703_1ration_other__3 q703_2ration_other__3 ... q703_5ration_other__3
+                   q703_ration_other__0   {txt}->   {res}q703_1ration_other__0 q703_2ration_other__0 ... q703_5ration_other__0
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_social_security_V2.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_social_security_V2.dta{rm}
+saved
+{p_end}
+(j = 1 2)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         162   {txt}->   {res}81          
+{txt}Number of variables        {res}           8   {txt}->   {res}12          
+{txt}j variable (2 values)      {res}timeline__id   {txt}->   (dropped)
+xij variables:
+                         {res}q501_agri_hh_p   {txt}->   {res}q501_1agri_hh_p q501_2agri_hh_p
+                         q501_agri_hh_n   {txt}->   {res}q501_1agri_hh_n q501_2agri_hh_n
+                          q502_agri_lab   {txt}->   {res}q502_1agri_lab q502_2agri_lab
+                         q503_agri_days   {txt}->   {res}q503_1agri_days q503_2agri_days
+                        q504_agri_wages   {txt}->   {res}q504_1agri_wages q504_2agri_wages
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_timeline_V2.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_timeline_V2.dta{rm}
+saved
+{p_end}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              81{txt}  (_m_edu==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              81{txt}  (_m_drinking_water==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              81{txt}  (_m_facilities==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              81{txt}  (_m_fuel_source==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               4
+{txt}{col 9}from master{col 30}{res}               4{txt}  (_m_gender==1)
+{col 9}from using{col 30}{res}               0{txt}  (_m_gender==2)
+
+{col 5}Matched{col 30}{res}              77{txt}  (_m_gender==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}              25
+{txt}{col 9}from master{col 30}{res}              25{txt}  (_m_houses==1)
+{col 9}from using{col 30}{res}               0{txt}  (_m_houses==2)
+
+{col 5}Matched{col 30}{res}              56{txt}  (_m_houses==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}              35
+{txt}{col 9}from master{col 30}{res}              35{txt}  (_m_ntfp==1)
+{col 9}from using{col 30}{res}               0{txt}  (_m_ntfp==2)
+
+{col 5}Matched{col 30}{res}              46{txt}  (_m_ntfp==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              81{txt}  (_m_social_security==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              81{txt}  (_m_timeline==3)
+{col 5}{hline 41}
+{res}  {txt}variable {bf}{res}q124_class12_n_x_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q202_source_num_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q203_source_func_summer_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q204_source_func_winter_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q208_water_time_summer_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q209_water_time_winter_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q208_water_time_summer_2{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q209_water_time_winter_2{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q202_source_num_3{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q203_source_func_summer_3{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q204_source_func_winter_3{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q205_water_hh_summer_n_3{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q206_water_hh_winter_n_3{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q208_water_time_summer_3{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q209_water_time_winter_3{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q208_water_time_summer_4{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q209_water_time_winter_4{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q202_source_num_5{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q203_source_func_summer_5{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q204_source_func_winter_5{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q209_water_time_winter_6{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q204_source_func_winter_7{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q208_water_time_summer_7{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q209_water_time_winter_7{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q218_fuel_primary_hh_n_2{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q218_fuel_primary_hh_n_7{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q218_fuel_primary_hh_n_8{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q430_new_houses_2{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q430_new_houses_3{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q430_new_houses_4{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604_ntfp_sale_hh_n_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604A_ntfp_sale_hh_now_n_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q603_ntfp_hh_n_2{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604_ntfp_sale_hh_n_2{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q603A_ntfp_hh_now_n_2{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604A_ntfp_sale_hh_now_n_2{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q603_ntfp_hh_n_5{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604_ntfp_sale_hh_n_5{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q603A_ntfp_hh_now_n_5{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604A_ntfp_sale_hh_now_n_5{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q603_ntfp_hh_n_6{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604_ntfp_sale_hh_n_6{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q603A_ntfp_hh_now_n_6{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604A_ntfp_sale_hh_now_n_6{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q603_ntfp_hh_n_7{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604_ntfp_sale_hh_n_7{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q603A_ntfp_hh_now_n_7{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604A_ntfp_sale_hh_now_n_7{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q603_ntfp_hh_n_9{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604_ntfp_sale_hh_n_9{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q603A_ntfp_hh_now_n_9{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q604A_ntfp_sale_hh_now_n_9{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}sum_land_p{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}sum_land_n{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}scarcity{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q212_electricity_summer{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q213_electricity_winter{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}total_houses{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}sum_edu_n_1{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}sum_edu_n_2{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}q207_water_dist_3{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q207_water_dist_7{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_1{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_3{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}q222_distance_facility_4{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}q222_distance_facility_5{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_6{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_9{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_10{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_11{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}q222_distance_facility_13{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_14{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_16{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q222_distance_facility_18{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}NTFP_name_1{sf}{txt} was {bf}{res}str70{sf}{txt} now {bf}{res}str38{sf}
+  {txt}variable {bf}{res}q605b_ntfp_sale_other_1{sf}{txt} was {bf}{res}str8{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q606b_ntfp_diff_other_1{sf}{txt} was {bf}{res}str18{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}NTFP_name_2{sf}{txt} was {bf}{res}str70{sf}{txt} now {bf}{res}str44{sf}
+  {txt}variable {bf}{res}q605b_ntfp_sale_other_2{sf}{txt} was {bf}{res}str8{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q606b_ntfp_diff_other_2{sf}{txt} was {bf}{res}str18{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}NTFP_name_3{sf}{txt} was {bf}{res}str70{sf}{txt} now {bf}{res}str31{sf}
+  {txt}variable {bf}{res}q606b_ntfp_diff_other_3{sf}{txt} was {bf}{res}str18{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}NTFP_name_4{sf}{txt} was {bf}{res}str70{sf}{txt} now {bf}{res}str12{sf}
+  {txt}variable {bf}{res}q605b_ntfp_sale_other_4{sf}{txt} was {bf}{res}str8{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}NTFP_name_5{sf}{txt} was {bf}{res}str70{sf}{txt} now {bf}{res}str22{sf}
+  {txt}variable {bf}{res}q605b_ntfp_sale_other_5{sf}{txt} was {bf}{res}str8{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q606b_ntfp_diff_other_5{sf}{txt} was {bf}{res}str18{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q605b_ntfp_sale_other_6{sf}{txt} was {bf}{res}str8{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q606b_ntfp_diff_other_6{sf}{txt} was {bf}{res}str18{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}NTFP_name_7{sf}{txt} was {bf}{res}str70{sf}{txt} now {bf}{res}str9{sf}
+  {txt}variable {bf}{res}q605b_ntfp_sale_other_7{sf}{txt} was {bf}{res}str8{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q606b_ntfp_diff_other_7{sf}{txt} was {bf}{res}str18{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}NTFP_name_8{sf}{txt} was {bf}{res}str70{sf}{txt} now {bf}{res}str39{sf}
+  {txt}variable {bf}{res}q605b_ntfp_sale_other_8{sf}{txt} was {bf}{res}str8{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q606b_ntfp_diff_other_8{sf}{txt} was {bf}{res}str18{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}NTFP_name_9{sf}{txt} was {bf}{res}str70{sf}{txt} now {bf}{res}str12{sf}
+  {txt}variable {bf}{res}q605b_ntfp_sale_other_9{sf}{txt} was {bf}{res}str8{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q606b_ntfp_diff_other_9{sf}{txt} was {bf}{res}str18{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}NTFP_name_888{sf}{txt} was {bf}{res}str70{sf}{txt} now {bf}{res}str14{sf}
+  {txt}variable {bf}{res}q605b_ntfp_sale_other_888{sf}{txt} was {bf}{res}str8{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q606b_ntfp_diff_other_888{sf}{txt} was {bf}{res}str18{sf}{txt} now {bf}{res}str1{sf}
+{txt}  (66,744 bytes saved)
+{p 0 4 2}
+file {bf}
+../04_temp/srijan_version_V2.dta{rm}
+saved
+{p_end}
+
+{com}. 
+.         clear
+{txt}
+{com}.         save "../04_temp/srijan_village_survey_data_main_appended", replace emptyok
+{txt}(dataset contains 0 observations)
+{p 0 4 2}
+file {bf}
+../04_temp/srijan_village_survey_data_main_appended.dta{rm}
+saved
+{p_end}
+
+{com}.         
+. 
+.         foreach ver of local versions {c -(}
+{txt}  2{com}.                 append using "../04_temp/srijan_version_`ver'"
+{txt}  3{com}.         {c )-} 
+{txt}{p 0 7 2}
+(variable
+{bf:village_name} was {bf:str18}, now {bf:str20} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q001_resp_name} was {bf:str20}, now {bf:str22} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q005b_resp_des_other} was {bf:str19}, now {bf:str35} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q214b_alt_water_other} was {bf:str25}, now {bf:str78} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q216_time_water_alt} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q220_lpg_other_n} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q429_new_houses} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q433_hh_iay} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:total_houses} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q301_srijan_start} was {bf:str4}, now {bf:str7} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q302_srijan_end} was {bf:str4}, now {bf:str7} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q305A_int_curr_des__1} was {bf:str16}, now {bf:str18} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q306A_int_past_des__0} was {bf:str29}, now {bf:str40} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q402b_restr_21_other} was {bf:str27}, now {bf:str36} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q415_residing_hh} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q416_residing_pop} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q417_remigrated_hh} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q419_migrated_new_hh} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q420_migrated_new_pop} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q505b_challenge_other} was {bf:str38}, now {bf:str60} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q506b_challenge_other} was {bf:str1}, now {bf:str45} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q510b_gw_issues_new_other} was {bf:str14}, now {bf:str20} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q602b_ntfp_other} was {bf:str1}, now {bf:str14} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q001_resp_name_rs} was {bf:str23}, now {bf:str32} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q708b_nrega_post_other} was {bf:str52}, now {bf:str110} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q004_any_comment} was {bf:str1}, now {bf:str184} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q205_water_hh_summer_n_1} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q207_water_dist_1} was {bf:byte}, now {bf:double} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q202_source_num_2} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q203_source_func_summer_2} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q204_source_func_winter_2} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q203_source_func_summer_4} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q205_water_hh_summer_n_5} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q206_water_hh_winter_n_5} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q207_water_dist_5} was {bf:byte}, now {bf:double} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q208_water_time_summer_5} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q209_water_time_winter_5} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q208_water_time_summer_6} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q222_distance_facility_3} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q222_distance_facility_15} was {bf:byte}, now {bf:double} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q222_distance_facility_17} was {bf:byte}, now {bf:double} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q222_distance_facility_19} was {bf:byte}, now {bf:double} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q430_new_houses_1} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q605b_ntfp_sale_other_3} was {bf:str1}, now {bf:str8} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q606b_ntfp_diff_other_4} was {bf:str1}, now {bf:str18} to accommodate using data's values)
+{p_end}
+(label {bf:{txt}q607_low_price_why} already defined)
+(label {bf:{txt}q706_empt_chng} already defined)
+(label {bf:{txt}q210_water_suff_summer} already defined)
+(label {bf:{txt}q211_water_suff_winter} already defined)
+(label {bf:{txt}_merge} already defined)
+(label {bf:{txt}interview__status} already defined)
+(label {bf:{txt}q003_any_comment_indct} already defined)
+(label {bf:{txt}q001_outcome} already defined)
+(label {bf:{txt}q007_resp_land_rs} already defined)
+(label {bf:{txt}q006_resp_caste_rs} already defined)
+(label {bf:{txt}q004_resp_edu_rs} already defined)
+(label {bf:{txt}surveyor_2} already defined)
+(label {bf:{txt}q000h_unit} already defined)
+(label {bf:{txt}q000g_unit} already defined)
+(label {bf:{txt}q508_gw_change} already defined)
+(label {bf:{txt}q000f_unit} already defined)
+(label {bf:{txt}q428_migration_dest_dist_3} already defined)
+(label {bf:{txt}q428_ss_mig_dest_state_3} already defined)
+(label {bf:{txt}q427_ss_dest_3_indct} already defined)
+(label {bf:{txt}q426_ss_mig_dest_dist_2} already defined)
+(label {bf:{txt}q426_ss_mig_dest_state_2} already defined)
+(label {bf:{txt}q425_ss_dest_2_indct} already defined)
+(label {bf:{txt}q424_ss_mig_dest_dist_1} already defined)
+(label {bf:{txt}q424_ss_mig_dest_state_1} already defined)
+(label {bf:{txt}q410_mig_dest_dist_3} already defined)
+(label {bf:{txt}q410_mig_dest_state_3} already defined)
+(label {bf:{txt}q409_dest_3_indct} already defined)
+(label {bf:{txt}q408_mig_dest_dist_2} already defined)
+(label {bf:{txt}q408_mig_dest_state_2} already defined)
+(label {bf:{txt}q407_dest_2_indct} already defined)
+(label {bf:{txt}q406_mig_dest_dist_1} already defined)
+(label {bf:{txt}q406_mig_dest_state_1} already defined)
+(label {bf:{txt}int_past_detail_indct} already defined)
+(label {bf:{txt}int_current_detail_indct} already defined)
+(label {bf:{txt}q000e_unit} already defined)
+(label {bf:{txt}q214_alt_water} already defined)
+(label {bf:{txt}q000d_unit} already defined)
+(label {bf:{txt}q000c_unit} already defined)
+(label {bf:{txt}q000b_unit} already defined)
+(label {bf:{txt}q111A_caste_cat} already defined)
+(label {bf:{txt}q111_caste_3} already defined)
+(label {bf:{txt}q110_caste_3_indct} already defined)
+(label {bf:{txt}q107A_caste_cat} already defined)
+(label {bf:{txt}q107_caste_2} already defined)
+(label {bf:{txt}q106_caste_2_indct} already defined)
+(label {bf:{txt}q103A_caste_cat} already defined)
+(label {bf:{txt}q103_caste_1} already defined)
+(label {bf:{txt}q000a_unit} already defined)
+(label {bf:{txt}q007_resp_land} already defined)
+(label {bf:{txt}q006A_resp_cat} already defined)
+(label {bf:{txt}q006_resp_caste} already defined)
+(label {bf:{txt}q005_resp_des} already defined)
+(label {bf:{txt}q004_resp_edu} already defined)
+(label {bf:{txt}q003_resp_gender} already defined)
+(label {bf:{txt}surveyor} already defined)
+
+{com}. 
+.         compress
+{txt}  (0 bytes saved)
+
+{com}. 
+.         * two questions, q305A and q306A were wrongly created as list questions, and with no list cap
+.         * we get rid of the empty variables created
+. 
+.         forval i = 0/199 {c -(}
+{txt}  2{com}.                 foreach var of varlist q305A_int_curr_des__`i' q306A_int_past_des__`i' {c -(}
+{txt}  3{com}.                         capture assert missing(`var') | `var' == "##N/A##"
+{txt}  4{com}.                         if _rc == 0 drop `var'
+{txt}  5{com}.                 {c )-}
+{txt}  6{com}.         {c )-}
+{txt}
+{com}.         
+.         replace q001_resp_name_asha = "" if q001_resp_name_asha == "##N/A##"
+{txt}(39 real changes made)
+
+{com}.         
+.         save "../04_temp/srijan_village_survey_data_main_appended", replace
+{txt}{p 0 4 2}
+file {bf}
+../04_temp/srijan_village_survey_data_main_appended.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. 
+.         ******************************************************************************************************
+.         **# 2. Import data from each version of the ASHA worker survey, fix some variables, and append the data
+.         ******************************************************************************************************  
+.         
+.         local versions V1 V2
+{txt}
+{com}.         foreach ver of local versions {c -(}
+{txt}  2{com}.                 import_village_data, version(`ver') datafolder("../01_data/village_survey_data/asha survey") tempfolder("../04_temp") asha 
+{txt}  3{com}.         {c )-}
+{txt}(j = 1 2 3 4)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}          15   {txt}->   {res}10          
+{txt}Number of variables        {res}           4   {txt}->   {res}6           
+{txt}j variable (4 values)     {res}conflicts__id   {txt}->   (dropped)
+xij variables:
+                          {res}conflict_rank   {txt}->   {res}confl1ict_rank confl2ict_rank ... confl4ict_rank
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_conflicts_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_conflicts_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}          60   {txt}->   {res}15          
+{txt}Number of variables        {res}          29   {txt}->   {res}106         
+{txt}j variable (4 values){res}disease_roster__id   {txt}->   (dropped)
+xij variables:
+                      {res}q908_usual_trtmnt   {txt}->   {res}q908_1usual_trtmnt q908_2usual_trtmnt ... q908_4usual_trtmnt
+               q908b_usual_trtmnt_other   {txt}->   {res}q908b1_usual_trtmnt_other q908b2_usual_trtmnt_other ... q908b4_usual_trtmnt_other
+                  q909_why_no_public__1   {txt}->   {res}q909_1why_no_public__1 q909_2why_no_public__1 ... q909_4why_no_public__1
+                  q909_why_no_public__2   {txt}->   {res}q909_1why_no_public__2 q909_2why_no_public__2 ... q909_4why_no_public__2
+                  q909_why_no_public__3   {txt}->   {res}q909_1why_no_public__3 q909_2why_no_public__3 ... q909_4why_no_public__3
+                  q909_why_no_public__4   {txt}->   {res}q909_1why_no_public__4 q909_2why_no_public__4 ... q909_4why_no_public__4
+                  q909_why_no_public__5   {txt}->   {res}q909_1why_no_public__5 q909_2why_no_public__5 ... q909_4why_no_public__5
+                  q909_why_no_public__6   {txt}->   {res}q909_1why_no_public__6 q909_2why_no_public__6 ... q909_4why_no_public__6
+                  q909_why_no_public__7   {txt}->   {res}q909_1why_no_public__7 q909_2why_no_public__7 ... q909_4why_no_public__7
+                q909_why_no_public__888   {txt}->   {res}q909_1why_no_public__888 q909_2why_no_public__888 ... q909_4why_no_public__888
+                   q909b_why_no_pub_oth   {txt}->   {res}q909b1_why_no_pub_oth q909b2_why_no_pub_oth ... q909b4_why_no_pub_oth
+                        q910_trtmnt_now   {txt}->   {res}q910_1trtmnt_now q910_2trtmnt_now ... q910_4trtmnt_now
+                 q908b_trtmnt_now_other   {txt}->   {res}q908b1_trtmnt_now_other q908b2_trtmnt_now_other ... q908b4_trtmnt_now_other
+                    q911_chng_trtmnt__1   {txt}->   {res}q911_1chng_trtmnt__1 q911_2chng_trtmnt__1 ... q911_4chng_trtmnt__1
+                    q911_chng_trtmnt__2   {txt}->   {res}q911_1chng_trtmnt__2 q911_2chng_trtmnt__2 ... q911_4chng_trtmnt__2
+                    q911_chng_trtmnt__3   {txt}->   {res}q911_1chng_trtmnt__3 q911_2chng_trtmnt__3 ... q911_4chng_trtmnt__3
+                    q911_chng_trtmnt__4   {txt}->   {res}q911_1chng_trtmnt__4 q911_2chng_trtmnt__4 ... q911_4chng_trtmnt__4
+                    q911_chng_trtmnt__5   {txt}->   {res}q911_1chng_trtmnt__5 q911_2chng_trtmnt__5 ... q911_4chng_trtmnt__5
+                    q911_chng_trtmnt__6   {txt}->   {res}q911_1chng_trtmnt__6 q911_2chng_trtmnt__6 ... q911_4chng_trtmnt__6
+                    q911_chng_trtmnt__7   {txt}->   {res}q911_1chng_trtmnt__7 q911_2chng_trtmnt__7 ... q911_4chng_trtmnt__7
+                    q911_chng_trtmnt__8   {txt}->   {res}q911_1chng_trtmnt__8 q911_2chng_trtmnt__8 ... q911_4chng_trtmnt__8
+                    q911_chng_trtmnt__9   {txt}->   {res}q911_1chng_trtmnt__9 q911_2chng_trtmnt__9 ... q911_4chng_trtmnt__9
+                   q911_chng_trtmnt__10   {txt}->   {res}q911_1chng_trtmnt__10 q911_2chng_trtmnt__10 ... q911_4chng_trtmnt__10
+                   q911_chng_trtmnt__11   {txt}->   {res}q911_1chng_trtmnt__11 q911_2chng_trtmnt__11 ... q911_4chng_trtmnt__11
+                  q911_chng_trtmnt__888   {txt}->   {res}q911_1chng_trtmnt__888 q911_2chng_trtmnt__888 ... q911_4chng_trtmnt__888
+                     q911b_reason_other   {txt}->   {res}q911b1_reason_other q911b2_reason_other ... q911b4_reason_other
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_disease_roster_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_disease_roster_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2 3)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}          45   {txt}->   {res}15          
+{txt}Number of variables        {res}           9   {txt}->   {res}20          
+{txt}j variable (3 values){res}gathering_roster__id {txt}->   (dropped)
+xij variables:
+                     {res}q1001_gather_indct   {txt}->   {res}q10011_gather_indct q10012_gather_indct q10013_gather_indct
+                      q1002_gather_name   {txt}->   {res}q10021_gather_name q10022_gather_name q10023_gather_name
+                       q1003_gather_pop   {txt}->   {res}q10031_gather_pop q10032_gather_pop q10033_gather_pop
+                 q1004_perc_mask_gather   {txt}->   {res}q10041_perc_mask_gather q10042_perc_mask_gather q10043_perc_mask_gather
+                      q1005_social_dist   {txt}->   {res}q10051_social_dist q10052_social_dist q10053_social_dist
+                     q1006_gather_place   {txt}->   {res}q10061_gather_place q10062_gather_place q10063_gather_place
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_gathering_roster_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_gathering_roster_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}          30   {txt}->   {res}15          
+{txt}Number of variables        {res}          16   {txt}->   {res}28          
+{txt}j variable (2 values) {res}health_roster__id   {txt}->   (dropped)
+xij variables:
+                    {res}q901_perc_chld_inst   {txt}->   {res}q901_1perc_chld_inst q901_2perc_chld_inst
+                    q902_chng_hlth_serv   {txt}->   {res}q902_1chng_hlth_serv q902_2chng_hlth_serv
+                    q903_perc_chng_hlth   {txt}->   {res}q903_1perc_chng_hlth q903_2perc_chng_hlth
+                     q904_del_assist__1   {txt}->   {res}q904_1del_assist__1 q904_2del_assist__1
+                     q904_del_assist__2   {txt}->   {res}q904_1del_assist__2 q904_2del_assist__2
+                     q904_del_assist__3   {txt}->   {res}q904_1del_assist__3 q904_2del_assist__3
+                     q904_del_assist__4   {txt}->   {res}q904_1del_assist__4 q904_2del_assist__4
+                     q904_del_assist__5   {txt}->   {res}q904_1del_assist__5 q904_2del_assist__5
+                     q904_del_assist__6   {txt}->   {res}q904_1del_assist__6 q904_2del_assist__6
+                   q904_del_assist__888   {txt}->   {res}q904_1del_assist__888 q904_2del_assist__888
+                 q904b_del_assist_other   {txt}->   {res}q904b1_del_assist_other q904b2_del_assist_other
+                 q906_chld_vaccn_assist   {txt}->   {res}q906_1chld_vaccn_assist q906_2chld_vaccn_assist
+              q906b_chld_vaccn_asst_oth   {txt}->   {res}q906b1_chld_vaccn_asst_oth q906b2_chld_vaccn_asst_oth
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_health_roster_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_health_roster_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}          60   {txt}->   {res}15          
+{txt}Number of variables        {res}          15   {txt}->   {res}50          
+{txt}j variable (4 values){res}vaccn_awareness__id  {txt}->   (dropped)
+xij variables:
+                        {res}q829_vaccn_will   {txt}->   {res}q829_1vaccn_will q829_2vaccn_will ... q829_4vaccn_will
+                   q830_no_vaccn_rsn__1   {txt}->   {res}q830_1no_vaccn_rsn__1 q830_2no_vaccn_rsn__1 ... q830_4no_vaccn_rsn__1
+                   q830_no_vaccn_rsn__2   {txt}->   {res}q830_1no_vaccn_rsn__2 q830_2no_vaccn_rsn__2 ... q830_4no_vaccn_rsn__2
+                   q830_no_vaccn_rsn__3   {txt}->   {res}q830_1no_vaccn_rsn__3 q830_2no_vaccn_rsn__3 ... q830_4no_vaccn_rsn__3
+                   q830_no_vaccn_rsn__4   {txt}->   {res}q830_1no_vaccn_rsn__4 q830_2no_vaccn_rsn__4 ... q830_4no_vaccn_rsn__4
+                   q830_no_vaccn_rsn__5   {txt}->   {res}q830_1no_vaccn_rsn__5 q830_2no_vaccn_rsn__5 ... q830_4no_vaccn_rsn__5
+                   q830_no_vaccn_rsn__6   {txt}->   {res}q830_1no_vaccn_rsn__6 q830_2no_vaccn_rsn__6 ... q830_4no_vaccn_rsn__6
+                   q830_no_vaccn_rsn__7   {txt}->   {res}q830_1no_vaccn_rsn__7 q830_2no_vaccn_rsn__7 ... q830_4no_vaccn_rsn__7
+                   q830_no_vaccn_rsn__8   {txt}->   {res}q830_1no_vaccn_rsn__8 q830_2no_vaccn_rsn__8 ... q830_4no_vaccn_rsn__8
+                   q830_no_vaccn_rsn__9   {txt}->   {res}q830_1no_vaccn_rsn__9 q830_2no_vaccn_rsn__9 ... q830_4no_vaccn_rsn__9
+                 q830_no_vaccn_rsn__888   {txt}->   {res}q830_1no_vaccn_rsn__888 q830_2no_vaccn_rsn__888 ... q830_4no_vaccn_rsn__888
+                 q830b_no_vaccn_rsn_oth   {txt}->   {res}q830b1_no_vaccn_rsn_oth q830b2_no_vaccn_rsn_oth ... q830b4_no_vaccn_rsn_oth
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_vaccn_awareness_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_vaccn_awareness_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}          30   {txt}->   {res}15          
+{txt}Number of variables        {res}          12   {txt}->   {res}20          
+{txt}j variable (2 values){res}wedding_roster__id   {txt}->   (dropped)
+xij variables:
+                    {res}q1007_wedding_total   {txt}->   {res}q10071_wedding_total q10072_wedding_total
+                    q1008_wedding_girls   {txt}->   {res}q10081_wedding_girls q10082_wedding_girls
+                 q1009_wedding_girls_25   {txt}->   {res}q10091_wedding_girls_25 q10092_wedding_girls_25
+                 q1010_wedding_girls_23   {txt}->   {res}q10101_wedding_girls_23 q10102_wedding_girls_23
+                 q1011_wedding_girls_20   {txt}->   {res}q10111_wedding_girls_20 q10112_wedding_girls_20
+                 q1012_wedding_girls_18   {txt}->   {res}q10121_wedding_girls_18 q10122_wedding_girls_18
+                 q1013_wedding_girls_16   {txt}->   {res}q10131_wedding_girls_16 q10132_wedding_girls_16
+           q1014_wedding_girls_16_below   {txt}->   {res}q10141_wedding_girls_16_below q10142_wedding_girls_16_below
+                   weddings_sum_agewise   {txt}->   {res}weddi1ngs_sum_agewise weddi2ngs_sum_agewise
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_wedding_roster_V1.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_wedding_roster_V1.dta{rm}
+saved
+{p_end}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               5
+{txt}{col 9}from master{col 30}{res}               5{txt}  (_m_asha_conflicts==1)
+{col 9}from using{col 30}{res}               0{txt}  (_m_asha_conflicts==2)
+
+{col 5}Matched{col 30}{res}              10{txt}  (_m_asha_conflicts==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              15{txt}  (_m_asha_disease_roster==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              15{txt}  (_m_asha_gathering_roster==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              15{txt}  (_m_asha_health_roster==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              15{txt}  (_m_asha_vaccn_awareness==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}              15{txt}  (_m_asha_wedding_roster==3)
+{col 5}{hline 41}
+{res}  {txt}variable {bf}{res}q908_usual_trtmnt_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q908_usual_trtmnt_2{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q908_usual_trtmnt_4{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q1003_gather_pop_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q1003_gather_pop_2{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q906_chld_vaccn_assist_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q804_testing_dist{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}positive_sum_gender{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}died_covid_sum_gender{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}died_covid_sum_agewise{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}died_any_sum_genderwise{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}died_any_sum_agewise{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q828_vaccn_dist{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}total_vaccine_one{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}vaccine_one_agewise_sum{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}total_vaccine_both{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}vaccine_both_sum_agewise{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}weddings_sum_agewise_1{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}weddings_sum_agewise_2{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q908b_usual_trtmnt_other_1{sf}{txt} was {bf}{res}str62{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q909b_why_no_pub_oth_1{sf}{txt} was {bf}{res}str27{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q908b_trtmnt_now_other_1{sf}{txt} was {bf}{res}str35{sf}{txt} now {bf}{res}str34{sf}
+  {txt}variable {bf}{res}q908b_usual_trtmnt_other_2{sf}{txt} was {bf}{res}str62{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q909b_why_no_pub_oth_2{sf}{txt} was {bf}{res}str27{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q911b_reason_other_2{sf}{txt} was {bf}{res}str40{sf}{txt} now {bf}{res}str17{sf}
+  {txt}variable {bf}{res}q908b_trtmnt_now_other_3{sf}{txt} was {bf}{res}str35{sf}{txt} now {bf}{res}str14{sf}
+  {txt}variable {bf}{res}q911b_reason_other_3{sf}{txt} was {bf}{res}str40{sf}{txt} now {bf}{res}str19{sf}
+  {txt}variable {bf}{res}q908b_usual_trtmnt_other_4{sf}{txt} was {bf}{res}str62{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q909b_why_no_pub_oth_4{sf}{txt} was {bf}{res}str27{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q908b_trtmnt_now_other_4{sf}{txt} was {bf}{res}str35{sf}{txt} now {bf}{res}str22{sf}
+  {txt}variable {bf}{res}q911b_reason_other_4{sf}{txt} was {bf}{res}str40{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q1002_gather_name_2{sf}{txt} was {bf}{res}str14{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q1002_gather_name_3{sf}{txt} was {bf}{res}str14{sf}{txt} now {bf}{res}str5{sf}
+  {txt}variable {bf}{res}q906b_chld_vaccn_asst_oth_1{sf}{txt} was {bf}{res}str52{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q830b_no_vaccn_rsn_oth_1{sf}{txt} was {bf}{res}str89{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q830b_no_vaccn_rsn_oth_2{sf}{txt} was {bf}{res}str89{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q830b_no_vaccn_rsn_oth_3{sf}{txt} was {bf}{res}str89{sf}{txt} now {bf}{res}str1{sf}
+{txt}  (12,165 bytes saved)
+{p 0 4 2}
+file {bf}
+../04_temp/srijan_asha_version_V1.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4 5 6 7 8)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         126   {txt}->   {res}63          
+{txt}Number of variables        {res}           4   {txt}->   {res}10          
+{txt}j variable (8 values)     {res}conflicts__id   {txt}->   (dropped)
+xij variables:
+                          {res}conflict_rank   {txt}->   {res}confl1ict_rank confl2ict_rank ... confl8ict_rank
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_conflicts_V2.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_conflicts_V2.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         420   {txt}->   {res}105         
+{txt}Number of variables        {res}          30   {txt}->   {res}110         
+{txt}j variable (4 values){res}disease_roster__id   {txt}->   (dropped)
+xij variables:
+                      {res}q908_usual_trtmnt   {txt}->   {res}q908_1usual_trtmnt q908_2usual_trtmnt ... q908_4usual_trtmnt
+               q908b_usual_trtmnt_other   {txt}->   {res}q908b1_usual_trtmnt_other q908b2_usual_trtmnt_other ... q908b4_usual_trtmnt_other
+                  q909_why_no_public__1   {txt}->   {res}q909_1why_no_public__1 q909_2why_no_public__1 ... q909_4why_no_public__1
+                  q909_why_no_public__2   {txt}->   {res}q909_1why_no_public__2 q909_2why_no_public__2 ... q909_4why_no_public__2
+                  q909_why_no_public__3   {txt}->   {res}q909_1why_no_public__3 q909_2why_no_public__3 ... q909_4why_no_public__3
+                  q909_why_no_public__4   {txt}->   {res}q909_1why_no_public__4 q909_2why_no_public__4 ... q909_4why_no_public__4
+                  q909_why_no_public__5   {txt}->   {res}q909_1why_no_public__5 q909_2why_no_public__5 ... q909_4why_no_public__5
+                  q909_why_no_public__6   {txt}->   {res}q909_1why_no_public__6 q909_2why_no_public__6 ... q909_4why_no_public__6
+                  q909_why_no_public__7   {txt}->   {res}q909_1why_no_public__7 q909_2why_no_public__7 ... q909_4why_no_public__7
+                q909_why_no_public__888   {txt}->   {res}q909_1why_no_public__888 q909_2why_no_public__888 ... q909_4why_no_public__888
+                   q909b_why_no_pub_oth   {txt}->   {res}q909b1_why_no_pub_oth q909b2_why_no_pub_oth ... q909b4_why_no_pub_oth
+                       q910A_case_indct   {txt}->   {res}q910A1_case_indct q910A2_case_indct ... q910A4_case_indct
+                        q910_trtmnt_now   {txt}->   {res}q910_1trtmnt_now q910_2trtmnt_now ... q910_4trtmnt_now
+                 q908b_trtmnt_now_other   {txt}->   {res}q908b1_trtmnt_now_other q908b2_trtmnt_now_other ... q908b4_trtmnt_now_other
+                    q911_chng_trtmnt__1   {txt}->   {res}q911_1chng_trtmnt__1 q911_2chng_trtmnt__1 ... q911_4chng_trtmnt__1
+                    q911_chng_trtmnt__2   {txt}->   {res}q911_1chng_trtmnt__2 q911_2chng_trtmnt__2 ... q911_4chng_trtmnt__2
+                    q911_chng_trtmnt__3   {txt}->   {res}q911_1chng_trtmnt__3 q911_2chng_trtmnt__3 ... q911_4chng_trtmnt__3
+                    q911_chng_trtmnt__4   {txt}->   {res}q911_1chng_trtmnt__4 q911_2chng_trtmnt__4 ... q911_4chng_trtmnt__4
+                    q911_chng_trtmnt__5   {txt}->   {res}q911_1chng_trtmnt__5 q911_2chng_trtmnt__5 ... q911_4chng_trtmnt__5
+                    q911_chng_trtmnt__6   {txt}->   {res}q911_1chng_trtmnt__6 q911_2chng_trtmnt__6 ... q911_4chng_trtmnt__6
+                    q911_chng_trtmnt__7   {txt}->   {res}q911_1chng_trtmnt__7 q911_2chng_trtmnt__7 ... q911_4chng_trtmnt__7
+                    q911_chng_trtmnt__8   {txt}->   {res}q911_1chng_trtmnt__8 q911_2chng_trtmnt__8 ... q911_4chng_trtmnt__8
+                    q911_chng_trtmnt__9   {txt}->   {res}q911_1chng_trtmnt__9 q911_2chng_trtmnt__9 ... q911_4chng_trtmnt__9
+                   q911_chng_trtmnt__10   {txt}->   {res}q911_1chng_trtmnt__10 q911_2chng_trtmnt__10 ... q911_4chng_trtmnt__10
+                   q911_chng_trtmnt__11   {txt}->   {res}q911_1chng_trtmnt__11 q911_2chng_trtmnt__11 ... q911_4chng_trtmnt__11
+                  q911_chng_trtmnt__888   {txt}->   {res}q911_1chng_trtmnt__888 q911_2chng_trtmnt__888 ... q911_4chng_trtmnt__888
+                     q911b_reason_other   {txt}->   {res}q911b1_reason_other q911b2_reason_other ... q911b4_reason_other
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_disease_roster_V2.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_disease_roster_V2.dta{rm}
+saved
+{p_end}
+(j = 1 2 3)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         315   {txt}->   {res}105         
+{txt}Number of variables        {res}           9   {txt}->   {res}20          
+{txt}j variable (3 values){res}gathering_roster__id {txt}->   (dropped)
+xij variables:
+                     {res}q1001_gather_indct   {txt}->   {res}q10011_gather_indct q10012_gather_indct q10013_gather_indct
+                      q1002_gather_name   {txt}->   {res}q10021_gather_name q10022_gather_name q10023_gather_name
+                       q1003_gather_pop   {txt}->   {res}q10031_gather_pop q10032_gather_pop q10033_gather_pop
+                 q1004_perc_mask_gather   {txt}->   {res}q10041_perc_mask_gather q10042_perc_mask_gather q10043_perc_mask_gather
+                      q1005_social_dist   {txt}->   {res}q10051_social_dist q10052_social_dist q10053_social_dist
+                     q1006_gather_place   {txt}->   {res}q10061_gather_place q10062_gather_place q10063_gather_place
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_gathering_roster_V2.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_gathering_roster_V2.dta{rm}
+saved
+{p_end}
+(j = 1 2)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         210   {txt}->   {res}105         
+{txt}Number of variables        {res}          16   {txt}->   {res}28          
+{txt}j variable (2 values) {res}health_roster__id   {txt}->   (dropped)
+xij variables:
+                    {res}q901_perc_chld_inst   {txt}->   {res}q901_1perc_chld_inst q901_2perc_chld_inst
+                    q902_chng_hlth_serv   {txt}->   {res}q902_1chng_hlth_serv q902_2chng_hlth_serv
+                    q903_perc_chng_hlth   {txt}->   {res}q903_1perc_chng_hlth q903_2perc_chng_hlth
+                     q904_del_assist__1   {txt}->   {res}q904_1del_assist__1 q904_2del_assist__1
+                     q904_del_assist__2   {txt}->   {res}q904_1del_assist__2 q904_2del_assist__2
+                     q904_del_assist__3   {txt}->   {res}q904_1del_assist__3 q904_2del_assist__3
+                     q904_del_assist__4   {txt}->   {res}q904_1del_assist__4 q904_2del_assist__4
+                     q904_del_assist__5   {txt}->   {res}q904_1del_assist__5 q904_2del_assist__5
+                     q904_del_assist__6   {txt}->   {res}q904_1del_assist__6 q904_2del_assist__6
+                   q904_del_assist__888   {txt}->   {res}q904_1del_assist__888 q904_2del_assist__888
+                 q904b_del_assist_other   {txt}->   {res}q904b1_del_assist_other q904b2_del_assist_other
+                 q906_chld_vaccn_assist   {txt}->   {res}q906_1chld_vaccn_assist q906_2chld_vaccn_assist
+              q906b_chld_vaccn_asst_oth   {txt}->   {res}q906b1_chld_vaccn_asst_oth q906b2_chld_vaccn_asst_oth
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_health_roster_V2.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_health_roster_V2.dta{rm}
+saved
+{p_end}
+(j = 1 2 3 4)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         420   {txt}->   {res}105         
+{txt}Number of variables        {res}          15   {txt}->   {res}50          
+{txt}j variable (4 values){res}vaccn_awareness__id  {txt}->   (dropped)
+xij variables:
+                        {res}q829_vaccn_will   {txt}->   {res}q829_1vaccn_will q829_2vaccn_will ... q829_4vaccn_will
+                   q830_no_vaccn_rsn__1   {txt}->   {res}q830_1no_vaccn_rsn__1 q830_2no_vaccn_rsn__1 ... q830_4no_vaccn_rsn__1
+                   q830_no_vaccn_rsn__2   {txt}->   {res}q830_1no_vaccn_rsn__2 q830_2no_vaccn_rsn__2 ... q830_4no_vaccn_rsn__2
+                   q830_no_vaccn_rsn__3   {txt}->   {res}q830_1no_vaccn_rsn__3 q830_2no_vaccn_rsn__3 ... q830_4no_vaccn_rsn__3
+                   q830_no_vaccn_rsn__4   {txt}->   {res}q830_1no_vaccn_rsn__4 q830_2no_vaccn_rsn__4 ... q830_4no_vaccn_rsn__4
+                   q830_no_vaccn_rsn__5   {txt}->   {res}q830_1no_vaccn_rsn__5 q830_2no_vaccn_rsn__5 ... q830_4no_vaccn_rsn__5
+                   q830_no_vaccn_rsn__6   {txt}->   {res}q830_1no_vaccn_rsn__6 q830_2no_vaccn_rsn__6 ... q830_4no_vaccn_rsn__6
+                   q830_no_vaccn_rsn__7   {txt}->   {res}q830_1no_vaccn_rsn__7 q830_2no_vaccn_rsn__7 ... q830_4no_vaccn_rsn__7
+                   q830_no_vaccn_rsn__8   {txt}->   {res}q830_1no_vaccn_rsn__8 q830_2no_vaccn_rsn__8 ... q830_4no_vaccn_rsn__8
+                   q830_no_vaccn_rsn__9   {txt}->   {res}q830_1no_vaccn_rsn__9 q830_2no_vaccn_rsn__9 ... q830_4no_vaccn_rsn__9
+                 q830_no_vaccn_rsn__888   {txt}->   {res}q830_1no_vaccn_rsn__888 q830_2no_vaccn_rsn__888 ... q830_4no_vaccn_rsn__888
+                 q830b_no_vaccn_rsn_oth   {txt}->   {res}q830b1_no_vaccn_rsn_oth q830b2_no_vaccn_rsn_oth ... q830b4_no_vaccn_rsn_oth
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_vaccn_awareness_V2.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_vaccn_awareness_V2.dta{rm}
+saved
+{p_end}
+(j = 1 2)
+
+Data{col 36}Long{col 43}->{col 48}Wide
+{hline 77}
+Number of observations     {res}         210   {txt}->   {res}105         
+{txt}Number of variables        {res}          12   {txt}->   {res}20          
+{txt}j variable (2 values){res}wedding_roster__id   {txt}->   (dropped)
+xij variables:
+                    {res}q1007_wedding_total   {txt}->   {res}q10071_wedding_total q10072_wedding_total
+                    q1008_wedding_girls   {txt}->   {res}q10081_wedding_girls q10082_wedding_girls
+                 q1009_wedding_girls_25   {txt}->   {res}q10091_wedding_girls_25 q10092_wedding_girls_25
+                 q1010_wedding_girls_23   {txt}->   {res}q10101_wedding_girls_23 q10102_wedding_girls_23
+                 q1011_wedding_girls_20   {txt}->   {res}q10111_wedding_girls_20 q10112_wedding_girls_20
+                 q1012_wedding_girls_18   {txt}->   {res}q10121_wedding_girls_18 q10122_wedding_girls_18
+                 q1013_wedding_girls_16   {txt}->   {res}q10131_wedding_girls_16 q10132_wedding_girls_16
+           q1014_wedding_girls_16_below   {txt}->   {res}q10141_wedding_girls_16_below q10142_wedding_girls_16_below
+                   weddings_sum_agewise   {txt}->   {res}weddi1ngs_sum_agewise weddi2ngs_sum_agewise
+{txt}{hline 77}
+{res}{txt}{p 0 4 2}
+(file {bf}
+../04_temp/reshaped_wedding_roster_V2.dta{rm}
+not found)
+{p_end}
+{p 0 4 2}
+file {bf}
+../04_temp/reshaped_wedding_roster_V2.dta{rm}
+saved
+{p_end}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}              42
+{txt}{col 9}from master{col 30}{res}              42{txt}  (_m_asha_conflicts==1)
+{col 9}from using{col 30}{res}               0{txt}  (_m_asha_conflicts==2)
+
+{col 5}Matched{col 30}{res}              63{txt}  (_m_asha_conflicts==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}             105{txt}  (_m_asha_disease_roster==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}             105{txt}  (_m_asha_gathering_roster==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}             105{txt}  (_m_asha_health_roster==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}             105{txt}  (_m_asha_vaccn_awareness==3)
+{col 5}{hline 41}
+{res}
+{txt}{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}             105{txt}  (_m_asha_wedding_roster==3)
+{col 5}{hline 41}
+{res}  {txt}variable {bf}{res}q910_trtmnt_now_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q910_trtmnt_now_2{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q910_trtmnt_now_3{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q1003_gather_pop_2{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q906_chld_vaccn_assist_1{sf}{txt} was {bf}{res}int{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q804_testing_dist{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}positive_sum_gender{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}died_covid_sum_gender{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}died_covid_sum_agewise{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}died_any_sum_genderwise{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}died_any_sum_agewise{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}q828_vaccn_dist{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}byte{sf}
+  {txt}variable {bf}{res}total_vaccine_one{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}vaccine_one_agewise_sum{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}total_vaccine_both{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}vaccine_both_sum_agewise{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}weddings_sum_agewise_1{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}weddings_sum_agewise_2{sf}{txt} was {bf}{res}double{sf}{txt} now {bf}{res}int{sf}
+  {txt}variable {bf}{res}q908b_trtmnt_now_other_1{sf}{txt} was {bf}{res}str21{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q909b_why_no_pub_oth_2{sf}{txt} was {bf}{res}str119{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q908b_trtmnt_now_other_2{sf}{txt} was {bf}{res}str21{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q911b_reason_other_2{sf}{txt} was {bf}{res}str153{sf}{txt} now {bf}{res}str119{sf}
+  {txt}variable {bf}{res}q909b_why_no_pub_oth_3{sf}{txt} was {bf}{res}str119{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q908b_trtmnt_now_other_3{sf}{txt} was {bf}{res}str21{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q911b_reason_other_3{sf}{txt} was {bf}{res}str153{sf}{txt} now {bf}{res}str58{sf}
+  {txt}variable {bf}{res}q909b_why_no_pub_oth_4{sf}{txt} was {bf}{res}str119{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q911b_reason_other_4{sf}{txt} was {bf}{res}str153{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q1002_gather_name_1{sf}{txt} was {bf}{res}str29{sf}{txt} now {bf}{res}str22{sf}
+  {txt}variable {bf}{res}q1002_gather_name_2{sf}{txt} was {bf}{res}str29{sf}{txt} now {bf}{res}str10{sf}
+  {txt}variable {bf}{res}q906b_chld_vaccn_asst_oth_1{sf}{txt} was {bf}{res}str20{sf}{txt} now {bf}{res}str1{sf}
+  {txt}variable {bf}{res}q904b_del_assist_other_2{sf}{txt} was {bf}{res}str49{sf}{txt} now {bf}{res}str1{sf}
+{txt}  (92,190 bytes saved)
+{p 0 4 2}
+file {bf}
+../04_temp/srijan_asha_version_V2.dta{rm}
+saved
+{p_end}
+
+{com}.         
+.         ** changing variables for ASHA version 2        
+.         use "../04_temp/srijan_asha_version_V1", clear
+{txt}
+{com}.         
+.         tostring q827_vaccn_start_45plus q826_vaccn_start_18plus, replace       
+{txt}q827_vaccn_start_45plus was {res:int} now {res:str4}
+q826_vaccn_start_18plus was {res:int} now {res:str4}
+
+{com}.         rename q912_pads_month_pre q912_pads_month_pre_girls    
+{res}{txt}
+{com}.         rename q914_pads_month_post q914_pads_month_post_girls
+{res}{txt}
+{com}.         
+.         save "../04_temp/srijan_asha_version_V1", replace
+{txt}{p 0 4 2}
+file {bf}
+../04_temp/srijan_asha_version_V1.dta{rm}
+saved
+{p_end}
+
+{com}.         
+.         ** changing variables for ASHA version 2
+.         
+.         use "../04_temp/srijan_asha_version_V2", clear
+{txt}
+{com}.         
+.         rename q912_pads_month_pre q912_pads_month_pre_asha
+{res}{txt}
+{com}.         rename q914_pads_months_post q914_pads_month_post_asha  
+{res}{txt}
+{com}.         save "../04_temp/srijan_asha_version_V2", replace
+{txt}{p 0 4 2}
+file {bf}
+../04_temp/srijan_asha_version_V2.dta{rm}
+saved
+{p_end}
+
+{com}.         
+.         ** generating empty datasets to append both versions
+.         
+.         clear
+{txt}
+{com}.         save "../04_temp/srijan_village_survey_data_asha_appended", replace emptyok
+{txt}(dataset contains 0 observations)
+{p 0 4 2}
+file {bf}
+../04_temp/srijan_village_survey_data_asha_appended.dta{rm}
+saved
+{p_end}
+
+{com}.         
+.         ** appending versions of ASHA survey
+.         
+.         foreach ver of local versions {c -(}
+{txt}  2{com}.                 append using "../04_temp/srijan_asha_version_`ver'"
+{txt}  3{com}.         {c )-} 
+{txt}{p 0 7 2}
+(variable
+{bf:village_name} was {bf:str12}, now {bf:str20} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q001_resp_name_asha} was {bf:str18}, now {bf:str21} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q006b_resp_caste_other_asha} was {bf:str1}, now {bf:str7} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q809_men_tested_n} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q810_women_tested_n} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q827_vaccn_start_45plus} was {bf:str4}, now {bf:str5} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q826_vaccn_start_18plus} was {bf:str4}, now {bf:str5} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q831_men_vaccine_one_n} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q835_18to44_vaccine_n} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q837_men_vaccine_both_n} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q838_women_vaccine_both_n} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:total_vaccine_both} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q840_above44_vaccine_both_n} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:vaccine_both_sum_agewise} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q907b_asha_add_other} was {bf:str1}, now {bf:str101} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q913b_pads_where_other} was {bf:str1}, now {bf:str21} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q004_any_comment_2} was {bf:str146}, now {bf:str498} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:assignment__id} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q909b_why_no_pub_oth_1} was {bf:str1}, now {bf:str119} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q911b_reason_other_1} was {bf:str40}, now {bf:str153} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q911b_reason_other_2} was {bf:str17}, now {bf:str119} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q911b_reason_other_3} was {bf:str19}, now {bf:str58} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q1002_gather_name_1} was {bf:str14}, now {bf:str22} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q1003_gather_pop_1} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q1002_gather_name_2} was {bf:str1}, now {bf:str10} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q1002_gather_name_3} was {bf:str5}, now {bf:str29} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q904b_del_assist_other_1} was {bf:str1}, now {bf:str49} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q830b_no_vaccn_rsn_oth_1} was {bf:str1}, now {bf:str134} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q830b_no_vaccn_rsn_oth_2} was {bf:str1}, now {bf:str134} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q830b_no_vaccn_rsn_oth_3} was {bf:str1}, now {bf:str134} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q830b_no_vaccn_rsn_oth_4} was {bf:str89}, now {bf:str134} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q1007_wedding_total_1} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q1008_wedding_girls_1} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q1012_wedding_girls_18_1} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:weddings_sum_agewise_1} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q1007_wedding_total_2} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q1008_wedding_girls_2} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q1012_wedding_girls_18_2} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:weddings_sum_agewise_2} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+(label {bf:{txt}surveyor_3} already defined)
+(label {bf:{txt}q004_resp_edu_asha} already defined)
+(label {bf:{txt}q006_resp_caste_asha} already defined)
+(label {bf:{txt}q006A_resp_asha_cat} already defined)
+(label {bf:{txt}q007_resp_land_asha} already defined)
+(label {bf:{txt}q803_test_location} already defined)
+(label {bf:{txt}q805_type_tests} already defined)
+(label {bf:{txt}q806_tests_free} already defined)
+(label {bf:{txt}q000i_unit} already defined)
+(label {bf:{txt}q000j_unit} already defined)
+(label {bf:{txt}q001_outcome_2} already defined)
+(label {bf:{txt}q003_any_comment_indct_2} already defined)
+(label {bf:{txt}interview__status} already defined)
+(label {bf:{txt}_merge} already defined)
+(label {bf:{txt}q908_usual_trtmnt} already defined)
+(label {bf:{txt}q910_trtmnt_now} already defined)
+(label {bf:{txt}q1006_gather_place} already defined)
+(label {bf:{txt}q1005_social_dist} already defined)
+(label {bf:{txt}q1001_gather_indct} already defined)
+(label {bf:{txt}q902_chng_hlth_serv} already defined)
+(label {bf:{txt}q906_chld_vaccn_assist} already defined)
+(label {bf:{txt}q829_vaccn_will} already defined)
+
+{com}.         
+.         ** renaming variables in ASHA survey
+.         
+.         foreach var of varlist assignment__id interview__status has__errors sssys_irnd interview__key interview__id village_name {c -(}
+{txt}  2{com}.                         rename `var' `var'_asha
+{txt}  3{com}.         {c )-}
+{res}{txt}
+{com}. 
+.         compress        
+{txt}  (0 bytes saved)
+
+{com}.         save "../04_temp/srijan_village_survey_data_asha_appended", replace
+{txt}{p 0 4 2}
+file {bf}
+../04_temp/srijan_village_survey_data_asha_appended.dta{rm}
+saved
+{p_end}
+
+{com}.         
+.         ******************************************************************************************************
+.         **# 3. Merge data from the main survey with the ASHA survey
+.         ******************************************************************************************************  
+.                 
+.         use "../04_temp/srijan_village_survey_data_main_appended", clear
+{txt}
+{com}.         merge 1:1 village_id using "../04_temp/srijan_village_survey_data_asha_appended", update gen(_m_asha) assert (1 2 4 5)
+{res}{txt}{p 0 7 2}
+(variable
+{bf:q001_resp_name_asha} was {bf:str7}, now {bf:str21} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q006_resp_caste_asha} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q006b_resp_caste_other_asha} was {bf:str1}, now {bf:str7} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q907b_asha_add_other} was {bf:str1}, now {bf:str101} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q913b_pads_where_other} was {bf:str1}, now {bf:str21} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q911b_reason_other_1} was {bf:str1}, now {bf:str153} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q911b_reason_other_2} was {bf:str1}, now {bf:str119} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q911b_reason_other_3} was {bf:str1}, now {bf:str58} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q904b_del_assist_other_1} was {bf:str1}, now {bf:str49} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q906_chld_vaccn_assist_2} was {bf:byte}, now {bf:int} to accommodate using data's values)
+{p_end}
+{p 0 7 2}
+(variable
+{bf:q906b_chld_vaccn_asst_oth_2} was {bf:str1}, now {bf:str52} to accommodate using data's values)
+{p_end}
+(label {bf:{txt}surveyor_3} already defined)
+(label {bf:{txt}q004_resp_edu_asha} already defined)
+(label {bf:{txt}q006_resp_caste_asha} already defined)
+(label {bf:{txt}q007_resp_land_asha} already defined)
+(label {bf:{txt}q803_test_location} already defined)
+(label {bf:{txt}q805_type_tests} already defined)
+(label {bf:{txt}q806_tests_free} already defined)
+(label {bf:{txt}interview__status} already defined)
+(label {bf:{txt}_merge} already defined)
+(label {bf:{txt}q902_chng_hlth_serv} already defined)
+(label {bf:{txt}q906_chld_vaccn_assist} already defined)
+
+{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+
+{txt}{col 5}Matched{col 30}{res}             120
+{txt}{col 9}not updated{col 30}{res}               0{txt}  (_m_asha==3)
+{col 9}missing updated{col 30}{res}             119{txt}  (_m_asha==4)
+{col 9}nonmissing conflict{col 30}{res}               1{txt}  (_m_asha==5)
+{col 5}{hline 41}
+
+{com}.         
+.         assert village_id == "0484185" if _m_asha == 5 // the surveyor name for the ASHA survey (surveyor_3) conflicts here; this is fine
+{txt}
+{com}. 
+.         
+.         save "../04_temp/srijan_village_survey_data_merged", replace
+{txt}{p 0 4 2}
+file {bf}
+../04_temp/srijan_village_survey_data_merged.dta{rm}
+saved
+{p_end}
+
+{com}.         
+. project , creates("../04_temp/srijan_version_V1.dta")
+{txt}project srijan > do-file creates: {res}"04_temp/srijan_version_V1.dta" filesig(3981552806:1545776){txt}
+
+{com}. project , creates("../04_temp/srijan_version_V2.dta")
+{txt}project srijan > do-file creates: {res}"04_temp/srijan_version_V2.dta" filesig(3852586917:1506918){txt}
+
+{com}. project , creates("../04_temp/srijan_asha_version_V1.dta")
+{txt}project srijan > do-file creates: {res}"04_temp/srijan_asha_version_V1.dta" filesig(950472634:285901){txt}
+
+{com}. project , creates("../04_temp/srijan_asha_version_V2.dta")
+{txt}project srijan > do-file creates: {res}"04_temp/srijan_asha_version_V2.dta" filesig(1346810833:518742){txt}
+
+{com}. project, creates("../04_temp/srijan_village_survey_data_main_appended.dta")
+{txt}project srijan > do-file creates: {res}"04_temp/srijan_village_survey_data_main_appended.dta" filesig(817912384:1520012){txt}
+
+{com}. project, creates("../04_temp/srijan_village_survey_data_asha_appended.dta")
+{txt}project srijan > do-file creates: {res}"04_temp/srijan_village_survey_data_asha_appended.dta" filesig(2048759010:579790){txt}
+
+{com}. project, creates("../04_temp/srijan_village_survey_data_merged.dta")
+{txt}project srijan > do-file creates: {res}"04_temp/srijan_village_survey_data_merged.dta" filesig(1177391079:1963207){txt}
+
+{com}. 
+. 
+. 
+{txt}end of do-file
+      name:  {res}plog_65
+       {txt}log:  {res}/Users/sreyamajumder/Dropbox/sreya_majumder/srijan_sreya analysis/02_scripts/02a_append_village_survey_data.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}13 Dec 2021, 11:31:09
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

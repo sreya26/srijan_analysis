@@ -1,0 +1,1791 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}plog_138
+       {txt}log:  {res}/Users/sreyamajumder/Dropbox/sreya_majumder/srijan_sreya analysis/02_scripts/03a_create_workfile.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}17 Dec 2021, 11:53:26
+{txt}
+{com}. *************************************************************************************************************************************
+. *! version 1.0  | 21 July 2021 | Sreya Majumder & Hemanshu Kumar
+. *  this file is part of the SRIJAN project headed by Rohini Somanathan, Priyanka Arora and Hemanshu Kumar
+. *************************************************************************************************************************************  
+. 
+. project , uses("../03_processed/srijan_village_survey_data.dta")
+{txt}project srijan > do-file uses: {res}"03_processed/srijan_village_survey_data.dta" filesig(1366239744:2084179){txt}
+
+{com}. project , uses("../03_processed/village_amenities_srijan_withsample.dta")
+{txt}project srijan > do-file uses: {res}"03_processed/village_amenities_srijan_withsample.dta" filesig(3949198844:45635012){txt}
+
+{com}. 
+. 
+. 
+.         use "../03_processed/srijan_village_survey_data", clear
+{txt}
+{com}.         notes
+{res}
+_dta:
+{txt}{p 2 6}
+1.
+This dataset has been created from data exported on 12 Dec 2021 07:34 for main questionnaire version V1.
+{p_end}
+{p 2 6}
+2.
+This dataset has been created from data exported on 12 Dec 2021 07:34 for main questionnaire version V2.
+{p_end}
+{p 2 6}
+3.
+This dataset has been created from data exported on 12 Dec 2021 07:34 for asha questionnaire version V1.
+{p_end}
+{p 2 6}
+4.
+This dataset has been created from data exported on 12 Dec 2021 07:35 for asha questionnaire version V2.
+{p_end}
+{p 2 6}
+5.
+This dataset incorporates missing value validations, as specified till 10 August 2021 14:30.
+{p_end}
+
+{com}.         
+.         ***************************************************************************************************
+.         **# SECTION 1: CREATING RELEVANT VARIABLES 
+.         ***************************************************************************************************
+.         
+.         ***************************************************************************************************
+.         **## Village Demography
+.         ***************************************************************************************************
+.         ***************************************************************************************************
+.         **### 00. Merging with srijan sample data to bring in location variables 
+.         ***************************************************************************************************
+.         
+.         rename village_id village_code
+{res}{txt}
+{com}.         destring village_code, replace
+{txt}village_code: all characters numeric; {res}replaced {txt}as {res}long
+{txt}
+{com}.         
+.         merge 1:1 village_code using "../03_processed/village_amenities_srijan_withsample.dta", keep(match) nogen
+{res}{txt}{p 0 7 2}
+(variable
+{bf:village_name} was {bf:str20}, now {bf:str40} to accommodate using data's values)
+{p_end}
+
+{col 5}Result{col 33}Number of obs
+{col 5}{hline 41}
+{col 5}Not matched{col 30}{res}               0
+{txt}{col 5}Matched{col 30}{res}             120{txt}  
+{col 5}{hline 41}
+
+{com}. 
+.         
+.         rename village_code village_id 
+{res}{txt}
+{com}.         
+.         foreach var of varlist state_name district_name subdistrict_name block_name state_code district_code subdistrict_code block_code total_area total_hh total_pop sc_pop st_pop forest_area netsown_area irrigated_area gp_name locations_in_this_block locations_in_this_dist serial_no panchayat_name srijan_location {c -(}
+{txt}  2{com}.                 rename `var' vd_`var'
+{txt}  3{com}.         {c )-}
+{res}{txt}
+{com}.         
+.         
+.         gen x_vd_sc_pop_perc = vd_sc_pop/vd_total_pop * 100
+{txt}
+{com}.         label variable x_vd_sc_pop_perc "Percentage Scheduled Castes of Total Popn"
+{txt}
+{com}.         format x_vd_sc_pop_perc %5.2f
+{txt}
+{com}.         
+.         gen x_vd_st_pop_perc = vd_st_pop/vd_total_pop * 100
+{txt}
+{com}.         label variable x_vd_st_pop_perc "Percentage of Scheduled Tribes of Total Popn"
+{txt}
+{com}.         format x_vd_st_pop_perc %5.2f
+{txt}
+{com}.         
+.         gen x_vd_forest_area_perc = vd_forest_area/vd_total_area * 100
+{txt}(1 missing value generated)
+
+{com}.         label variable x_vd_forest_area_perc "Percentage of Forest Area of Total Area"
+{txt}
+{com}.         format x_vd_forest_area_perc %5.2f
+{txt}
+{com}.         
+.         gen x_vd_netsown_area_perc = vd_netsown_area/vd_total_area * 100
+{txt}(1 missing value generated)
+
+{com}.         label variable x_vd_netsown_area_perc "Percentage of Netsown Area of Total Area"
+{txt}
+{com}.         format x_vd_netsown_area_perc %5.2f
+{txt}
+{com}.         
+.         
+.         labmask vd_state_code, val(vd_state_name)
+{txt}
+{com}.         labmask vd_district_code, val(vd_district_name)
+{txt}
+{com}.         labmask vd_subdistrict_code, val(vd_subdistrict_name)
+{txt}
+{com}. 
+.         drop vd_state_name vd_district_name vd_subdistrict_name *_field
+{txt}
+{com}. 
+.         *********************************************************************************************************************************
+.         **### 1. average hh size and female fraction of adult population in each village
+.         ** Also restructuring major caste occupations variables from 16 indicators for each occp, to one variable per caste and rank type
+.         *********************************************************************************************************************************
+. 
+.         gen hh_size = q102_pop/q101_hh
+{txt}
+{com}.         order hh_size, after(q101_hh)
+{txt}
+{com}.                 
+.         gen x_female_frac_of_adults = q119_ppl_num_1 / (q119_ppl_num_1 + q119_ppl_num_2) 
+{txt}
+{com}.         label var x_female_frac_of_adults "Femal Fraction of Adults"
+{txt}
+{com}.         order x_female_frac_of_adults, after(q119_ppl_num_2)
+{txt}
+{com}.         
+.         *** CASTE OCCUPATION VARIABLES
+.         
+.         local ques 105 109 113 
+{txt}
+{com}. 
+.         forvalues n = 1/3 {c -(}
+{txt}  2{com}.                 local q: word `n' of `ques'
+{txt}  3{com}.                 gen x_q`q'_first_occupation_caste_`n' = 0
+{txt}  4{com}.                 foreach i of numlist 1/15 888 {c -(}
+{txt}  5{com}.                         local q: word `n' of `ques'
+{txt}  6{com}.                         replace x_q`q'_first_occupation_caste_`n' = `i' if q`q'_occ_caste_`n'__`i' == 1
+{txt}  7{com}.                         replace x_q`q'_first_occupation_caste_`n' = q`q'_occ_caste_`n'__`i' if missing(q`q'_occ_caste_`n'__`i')
+{txt}  8{com}.                         label var x_q`q'_first_occupation_caste_`n' "First Major Occupation of q`q'_caste_`n'"
+{txt}  9{com}.                 {c )-}
+{txt} 10{com}.         {c )-}
+{txt}(90 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(5 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(6 real changes made)
+(0 real changes made)
+(11 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(5 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(73 real changes made)
+(16 real changes made, 16 to missing)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(8 real changes made)
+(0 real changes made)
+(10 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(4 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(4 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(54 real changes made)
+(28 real changes made, 28 to missing)
+(4 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(0 real changes made)
+(10 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(6 real changes made)
+(0 real changes made)
+(8 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(4 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+
+{com}. 
+.         forvalues n = 1/3 {c -(}
+{txt}  2{com}.                 local q: word `n' of `ques'
+{txt}  3{com}.                 gen x_q`q'_second_occupation_caste_`n' = 0
+{txt}  4{com}.                 foreach i of numlist 1/15 888 {c -(}
+{txt}  5{com}.                         local q: word `n' of `ques'
+{txt}  6{com}.                         replace x_q`q'_second_occupation_caste_`n' = `i' if q`q'_occ_caste_`n'__`i' == 2
+{txt}  7{com}.                         replace x_q`q'_second_occupation_caste_`n' = q`q'_occ_caste_`n'__`i' if missing(q`q'_occ_caste_`n'__`i')
+{txt}  8{com}.                         label var x_q`q'_second_occupation_caste_`n' "Second Major Occupation of q`q'_caste_`n'"
+{txt}  9{com}.                 {c )-}
+{txt} 10{com}.         {c )-}
+{txt}(18 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(3 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(7 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(17 real changes made)
+(0 real changes made)
+(36 real changes made)
+(0 real changes made)
+(23 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(5 real changes made)
+(0 real changes made)
+(7 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(13 real changes made)
+(16 real changes made, 16 to missing)
+(1 real change made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(2 real changes made)
+(0 real changes made)
+(5 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(16 real changes made)
+(0 real changes made)
+(31 real changes made)
+(0 real changes made)
+(16 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(5 real changes made)
+(0 real changes made)
+(3 real changes made)
+(0 real changes made)
+(2 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(0 real changes made)
+(15 real changes made)
+(28 real changes made, 28 to missing)
+(0 real changes made)
+(0 real changes made)
+(2 real changes made)
+(0 real changes made)
+(4 real changes made)
+(0 real changes made)
+(8 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(11 real changes made)
+(0 real changes made)
+(13 real changes made)
+(0 real changes made)
+(13 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(7 real changes made)
+(0 real changes made)
+(1 real change made)
+(0 real changes made)
+(3 real changes made)
+(0 real changes made)
+(3 real changes made)
+(0 real changes made)
+(0 real changes made)
+(0 real changes made)
+(3 real changes made)
+(0 real changes made)
+
+{com}. 
+. 
+.         #delimit ;
+{txt}delimiter now ;
+{com}.         label define caste_occupations 1 "Farming (own land)" 
+>                                                 2 "Farming (leaseout/sharecrop/rented out)" 
+>                                                 3 "Farming (lease in/sharecrop/rented in land)" 
+>                                                 4 "Mixed Farming (Own and leased land)" 
+>                                                 5 "Petty business without employees" 
+>                                                 6 "Own Business with employees"
+>                                                 7 "Casual Agricultural laborer"
+>                                                 8 "Casual laborer outside agriculture"
+>                                                 9 "MNREGA laborer"
+>                                                 10 "Regular agricultural laborer"
+>                                                 11 "Animal husbandry, Fishery, Beekeeping etc"
+>                                                 12 "Engaged in collection and sale of Non Timber Forest Produce"
+>                                                 13 "Government salaried"
+>                                                 14 "Non-governement salaried"
+>                                                 15 "Bonded labor"
+>                                                 888 "Other"
+>                                                 .a "Not Listed as Major Caste"
+>                                                 .z  "Valid Missing"
+>                                                 ;
+{txt}
+{com}.         #delimit cr
+{txt}delimiter now cr
+{com}.                                                 
+.         label values x_q105_first_occupation_caste_1 x_q109_first_occupation_caste_2 x_q113_first_occupation_caste_3 caste_occupations
+{txt}
+{com}.         label values x_q105_second_occupation_caste_1 x_q109_second_occupation_caste_2 x_q113_second_occupation_caste_3 caste_occupations
+{txt}
+{com}. 
+.         order x_q105_first_occupation_caste_1 x_q105_second_occupation_caste_1 x_q109_first_occupation_caste_2 x_q109_second_occupation_caste_2 x_q113_first_occupation_caste_3 x_q113_second_occupation_caste_3, after(q113b_occ_caste_3_other)
+{txt}
+{com}.                 
+.         ***************************************************************************************************
+.         **### 2. to enable matching of caste with caste category 
+.         ** restructuring caste occupation variables 
+.         ***************************************************************************************************
+. 
+.         ** obtaining first digits of caste names
+. 
+.         foreach var of varlist  q103_caste_1 q107_caste_2 q111_caste_3 q006_resp_caste q006_resp_caste_asha {c -(}
+{txt}  2{com}.                 gen x_`var'_firstdig = real(substr(string(`var', "%5.0g"), 1, 1))
+{txt}  3{com}.         {c )-}
+{txt}(16 missing values generated)
+(28 missing values generated)
+
+{com}. 
+.         ** in the original variables, ST is coded as 2 and SC as 1; we reverse this to subsequently more easily match caste with corresponding category
+.         
+.         foreach var of varlist q107A_caste_cat q103A_caste_cat q111A_caste_cat q006A_resp_cat q006A_resp_asha_cat {c -(}
+{txt}  2{com}.                 gen x_`var'_corrected = 1 if `var' == 2
+{txt}  3{com}.                 replace x_`var'_corrected = 2 if `var' == 1
+{txt}  4{com}.                 replace x_`var'_corrected = `var' if `var' > 2
+{txt}  5{com}.                 label define x_`var'_corrected 1 "Scheduled Tribe (ST)" 2 "Scheduled Caste (SC)" 3 "Other Backward Caste (OBC)" 4 "General"
+{txt}  6{com}.                 label values x_`var'_corrected x_`var'_corrected
+{txt}  7{com}.                 label var x_`var'_corrected "Corrected caste categories"
+{txt}  8{com}.         {c )-}
+{txt}(76 missing values generated)
+(26 real changes made)
+(50 real changes made, 16 to missing)
+(42 missing values generated)
+(6 real changes made)
+(36 real changes made)
+(106 missing values generated)
+(25 real changes made)
+(81 real changes made, 28 to missing)
+(53 missing values generated)
+(10 real changes made)
+(43 real changes made)
+(57 missing values generated)
+(9 real changes made)
+(48 real changes made)
+
+{com}.         
+.         label var x_q103A_caste_cat_corrected "Caste 1 Category"
+{txt}
+{com}.         label var x_q107A_caste_cat_corrected "Caste 2 Category"
+{txt}
+{com}.         label var x_q111A_caste_cat_corrected "Caste 3 Category"
+{txt}
+{com}. 
+. 
+.         ***************************************************************************************************
+.         **### 3. percentage variables for caste and landholding variables
+.         ***************************************************************************************************
+.         
+.         
+.         gen x_q104_hh_caste_1_perc = (q104_hh_caste_1_n/q101_hh) * 100
+{txt}(19 missing values generated)
+
+{com}.         replace x_q104_hh_caste_1_perc = q104_hh_caste_1_p if missing(q104_hh_caste_1_n)
+{txt}(19 real changes made)
+
+{com}. 
+.         
+.         gen x_q108_hh_caste_2_perc = (q108_hh_caste_2_n/q101_hh) * 100
+{txt}(35 missing values generated)
+
+{com}.         replace x_q108_hh_caste_2_perc = q108_hh_caste_2_p if missing(q108_hh_caste_2_n)
+{txt}(35 real changes made, 16 to missing)
+
+{com}.         
+.         
+.         gen x_q113_hh_caste_3_perc = (q113_hh_caste_3_n/q101_hh) * 100
+{txt}(47 missing values generated)
+
+{com}.         replace x_q113_hh_caste_3_perc = q113_hh_caste_3_p if missing(q113_hh_caste_3_n)
+{txt}(47 real changes made, 28 to missing)
+
+{com}.         
+.         ** correcting caste indicators 
+.         
+.         replace q106_caste_2_indct = 2 if missing(q106_caste_2_indct) & x_q104_hh_caste_1_perc == 100
+{txt}(16 real changes made)
+
+{com}.         
+.         tempvar caste_sum 
+{txt}
+{com}.         egen `caste_sum' = rowtotal(x_q104_hh_caste_1_perc x_q108_hh_caste_2_perc) 
+{txt}
+{com}.         
+.         replace q110_caste_3_indct = 2 if missing(q110_caste_3_indct) & `caste_sum' == 100
+{txt}(28 real changes made)
+
+{com}.         
+.         
+.         ** landholding variables 
+.         
+.         gen x_q114_landless_hh_perc = (q114_landless_hh_n/q101_hh) * 100
+{txt}(28 missing values generated)
+
+{com}.         replace x_q114_landless_hh_perc = q114_landless_hh_p if missing(q114_landless_hh_n)
+{txt}(28 real changes made)
+
+{com}. 
+.         gen x_q115_marginal_land_hh_perc = (q115_marginal_land_hh_n/q101_hh) * 100
+{txt}(28 missing values generated)
+
+{com}.         replace x_q115_marginal_land_hh_perc = q115_marginal_land_hh_p if missing(q115_marginal_land_hh_n)
+{txt}(28 real changes made)
+
+{com}.         
+.         gen x_q116_small_land_hh_perc = (q116_small_land_hh_n/q101_hh) * 100
+{txt}(28 missing values generated)
+
+{com}.         replace x_q116_small_land_hh_perc = q116_small_land_hh_p if missing(q116_small_land_hh_n)
+{txt}(28 real changes made)
+
+{com}.         
+.         gen x_q117_medium_land_hh_perc = (q117_medium_land_hh_n/q101_hh) * 100 
+{txt}(28 missing values generated)
+
+{com}.         replace x_q117_medium_land_hh_perc = q117_medium_land_hh_p if missing(q117_medium_land_hh_n)
+{txt}(28 real changes made)
+
+{com}.         
+.         gen x_q118_large_land_hh_perc = (q118_large_land_hh_n/q101_hh) * 100
+{txt}(28 missing values generated)
+
+{com}.         replace x_q118_large_land_hh_perc = q118_large_land_hh_p if missing(q118_large_land_hh_n)
+{txt}(28 real changes made)
+
+{com}.         
+.         
+.         egen x_landless_and_marginal_perc = rowtotal(x_q114_landless_hh_perc x_q115_marginal_land_hh_perc)
+{txt}
+{com}.         label var x_landless_and_marginal_perc "Landless and marginal farmer HHs (%)"
+{txt}
+{com}.         format x_landless_and_marginal_perc %5.2f
+{txt}
+{com}. 
+.         
+.         ***************************************************************************************************
+.         **## Infrastructure
+.         ***************************************************************************************************
+.         ***************************************************************************************************
+.         **### 4. Water Scarcity
+.         ***************************************************************************************************
+.         ** Conditions for original scarcity variable are incorrect 
+.         
+.         egen x_summer_scarcity = anymatch(q210_water_suff_summer_*), values(2 3 4)
+{res}{txt}
+{com}.         label var x_summer_scarcity "Summer Scarcity"
+{txt}
+{com}.         
+.         
+.         egen x_winter_scarcity = anymatch(q211_water_suff_winter_*),  values(2 3 4)
+{res}{txt}
+{com}.         label var x_winter_scarcity "Winter Scarcity"
+{txt}
+{com}.         
+.         
+.         egen x_new_scarcity = anymatch(x_summer_scarcity x_winter_scarcity), values(1)
+{txt}
+{com}.         label var x_new_scarcity "Scarcity"
+{txt}
+{com}.         
+.         order x_summer_scarcity x_winter_scarcity x_new_scarcity, after(scarcity)
+{txt}
+{com}. 
+.         ***************************************************************************************************
+.         **### 5. creating percentage education variables
+.         ***************************************************************************************************
+. 
+.         local edu_ques q120_below_class5 q121_class5 q122_class8 q123_class10 q124_class12 
+{txt}
+{com}. 
+.         forval y = 1/2 {c -(}
+{txt}  2{com}.                 foreach stub of local edu_ques {c -(}
+{txt}  3{com}.                         gen x_`stub'_perc_x_`y' = (`stub'_n_x_`y'/q119_ppl_num_`y') * 100
+{txt}  4{com}.                         replace x_`stub'_perc_x_`y' = `stub'_p_x_`y' if missing(`stub'_n_x_`y')
+{txt}  5{com}.                         order x_`stub'_perc_x_`y', after(`stub'_p_x_`y')
+{txt}  6{com}.                 {c )-}
+{txt}  7{com}.                 
+.                 ** graduation only recorded in numbers
+.                 gen x_q125_graduate_perc_x_`y' = (q125_graduate_n_x_`y'/q119_ppl_num_`y') * 100
+{txt}  8{com}.                 order x_q125_graduate_perc_x_`y', after(q125_graduate_n_x_`y')
+{txt}  9{com}.                 
+.         {c )-}
+{txt}(21 missing values generated)
+(21 real changes made)
+(21 missing values generated)
+(21 real changes made)
+(21 missing values generated)
+(21 real changes made)
+(21 missing values generated)
+(21 real changes made)
+(21 missing values generated)
+(21 real changes made)
+(21 missing values generated)
+(21 real changes made)
+(21 missing values generated)
+(21 real changes made)
+(21 missing values generated)
+(21 real changes made)
+(21 missing values generated)
+(21 real changes made)
+(21 missing values generated)
+(21 real changes made)
+
+{com}. 
+.         
+.         ***************************************************************************************************
+.         **### 6. creating educational attainment variables
+.         ***************************************************************************************************
+.         
+.         forvalues x = 1/2 {c -(}
+{txt}  2{com}.                 egen x_class12_`x' = rowtotal(x_q124_class12_perc_x_`x' x_q125_graduate_perc_x_`x')
+{txt}  3{com}.                 label var x_class12_`x' "Educational Attainment"
+{txt}  4{com}.                 egen x_class10_`x' = rowtotal(x_q123_class10_perc_x_`x' x_class12_`x')
+{txt}  5{com}.                 label var x_class10_`x' "Educational Attainment"
+{txt}  6{com}.                 egen x_class08_`x' = rowtotal(x_q122_class8_perc_x_`x' x_class10_`x')
+{txt}  7{com}.                 label var x_class08_`x' "Educational Attainment"
+{txt}  8{com}.                 egen x_class05_`x' = rowtotal(x_q121_class5_perc_x_`x' x_class08_`x')
+{txt}  9{com}.                 label var x_class05_`x' "Educational Attainment"
+{txt} 10{com}.                 
+.         {c )-}
+{txt}
+{com}. 
+.         
+.         ***************************************************************************************************
+.         **### 7. Fuel LPG
+.         ***************************************************************************************************
+.         
+.         forvalues i = 1/8 {c -(}
+{txt}  2{com}.                 capture confirm int variable q218_fuel_primary_hh_n_`i'
+{txt}  3{com}.                 if _rc == 111 continue
+{txt}  4{com}.                 gen x_q218_fuel_primary_hh_perc_`i' = (q218_fuel_primary_hh_n_`i'/q101_hh) * 100
+{txt}  5{com}.                 replace x_q218_fuel_primary_hh_perc_`i' = q218_fuel_primary_hh_p_`i' if missing(q218_fuel_primary_hh_n_`i')
+{txt}  6{com}.                 order x_q218_fuel_primary_hh_perc_`i', after(q218_fuel_primary_hh_p_`i')
+{txt}  7{com}.         {c )-}
+{txt}(79 missing values generated)
+(14 real changes made)
+(115 missing values generated)
+(2 real changes made)
+(76 missing values generated)
+(19 real changes made)
+(55 missing values generated)
+(33 real changes made)
+(119 missing values generated)
+(1 real change made)
+(119 missing values generated)
+(0 real changes made)
+(116 missing values generated)
+(1 real change made)
+
+{com}.         
+. 
+.         gen x_q219_lpg_ujjwala_perc = (q219_lpg_ujjwala_n/q101_hh) * 100
+{txt}(34 missing values generated)
+
+{com}.         replace x_q219_lpg_ujjwala_perc = q219_lpg_ujjwala_p if missing(q219_lpg_ujjwala_n)
+{txt}(34 real changes made)
+
+{com}. 
+.         gen x_q220_lpg_other_perc = (q220_lpg_other_n/q101_hh) * 100
+{txt}(34 missing values generated)
+
+{com}.         replace x_q220_lpg_other_perc = q220_lpg_other_p if missing(q220_lpg_other_n)
+{txt}(34 real changes made)
+
+{com}. 
+.         ***************************************************************************************************
+.         **## Migration
+.         ***************************************************************************************************
+.         ***************************************************************************************************
+.         **### 8. Migrant percentages
+.         ***************************************************************************************************
+.         
+.         replace q405_perm_migrant_pop = 0 if q404_perm_migrant_hh == 0 //currently it is missing
+{txt}(7 real changes made)
+
+{com}. 
+.         
+.         gen x_q404_perm_migrant_hh_perc = q404_perm_migrant_hh / q101_hh * 100
+{txt}
+{com}.         label var x_q404_perm_migrant_hh_perc "Permanent migrants hhs (%)"
+{txt}
+{com}.         format x_q404_perm_migrant_hh_perc %5.2f
+{txt}
+{com}.         order x_q404_perm_migrant_hh_perc, after(q404_perm_migrant_hh)
+{txt}
+{com}.         
+.         gen x_q405_perm_migrant_perc = q405_perm_migrant_pop / q102_pop * 100
+{txt}
+{com}.         replace x_q405_perm_migrant_perc = 0 if q404_perm_migrant_hh == 0
+{txt}(0 real changes made)
+
+{com}.         label var x_q405_perm_migrant_perc "Permanent migrants (%)"
+{txt}
+{com}.         format x_q405_perm_migrant_perc %5.2f
+{txt}
+{com}.         order x_q405_perm_migrant_perc, after(q405_perm_migrant_pop)
+{txt}
+{com}.         
+.         
+.         gen x_q411_returned_hh_perc = q411_returned_hh/q404_perm_migrant_hh * 100
+{txt}(7 missing values generated)
+
+{com}.         label var x_q411_returned_hh_perc "Returned migrants hhs (%)"
+{txt}
+{com}.         format x_q411_returned_hh_perc %5.2f
+{txt}
+{com}.         order x_q411_returned_hh_perc, after(q411_returned_hh)
+{txt}
+{com}.         
+.         gen x_q412_returned_pop_perc = q412_returned_pop/q405_perm_migrant_pop * 100
+{txt}(8 missing values generated)
+
+{com}.         label var x_q412_returned_pop_perc "Returned migrants (%)"
+{txt}
+{com}.         format x_q412_returned_pop_perc %5.2f
+{txt}
+{com}.         order x_q412_returned_pop_perc, after(q412_returned_pop)
+{txt}
+{com}.         
+.         gen x_q415_residing_hh_perc = q415_residing_hh/q404_perm_migrant_hh * 100
+{txt}(8 missing values generated)
+
+{com}.         label var x_q415_residing_hh_perc "Residing migrant hh (%)"
+{txt}
+{com}.         format x_q415_residing_hh_perc %5.2f
+{txt}
+{com}.         order x_q415_residing_hh_perc, after(q415_residing_hh)
+{txt}
+{com}.         
+.         gen x_q416_residing_pop_perc = q416_residing_pop/q405_perm_migrant_pop * 100
+{txt}(8 missing values generated)
+
+{com}.         label var x_q416_residing_pop_perc "Residing migrants (%)"
+{txt}
+{com}.         format x_q416_residing_pop_perc %5.2f
+{txt}
+{com}.         order x_q416_residing_pop_perc, after(q416_residing_pop)
+{txt}
+{com}.         
+.         gen x_q417_remigrated_hh_perc = q417_remigrated_hh/q404_perm_migrant_hh * 100
+{txt}(8 missing values generated)
+
+{com}.         label var x_q417_remigrated_hh_perc "Remigrated migrant hh (%)"
+{txt}
+{com}.         format x_q417_remigrated_hh_perc %5.2f
+{txt}
+{com}.         order x_q417_remigrated_hh_perc, after(q417_remigrated_hh)
+{txt}
+{com}.         
+.         gen x_q418_remigrated_pop_perc = q418_remigrated_pop/q405_perm_migrant_pop * 100
+{txt}(8 missing values generated)
+
+{com}.         label var x_q418_remigrated_pop_perc "Remigrated migrants (%)"
+{txt}
+{com}.         format x_q418_remigrated_pop_perc %5.2f
+{txt}
+{com}.         order x_q418_remigrated_pop_perc, after(q418_remigrated_pop)
+{txt}
+{com}.         
+.         
+.         gen x_q423_seasonal_migrant_perc = q423_seasonal_migrant_pop / q102_pop * 100
+{txt}
+{com}.         label var x_q423_seasonal_migrant_perc "Seasonal migrants (%)"
+{txt}
+{com}.         format x_q423_seasonal_migrant_perc %5.2f
+{txt}
+{com}.         order x_q423_seasonal_migrant_perc, after(q423_seasonal_migrant_pop)
+{txt}
+{com}.         
+.         egen x_migrant_perc = rowtotal(x_q405_perm_migrant_perc x_q423_seasonal_migrant_perc)
+{txt}
+{com}.         label var x_migrant_perc "Migrant population (%)"
+{txt}
+{com}.         format x_migrant_perc %5.2f
+{txt}
+{com}.         order x_migrant_perc, after(q423_seasonal_migrant_pop) 
+{txt}
+{com}.         
+.         ***************************************************************************************************
+.         **## Agriculture
+.         ***************************************************************************************************
+.         ***************************************************************************************************
+.         **### 9. Perc variables for those engaged in agriculture 
+.         ***************************************************************************************************
+.         
+.         gen x_q501_agri_hh_perc_1 = (q501_agri_hh_n_1/q101_hh) * 100
+{txt}(43 missing values generated)
+
+{com}.         replace x_q501_agri_hh_perc_1 = q501_agri_hh_p_1 if missing(q501_agri_hh_n_1)
+{txt}(43 real changes made)
+
+{com}.         format x_q501_agri_hh_perc_1 %5.2f
+{txt}
+{com}.         order x_q501_agri_hh_perc_1, after(q501_agri_hh_p_1)
+{txt}
+{com}. 
+.         gen x_q501_agri_hh_perc_2 = (q501_agri_hh_n_2/q101_hh) * 100
+{txt}(43 missing values generated)
+
+{com}.         replace x_q501_agri_hh_perc_2 = q501_agri_hh_p_2 if missing(q501_agri_hh_n_2)
+{txt}(43 real changes made)
+
+{com}.         format x_q501_agri_hh_perc_2 %5.2f
+{txt}
+{com}.         order x_q501_agri_hh_perc_2, after(q501_agri_hh_p_2)
+{txt}
+{com}. 
+.         gen x_q502_agri_lab_1_perc = q502_agri_lab_1/q102_pop * 100
+{txt}
+{com}.         label var x_q502_agri_lab_1_perc "Agricultural labour (%) since April 2020"
+{txt}
+{com}.         format x_q502_agri_lab_1_perc %5.2f
+{txt}
+{com}.         order x_q502_agri_lab_1_perc, after(q502_agri_lab_1)
+{txt}
+{com}.         
+.         gen x_q502_agri_lab_2_perc = q502_agri_lab_2/q102_pop * 100
+{txt}
+{com}.         label var x_q502_agri_lab_2_perc "Agricultural labour (%) before April 2020"
+{txt}
+{com}.         format x_q502_agri_lab_2_perc %5.2f
+{txt}
+{com}.         order x_q502_agri_lab_2_perc, after(q502_agri_lab_2)
+{txt}
+{com}.         
+.         *** NUMBER OF MONTHS OF NO TRANSPORT
+.         
+.         egen x_no_transport_months = rowtotal(q402_no_*)
+{txt}
+{com}.         label var x_no_transport_months "Months of No Transportation"
+{txt}
+{com}.         order x_no_transport_months, after(q402_no_transptn__21)
+{txt}
+{com}.         
+.         ***************************************************************************************************
+.         **## Forest Resources
+.         ***************************************************************************************************
+.         ***************************************************************************************************
+.         **### 10. NTFP 
+.         ***************************************************************************************************
+. 
+.         foreach i of numlist 1/9 888 {c -(}
+{txt}  2{com}.                 capture confirm int variable q603_ntfp_hh_p_`i'
+{txt}  3{com}.                 if _rc == 111 continue
+{txt}  4{com}.                 gen x_q604_ntfp_sale_hh_perc_`i' = (q604_ntfp_sale_hh_n_`i'/q101_hh)*100
+{txt}  5{com}.                 replace x_q604_ntfp_sale_hh_perc_`i' = q604_ntfp_sale_hh_p_`i' if missing(q604_ntfp_sale_hh_n_`i')
+{txt}  6{com}.                 order x_q604_ntfp_sale_hh_perc_`i', after(q604_ntfp_sale_hh_p_`i')
+{txt}  7{com}.                 
+.         {c )-}
+{txt}(85 missing values generated)
+(18 real changes made)
+(115 missing values generated)
+(0 real changes made)
+(78 missing values generated)
+(19 real changes made)
+(88 missing values generated)
+(14 real changes made)
+(117 missing values generated)
+(0 real changes made)
+(118 missing values generated)
+(3 real changes made)
+(118 missing values generated)
+(2 real changes made)
+(104 missing values generated)
+(7 real changes made)
+(116 missing values generated)
+(2 real changes made)
+(117 missing values generated)
+(1 real change made)
+
+{com}. 
+.         replace NTFP_name_1 = "Firewood" if NTFP_name_1 == "जलावन की लकड़ी"
+{txt}(51 real changes made)
+
+{com}.         replace NTFP_name_2 = "Saal/Siali Leaf"  if NTFP_name_2 == "साल/सियाली पत्ता"
+{txt}(4 real changes made)
+
+{com}.         replace NTFP_name_3 = "Tendu leaf"  if NTFP_name_3 == "तेंदू पत्ता"
+{txt}(58 real changes made)
+
+{com}.         replace NTFP_name_4 = "Mahua"  if NTFP_name_4 == "महुआ"
+{txt}(42 real changes made)
+
+{com}.         replace NTFP_name_5 = "Seasonal fruits"  if NTFP_name_5 == "मौसमी फल"
+{txt}(3 real changes made)
+
+{com}.         replace NTFP_name_6 = "Medicinal herbs and plants"  if NTFP_name_6 == "औषधीय जड़ी-बूटियां और पौधे"
+{txt}(5 real changes made)
+
+{com}.         replace NTFP_name_7 = "Honey" if NTFP_name_7 == "शहद"
+{txt}(4 real changes made)
+
+{com}.         replace NTFP_name_8 = "Chironji" if NTFP_name_8 == "चिरोंजी / गुठली"
+{txt}(21 real changes made)
+
+{com}.         replace NTFP_name_9 = "Gond" if NTFP_name_9 == "गोंद"
+{txt}(6 real changes made)
+
+{com}.         
+.         
+.         ***************************************************************************************************
+.         **## 11. Imputed gender-wise population of village 
+.         ***************************************************************************************************
+.         
+.         gen x_imputed_female_pop = x_female_frac_of_adults * q102_pop
+{txt}
+{com}.         gen x_imputed_male_pop = q102_pop - x_imputed_female_pop
+{txt}
+{com}. 
+.         ***************************************************************************************************
+.         **## 12.ASHA survey dates : Dates for Vaccination must be in dd/mm form
+.         ** V2 has dates in dd/mm form
+.         ** V1 does not have dates in this format
+.         ***************************************************************************************************
+.         
+.         foreach var of varlist q827_vaccn_start_45plus q826_vaccn_start_18plus {c -(}
+{txt}  2{com}.                 replace `var' = substr(`var',1,length(`var')-2)+"/"+substr(`var',-2,.) if strpos(`var',"/") == 0 & !missing(`var') & `var' != "0"
+{txt}  3{com}.         {c )-}
+{txt}(15 real changes made)
+(14 real changes made)
+
+{com}.         
+.         
+.         * date of vaccination
+.         foreach var of varlist q827_vaccn_start_45plus q826_vaccn_start_18plus {c -(}
+{txt}  2{com}.                 gen x_`var'_d = real(substr((`var'), 1, length(`var')-3))
+{txt}  3{com}.         {c )-}
+{txt}(1 missing value generated)
+
+{com}.         
+.         * month of vaccination
+.         foreach var of varlist q827_vaccn_start_45plus q826_vaccn_start_18plus {c -(}
+{txt}  2{com}.                 gen x_`var'_m = real(substr((`var'), -2, .))
+{txt}  3{com}.         {c )-}
+{txt}(1 missing value generated)
+
+{com}.         
+.         ***************************************************************************************************
+.         **## COVID
+.         ***************************************************************************************************
+.         ***************************************************************************************************
+.         **### 13. Vaccination: Some gender-wise population percentages 
+.         ***************************************************************************************************
+. 
+.         gen x_q831_men_vaccine_one_perc = q831_men_vaccine_one_p
+{txt}(75 missing values generated)
+
+{com}.         replace x_q831_men_vaccine_one_perc = q831_men_vaccine_one_n/q119_ppl_num_2 * 100 if missing(q831_men_vaccine_one_p)
+{txt}(75 real changes made)
+
+{com}.         
+.         gen x_q832_women_vaccine_one_perc = q832_women_vaccine_one_p
+{txt}(75 missing values generated)
+
+{com}.         replace x_q832_women_vaccine_one_perc = q832_women_vaccine_one_n/q119_ppl_num_1 * 100 if missing(q832_women_vaccine_one_p)
+{txt}(75 real changes made)
+
+{com}.         
+.         gen x_q837_men_vaccine_both_perc = q837_men_vaccine_both_p
+{txt}(75 missing values generated)
+
+{com}.         replace x_q837_men_vaccine_both_perc = q837_men_vaccine_both_n/q119_ppl_num_2 * 100 if missing(q837_men_vaccine_both_p)
+{txt}(75 real changes made)
+
+{com}.         
+.         gen x_q838_women_vaccine_both_perc = q838_women_vaccine_both_p
+{txt}(75 missing values generated)
+
+{com}.         replace x_q838_women_vaccine_both_perc = q838_women_vaccine_both_n/q119_ppl_num_1 * 100 if missing(q838_women_vaccine_both_p)
+{txt}(75 real changes made)
+
+{com}.         
+.         
+.         ***************************************************************************************************
+.         **### 14. Vaccine willingness
+.         ***************************************************************************************************
+.         * logic: Percentage willing to get vaccinated for each of the categories should be greater than percentage with at least one dose
+.         * coarsely converting levels to plausible % becomes unviable/arbitrary if we take minimum value in each range
+.         * since we'd want willingness to be always greater, taking maximum value in the range possible 
+.         
+.         egen x_vaccn_min_18to44 = rowmin(q829_vaccn_will_1 q829_vaccn_will_2) 
+{txt}
+{com}.         gen x_vaccn_above44 = q829_vaccn_will_3
+{txt}
+{com}.         
+.         foreach var of varlist x_vaccn_min_18to44 x_vaccn_above44{c -(}
+{txt}  2{com}.                 replace `var' = 0 if `var' == 1 //vaccn_will = 1 corresponds to 0%
+{txt}  3{com}.                 replace `var' = 25 if `var' == 2 //vaccn will = 2 corresponds to range 1-25%
+{txt}  4{com}.                 replace `var' = 50 if `var' == 3 //vaccn_will = 3 corresponds to range 26-50%
+{txt}  5{com}.                 replace `var' = 75 if `var' == 4 // vaccn_will = 4 corresponds to range 51-75%
+{txt}  6{com}.                 replace `var' = 99 if `var' == 5 // vaccn_will = 5 corresponds to range 76-99%
+{txt}  7{com}.                 replace `var' = 100 if `var' == 6 // vaccn_will = 6 corresponds to 100%
+{txt}  8{com}.         {c )-}
+{txt}(5 real changes made)
+(10 real changes made)
+(14 real changes made)
+(9 real changes made)
+(17 real changes made)
+(65 real changes made)
+(0 real changes made)
+(8 real changes made)
+(11 real changes made)
+(14 real changes made)
+(19 real changes made)
+(68 real changes made)
+
+{com}. 
+.         
+.         ***************************************************************************************************
+.         **### 15. Covid Tested and Covid Positive: some perc variables  
+.         ***************************************************************************************************
+.         
+.         gen x_q811_positive_perc = q811_positive/q102_pop * 100 
+{txt}
+{com}.         label var x_q811_positive_perc "Perc of Popn that Tested Positive"
+{txt}
+{com}.         format x_q811_positive_perc %5.2f
+{txt}
+{com}.         order x_q811_positive_perc, after(q811_positive)
+{txt}
+{com}.         
+.         gen x_q809_men_tested_perc = q809_men_tested_p
+{txt}(43 missing values generated)
+
+{com}.         replace x_q809_men_tested_perc = q809_men_tested_n/q119_ppl_num_2 * 100 if missing(q809_men_tested_p)
+{txt}(43 real changes made)
+
+{com}.         
+.         gen x_q810_women_tested_perc = q810_women_tested_p
+{txt}(43 missing values generated)
+
+{com}.         replace x_q810_women_tested_perc = q810_women_tested_n/q119_ppl_num_1 * 100 if missing(q810_women_tested_p)
+{txt}(43 real changes made)
+
+{com}.         
+.         
+.         ***************************************************************************************************
+.         **## Conflicts and Social Issues
+.         ***************************************************************************************************
+.         ***************************************************************************************************
+.         **### 16. Weddings
+.         ***************************************************************************************************
+.         
+.         forval i = 1/2 {c -(}
+{txt}  2{com}.                 egen x_wedding_girls_`i' = rowtotal(q1014_wedding_girls_16_below_`i' q1013_wedding_girls_16_`i' q1012_wedding_girls_18_`i' q1011_wedding_girls_20_`i' q1010_wedding_girls_23_`i' q1009_wedding_girls_25_`i')
+{txt}  3{com}.         {c )-}
+{txt}
+{com}.         
+.         order x_wedding_*, after(q1014_wedding_girls_16_below_2)
+{txt}
+{com}.         
+.         ***************************************************************************************************
+.         **## Social Security
+.         ***************************************************************************************************
+.         ***************************************************************************************************
+.         **### 17. Ration Assitance
+.         ***************************************************************************************************
+.         
+.         forvalues i = 1/5 {c -(}
+{txt}  2{com}.                 gen x_q701_received_perc_`i' = q701_received_p_`i' if !missing(q701_received_p_1)
+{txt}  3{com}.                 replace x_q701_received_perc_`i' = q701_received_n_`i'/q101_hh * 100 if missing(q701_received_p_1)
+{txt}  4{com}.          {c )-}
+{txt}(78 missing values generated)
+(78 real changes made)
+(78 missing values generated)
+(78 real changes made)
+(78 missing values generated)
+(78 real changes made)
+(78 missing values generated)
+(78 real changes made)
+(78 missing values generated)
+(78 real changes made)
+
+{com}.          
+.          label var x_q701_received_perc_1 "free ration under Garib Kalyan Yojna"
+{txt}
+{com}.          label var x_q701_received_perc_2 "Women Jan Dhan Benefit"
+{txt}
+{com}.          label var x_q701_received_perc_3 "PM Kisan Sammaan Yojna"
+{txt}
+{com}.          label var x_q701_received_perc_4 "ration/cash (Mid Day Meal) from Schools"
+{txt}
+{com}.          label var x_q701_received_perc_5 "ration/meal (Mid Day Meal) from awc"
+{txt}
+{com}.          
+.          order x_q701_*, after(q701_received_n_5)
+{txt}
+{com}.          
+.          *** total months of ration assistance
+.         
+.          egen x_q702_months_1 = rowtotal(q702_ration_months__*_1)
+{txt}
+{com}.          egen x_q702_months_2 = rowtotal(q702_ration_months__*_2)
+{txt}
+{com}.          egen x_q702_months_3 = rowtotal(q702_ration_months__*_3)
+{txt}
+{com}.          egen x_q702_months_4 = rowtotal(q702_ration_months__*_4)
+{txt}
+{com}.          egen x_q702_months_5 = rowtotal(q702_ration_months__*_5)
+{txt}
+{com}.          
+.          label var x_q702_months_1 "free ration under Garib Kalyan Yojna"
+{txt}
+{com}.          label var x_q702_months_2 "Women Jan Dhan Benefit"
+{txt}
+{com}.          label var x_q702_months_3 "PM Kisan Sammaan Yojna"
+{txt}
+{com}.          label var x_q702_months_4 "ration/cash (Mid Day Meal) from Schools"
+{txt}
+{com}.          label var x_q702_months_5 "ration/meal (Mid Day Meal) from awc"
+{txt}
+{com}.          
+.         order x_q702_*, after(q702_ration_months__21_5)
+{txt}
+{com}.         
+.         ***************************************************************************************************
+.         **# SECTION 2: LABELLING ROSTER VARIABLES
+.         ***************************************************************************************************     
+.         *****************************************************************************************************
+.         **## Labelling PERC Variables created above 
+.         *****************************************************************************************************
+.         
+.         #delimit ;
+{txt}delimiter now ;
+{com}.                 local perc_varlist q104_hh_caste_1 q108_hh_caste_2 q113_hh_caste_3 q114_landless_hh q115_marginal_land_hh q116_small_land_hh //
+>         q117_medium_land_hh q118_large_land_hh q219_lpg_ujjwala q220_lpg_other q809_men_tested q810_women_tested q831_men_vaccine_one //
+>         q832_women_vaccine_one q837_men_vaccine_both q838_women_vaccine_both;
+{txt}
+{com}.                 #delimit cr
+{txt}delimiter now cr
+{com}.         
+.          foreach y of local perc_varlist {c -(}
+{txt}  2{com}.                 local p_label: variable label `y'_p
+{txt}  3{com}.                 order x_`y'_perc , after(`y'_p)
+{txt}  4{com}.                 label var x_`y'_perc "`p_label'"
+{txt}  5{com}.                 format x_`y'_perc %5.2f
+{txt}  6{com}.    {c )-}
+{txt}
+{com}.         
+.         order x_landless_and_marginal_perc, after(x_q115_marginal_land_hh_perc) ///ADD TO CODEBOOK
+> 
+{txt}
+{com}.         *****************************************************************************************************
+.         **## Labelling Roster Variables: EDU 
+.         *****************************************************************************************************
+.         
+.         local edu_code             1                       2
+{txt}
+{com}.         local edu      `" "women above 18 years"    "men above 18 years" "'
+{txt}
+{com}.         local ques_edu q119_ppl_num q125_graduate_n_x q124_class12_p_x q124_class12_n_x q123_class10_p_x q123_class10_n_x q122_class8_p_x q122_class8_n_x q121_class5_p_x q121_class5_n_x q120_below_class5_p_x  q120_below_class5_n_x sum_edu_n x_q120_below_class5_perc_x x_q121_class5_perc_x x_q122_class8_perc_x x_q123_class10_perc_x x_q124_class12_perc_x x_q125_graduate_perc_x
+{txt}
+{com}.         
+.         
+.         foreach i of local edu_code {c -(}
+{txt}  2{com}.                 local label: word `i' of `edu'
+{txt}  3{com}.                 foreach q of local ques_edu {c -(}
+{txt}  4{com}.                         label var `q'_`i' "`q' of `label'"
+{txt}  5{com}.                 {c )-}
+{txt}  6{com}.         {c )-}
+{txt}
+{com}.         
+. 
+.         *****************************************************************************************************
+.         **## Labelling Roster Variables: DW
+.         *****************************************************************************************************
+.         
+.         local dw_code     1                             2               3                4                 5                    6                       7
+{txt}
+{com}.         local dw `" "common taps"  "handpumps"  "ponds" "wells" "rivers etc" "pvt tap" "govt provided pvt tap" "'
+{txt}
+{com}.         
+.         local ques_dw q202_source_num q203_source_func_summer q204_source_func_winter q205_water_hh_summer_p q205_water_hh_summer_n q206_water_hh_winter_p q206_water_hh_winter_n q207_water_dist q208_water_time_summer q209_water_time_winter q210_water_suff_summer q211_water_suff_winter
+{txt}
+{com}.         
+.         
+.         foreach i of local dw_code {c -(}
+{txt}  2{com}.                 local label: word `i' of `dw'
+{txt}  3{com}.                 foreach q of local ques_dw {c -(}
+{txt}  4{com}.                         capture confirm var `q'_`i'
+{txt}  5{com}.                         if _rc != 0 {c -(}
+{txt}  6{com}.                                 dis as error "the variable `q'_`i' does not exist"
+{txt}  7{com}.                                 continue
+{txt}  8{com}.                         {c )-}
+{txt}  9{com}.                         
+.                         label var `q'_`i' "`q': `label'"
+{txt} 10{com}.                 {c )-}
+{txt} 11{com}.         {c )-}
+{txt}
+{com}.         
+.         *****************************************************************************************************
+.         **## Labelling Roster Variables: FUEL
+.         *****************************************************************************************************
+.         
+.         local fuel_code  1              2                      3                       4         5           6      7       8
+{txt}
+{com}.         local fuel `" "firewood"  "crop residue/cowdung"  "firewood and cowdung cake" "LPG" "electricity" "solar" "coal" "biogas" "'
+{txt}
+{com}.         
+.         local ques_fuel q218_fuel_primary_hh_p q218_fuel_primary_hh_n x_q218_fuel_primary_hh_perc
+{txt}
+{com}.         
+.         
+.         foreach i of local fuel_code {c -(}
+{txt}  2{com}.                 local label: word `i' of `fuel'
+{txt}  3{com}.                 foreach q of local ques_fuel {c -(}
+{txt}  4{com}.                         capture confirm var `q'_`i'
+{txt}  5{com}.                         if _rc != 0 {c -(}
+{txt}  6{com}.                                 dis as error "the variable `q'_`i' does not exist"
+{txt}  7{com}.                                 continue
+{txt}  8{com}.                         {c )-}
+{txt}  9{com}.                         
+.                         label var `q'_`i' "`q': `label'"
+{txt} 10{com}.                 {c )-}
+{txt} 11{com}.         {c )-}
+{err}the variable q218_fuel_primary_hh_p_6 does not exist
+the variable q218_fuel_primary_hh_n_6 does not exist
+the variable x_q218_fuel_primary_hh_perc_6 does not exist
+{txt}
+{com}.         
+.         *****************************************************************************************************
+.         **## Labelling Roster Variables: FAC
+.         *****************************************************************************************************
+.         
+.         
+.         local fac_code 1  2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 
+{txt}
+{com}.         local fac `" "nearest town" "panchayat centre" "block centre" "district headquarter" "awc and mini awc" "primary school" "middle school" "secondary/senior secondary school"  "PHC" "CHC" "hospital" "fair price shop (PDS)" "mandi" "government procurement centre"  "bank kiosk"  "bank" "post office" "metalled road" "primary-health sub-centre" "'
+{txt}
+{com}.                                                                          
+.         local ques_fac q221_number_facility q222_distance_facility
+{txt}
+{com}.         
+.         foreach i of local fac_code {c -(}
+{txt}  2{com}.                 local label: word `i' of `fac'
+{txt}  3{com}.                 foreach q of local ques_fac {c -(}
+{txt}  4{com}.                         capture confirm var `q'_`i'
+{txt}  5{com}.                         if _rc != 0 {c -(}
+{txt}  6{com}.                                 dis as error "the variable `q'_`i' does not exist"
+{txt}  7{com}.                                 continue
+{txt}  8{com}.                         {c )-}
+{txt}  9{com}.                         
+.                         label var `q'_`i' "`q': `label'"
+{txt} 10{com}.                 {c )-}
+{txt} 11{com}.         {c )-}
+{txt}
+{com}.         
+.         
+.         *****************************************************************************************************
+.         **## Labelling Roster Variables: HOUSES
+.         *****************************************************************************************************
+.         
+.         local house_code          1                                       2                                 3                                     4
+{txt}
+{com}.         local house  `" "extension or new house on own land"  "new house on common village land"  "new house on forest land" "new house on rented/acquired common land since April 2020" "' 
+{txt}
+{com}.         
+.         local ques_hous q430_new_houses
+{txt}
+{com}.         
+.         foreach i of local house_code {c -(}
+{txt}  2{com}.                 local label: word `i' of `house'
+{txt}  3{com}.                 foreach q of local ques_hous {c -(}
+{txt}  4{com}.                         capture confirm var `q'_`i'
+{txt}  5{com}.                         if _rc != 0 {c -(}
+{txt}  6{com}.                                 dis as error "the variable `q'_`i' does not exist"
+{txt}  7{com}.                                 continue
+{txt}  8{com}.                         {c )-}
+{txt}  9{com}.                         
+.                         label var `q'_`i' "new houses built: `label'"
+{txt} 10{com}.                 {c )-}
+{txt} 11{com}.         {c )-}       
+{txt}
+{com}.         
+.         
+.         *****************************************************************************************************
+.         **## Labelling Roster Variables: TIMELINE
+.         *****************************************************************************************************
+.         
+.         local time_code                 1                               2
+{txt}
+{com}.         local time `" "after April 2020" "before April 2020" "'
+{txt}
+{com}.         local ques_time q501_agri_hh_p q501_agri_hh_n x_q501_agri_hh_perc q502_agri_lab q503_agri_days q504_agri_wages
+{txt}
+{com}.         
+.         foreach i of local time_code {c -(}
+{txt}  2{com}.                 local label: word `i' of `time'
+{txt}  3{com}.                 foreach q of local ques_time {c -(}
+{txt}  4{com}.                         capture confirm var `q'_`i'
+{txt}  5{com}.                         if _rc != 0 {c -(}
+{txt}  6{com}.                                 dis as error "the variable `q'_`i' does not exist"
+{txt}  7{com}.                                 continue
+{txt}  8{com}.                         {c )-}
+{txt}  9{com}.                         
+.                         label var `q'_`i' "`q': `label'"
+{txt} 10{com}.                 {c )-}
+{txt} 11{com}.         {c )-}       
+{txt}
+{com}.         
+.         
+.         *****************************************************************************************************
+.         **## Labelling Roster Variables: NTFP
+.         *****************************************************************************************************
+.         
+.         local ntfp_code  1          2                    3        4        5                   6                       7       8          9      
+{txt}
+{com}.         local ntfp `" "firewood" "saal/siali leaf" "tendu leaf" "mahua" "seasonal fruit" "medicinal herbs and plants" "honey" "chironji" "gond" "'
+{txt}
+{com}.         
+.         local ques_ntfp NTFP_name q603_ntfp_hh_p q603_ntfp_hh_n q604_ntfp_sale_hh_p q604_ntfp_sale_hh_n q603A_ntfp_hh_now_p q603A_ntfp_hh_now_n q604A_ntfp_sale_hh_now_p q604A_ntfp_sale_hh_now_n q607_low_price_why q607b_low_price_other q605b_ntfp_sale_other q606b_ntfp_diff_other x_q604_ntfp_sale_hh_perc
+{txt}
+{com}.         
+.         
+.         
+.         foreach i of local ntfp_code {c -(}
+{txt}  2{com}.                 local label: word `i' of `ntfp'
+{txt}  3{com}.                 foreach q of local ques_ntfp {c -(}
+{txt}  4{com}.                         capture confirm var `q'_`i'
+{txt}  5{com}.                         if _rc != 0 {c -(}
+{txt}  6{com}.                                 dis as error "the variable `q'_`i' does not exist"
+{txt}  7{com}.                                 continue
+{txt}  8{com}.                         {c )-}
+{txt}  9{com}.                         
+.                         label var `q'_`i' "`q': `label'"
+{txt} 10{com}.                         label var `q'_888 "`q': other ntfp"
+{txt} 11{com}.                 {c )-}
+{txt} 12{com}.         {c )-}       
+{txt}
+{com}.         
+.         
+.         
+.         local ntfp_where_code     1                        2                                    3                                                               4                                               5                               6
+{txt}
+{com}.         local ntfp_where `" "directly to market" "cooperative societies" "intermediaries in village" "intermediaries outside village" "forest dept" "forest comittee" "'
+{txt}
+{com}. 
+.         local ques_ntfp_oth q605_ntfp_sale_where
+{txt}
+{com}.         
+.         
+.         foreach j of local ntfp_where_code {c -(}
+{txt}  2{com}.                 local where: word `j' of `ntfp_where'
+{txt}  3{com}.                 foreach i of local ntfp_code {c -(}
+{txt}  4{com}.                         local label: word `i' of `ntfp'
+{txt}  5{com}.                 foreach q of local ques_ntfp_oth {c -(}
+{txt}  6{com}.                         capture confirm var `q'__`j'_`i'
+{txt}  7{com}.                         if _rc != 0 {c -(}
+{txt}  8{com}.                                 dis as error "the variable `q'__`j'_`i' does not exist"
+{txt}  9{com}.                                 continue
+{txt} 10{com}.                         {c )-}
+{txt} 11{com}.                         
+.                         label var `q'__`j'_`i' " `label' sold: `where'"
+{txt} 12{com}.                         label var `q'__888_`i' "`label' sold: other"
+{txt} 13{com}.                         label var `q'__`j'_888 "other ntfp sold: `where'"
+{txt} 14{com}.                         label var `q'__888_888 "other ntfp sold: other"
+{txt} 15{com}.                 {c )-}
+{txt} 16{com}.         {c )-}       
+{txt} 17{com}.         {c )-}
+{txt}
+{com}.         
+.         
+.         local ntfp_dif_code     0                        1                                                                              2                        3                    4                                                                         5
+{txt}
+{com}.         local ntfp_dif `" "no difficulties" "unable to access market(lack of transport)" "lack of demand" "low prices" "excess commission by intermediaries" "absence of intermediaries" "'
+{txt}
+{com}.         local ques_ntfp_dif q606_ntfp_sale_diff
+{txt}
+{com}.         
+.         foreach j of local ntfp_dif_code {c -(}
+{txt}  2{com}.                 local k = `j'+1
+{txt}  3{com}.                 local dif: word `k' of `ntfp_dif'
+{txt}  4{com}.                 foreach i of local ntfp_code {c -(}
+{txt}  5{com}.                         local label: word `i' of `ntfp'
+{txt}  6{com}.                 foreach q of local ques_ntfp_dif {c -(}
+{txt}  7{com}.                         capture confirm var `q'__`j'_`i'
+{txt}  8{com}.                         if _rc != 0 {c -(}
+{txt}  9{com}.                                 dis as error "the variable `q'__`j'_`i' does not exist"
+{txt} 10{com}.                                 continue
+{txt} 11{com}.                         {c )-}
+{txt} 12{com}.                         
+.                         label var `q'__`j'_`i' "difficulty selling `label': `dif'"
+{txt} 13{com}.                         label var `q'__888_`i' "difficulty selling `label': other"
+{txt} 14{com}.                         label var `q'__`j'_888 "difficulty selling other ntfp: `dif'"
+{txt} 15{com}.                         label var `q'__888_888 "difficulty selling other ntfp: other"
+{txt} 16{com}.                 {c )-}
+{txt} 17{com}.         {c )-}       
+{txt} 18{com}.         {c )-}
+{txt}note: label truncated to 80 characters
+note: label truncated to 80 characters
+
+{com}.         
+.         
+.         *****************************************************************************************************
+.         **## Labelling Roster Variables: SOCIAL SECURITY 
+.         *****************************************************************************************************
+.         
+.         local social_code                  1                                                            2                                               3                                                                       4                                                                                                                       5
+{txt}
+{com}.         local social `" "free ration under Garib Kalyan Yojna" "Women Jan Dhan Benefit" "PM Kisan Sammaan Yojna" "ration/cash (Mid Day Meal) from Schools" "ration/meal (Mid Day Meal) from awc" "'
+{txt}
+{com}.         local ques_social q701_received_p q701_received_n
+{txt}
+{com}.         
+. 
+.                 
+.         foreach i of local social_code {c -(}
+{txt}  2{com}.                 local label: word `i' of `social'
+{txt}  3{com}.                 foreach q of local ques_social {c -(}
+{txt}  4{com}.                         capture confirm var `q'_`i'
+{txt}  5{com}.                         if _rc != 0 {c -(}
+{txt}  6{com}.                                 dis as error "the variable `q'_`i' does not exist"
+{txt}  7{com}.                                 continue
+{txt}  8{com}.                         {c )-}
+{txt}  9{com}.                         
+.                         label var `q'_`i' "received ration: `label'"
+{txt} 10{com}.                 {c )-}
+{txt} 11{com}.                 forvalues k = 3/21 {c -(}
+{txt} 12{com}.                         label var q702_ration_months__`k'_`i' "received ration: `label'"
+{txt} 13{com}.                 {c )-}
+{txt} 14{com}.         {c )-}       
+{txt}
+{com}.         
+.         
+.         
+.         local social_other_code 0 1 2 3 
+{txt}
+{com}.         local social_other `" "none of the above"  "village community" "NGO" "panchayat" "'
+{txt}
+{com}.         local ques_social_other q703_ration_other
+{txt}
+{com}.         
+.         foreach j of local social_other_code {c -(}
+{txt}  2{com}.                 local k = `j'+1
+{txt}  3{com}.                 local where: word `k' of `social_other'
+{txt}  4{com}.                 foreach i of local social_code {c -(}
+{txt}  5{com}.                         local label: word `i' of `social'
+{txt}  6{com}.                 foreach q of local ques_social_other {c -(}
+{txt}  7{com}.                         capture confirm var `q'__`j'_`i'
+{txt}  8{com}.                         if _rc != 0 {c -(}
+{txt}  9{com}.                                 dis as error "the variable `q'__`j'_`i' does not exist"
+{txt} 10{com}.                                 continue
+{txt} 11{com}.                         {c )-}
+{txt} 12{com}.                         
+.                         label var `q'__`j'_`i' "`label' received:`where'"
+{txt} 13{com}.                 {c )-}
+{txt} 14{com}.         {c )-}       
+{txt} 15{com}.         {c )-}
+{txt}
+{com}.         
+.         *****************************************************************************************************
+.         **## Labelling Roster Variables: GENDER
+.         *****************************************************************************************************
+.         
+.         local gender_code 1 2 
+{txt}
+{com}.         local gender     `" "men"  "women" "' 
+{txt}
+{com}.         local ques_gen q705_empt_nrega q706_empt_chng q707_perc_chng_empt
+{txt}
+{com}.                 
+.         foreach i of local gender_code {c -(}
+{txt}  2{com}.                 local label: word `i' of `gender'
+{txt}  3{com}.                 foreach q of local ques_gen {c -(}
+{txt}  4{com}.                         capture confirm var `q'_`i'
+{txt}  5{com}.                         if _rc != 0 {c -(}
+{txt}  6{com}.                                 dis as error "the variable `q'_`i' does not exist"
+{txt}  7{com}.                                 continue
+{txt}  8{com}.                         {c )-}
+{txt}  9{com}.                         
+.                         label var `q'_`i' "`q': `label'"
+{txt} 10{com}.                 {c )-}
+{txt} 11{com}.         {c )-}       
+{txt}
+{com}.         
+.         
+.         *****************************************************************************************************
+.         **## Labelling Roster Variables: VACCN
+.         *****************************************************************************************************
+.         
+.         local vaccn_code             1                2                                         3                                                       4
+{txt}
+{com}.         local vaccn `" "women aged 18 to 44" "men aged 18 to 44" "people  aged 45 to 59" "people aged 60 and above" "'
+{txt}
+{com}.         local ques_vaccn q830b_no_vaccn_rsn_oth q829_vaccn_will 
+{txt}
+{com}.         
+.         local rsn_code          1 2 3 4 5 6 7 8 9 
+{txt}
+{com}.         local rsn   `" "fear of vaccn side effects" "lack of trust in COVID vaccine" "lack of trust in any vaccine" "no need for a vaccine" "waiting for more experience with vaccine" "large distance to centre" "fear of infection while travelling/at centre" "fear of infertility" "fear of death due to vaccine" "'
+{txt}
+{com}.         local ques_rsn  q830_no_vaccn_rsn
+{txt}
+{com}.         
+.         
+.         foreach i of local vaccn_code {c -(}
+{txt}  2{com}.                 local label: word `i' of `vaccn'
+{txt}  3{com}.                 foreach q of local ques_vaccn {c -(}
+{txt}  4{com}.                         capture confirm var `q'_`i'
+{txt}  5{com}.                         if _rc != 0 {c -(}
+{txt}  6{com}.                                 dis as error "the variable `q'_`i' does not exist"
+{txt}  7{com}.                                 continue
+{txt}  8{com}.                         {c )-}
+{txt}  9{com}.                         
+.                         label var `q'_`i' "`q': `label'"
+{txt} 10{com}.                 {c )-}
+{txt} 11{com}.         {c )-}       
+{txt}
+{com}.         
+.         
+.         
+.         foreach j of local rsn_code {c -(}
+{txt}  2{com}.                 local why: word `j' of `rsn'
+{txt}  3{com}.                 foreach i of local vaccn_code {c -(}
+{txt}  4{com}.                         local label: word `i' of `vaccn'
+{txt}  5{com}.                 foreach q of local ques_rsn {c -(}
+{txt}  6{com}.                         capture confirm var `q'__`j'_`i'
+{txt}  7{com}.                         if _rc != 0 {c -(}
+{txt}  8{com}.                                 dis as error "the variable `q'__`j'_`i' does not exist"
+{txt}  9{com}.                                 continue
+{txt} 10{com}.                         {c )-}
+{txt} 11{com}.                         
+.                         label var `q'__`j'_`i' " `label' no vaccn: `why'"
+{txt} 12{com}.                         label var `q'__888_`i' " `label' no vaccn: other"
+{txt} 13{com}.                 {c )-}
+{txt} 14{com}.         {c )-}       
+{txt} 15{com}.         {c )-}
+{txt}
+{com}.         
+.         
+.         *****************************************************************************************************
+.         **## Labelling Roster Variables: HEALTH
+.         *****************************************************************************************************
+.         
+.         local health_code                                       1                                                       2
+{txt}
+{com}.         local health      `" "inst child deliveries" "on-time child vaccn" "'
+{txt}
+{com}. 
+.         
+.         local health_other_code  1                                      2                                                               3                                               4                                               5                                               6
+{txt}
+{com}.         local health_other `" "midwives" "older exp female relative" "informal help (ASHA)" "local pvt nurse" "pvt clinic/hosp" "jholachhap doctor" "'
+{txt}
+{com}.         
+.         local ques_health q901_perc_chld_inst q902_chng_hlth_serv q903_perc_chng_hlth q904b_del_assist_other q906_chld_vaccn_assist q906b_chld_vaccn_asst_oth
+{txt}
+{com}.         local ques_health_oth q904_del_assist
+{txt}
+{com}.         
+.         
+.         foreach i of local health_code {c -(}
+{txt}  2{com}.                 local label: word `i' of `health'
+{txt}  3{com}.                 foreach q of local ques_health {c -(}
+{txt}  4{com}.                         capture confirm var `q'_`i'
+{txt}  5{com}.                         if _rc != 0 {c -(}
+{txt}  6{com}.                                 dis as error "the variable `q'_`i' does not exist"
+{txt}  7{com}.                                 continue
+{txt}  8{com}.                         {c )-}
+{txt}  9{com}.                         
+.                         label var `q'_`i' "`q': `label'"
+{txt} 10{com}.                 {c )-}
+{txt} 11{com}.         {c )-}       
+{txt}
+{com}.         
+.         
+.         foreach j of local health_other_code {c -(}
+{txt}  2{com}.                 local from: word `j' of `health_other'
+{txt}  3{com}.                 foreach i of local health_code {c -(}
+{txt}  4{com}.                         local label: word `i' of `health'
+{txt}  5{com}.                 foreach q of local ques_health_oth {c -(}
+{txt}  6{com}.                         capture confirm var `q'__`j'_`i'
+{txt}  7{com}.                         if _rc != 0 {c -(}
+{txt}  8{com}.                                 dis as error "the variable `q'__`j'_`i' does not exist"
+{txt}  9{com}.                                 continue
+{txt} 10{com}.                         {c )-}
+{txt} 11{com}.                         label var `q'__`j'_`i' "decreased `label' assistance: `from'"
+{txt} 12{com}.                         label var `q'__888_`i' "decreased`label' assistance: other"
+{txt} 13{com}.                 {c )-}
+{txt} 14{com}.         {c )-}
+{txt} 15{com}.         {c )-}
+{txt}
+{com}.         
+.         label define health 0 "couldn't access healthcare" 1 "public hospital/health care" 2 "pvt hosp/clinic" 3 "jholachhap doctor" 4 "chemist" 5 "treatment by self/relatives/friends" 6 "medication from ANM/ASHA" 888 "other"
+{txt}
+{com}.  
+.         label values q908_usual_trtmnt_1 health
+{txt}
+{com}.         label values q908_usual_trtmnt_2 health
+{txt}
+{com}.         label values q908_usual_trtmnt_3 health
+{txt}
+{com}.         
+.         *****************************************************************************************************
+.         **## Labelling Roster Variables: DISEASE
+.         *****************************************************************************************************
+.         
+.         local disease_code       1                                              2                       3                       4
+{txt}
+{com}.         local disease `" "mild/regular illnesses" "chronic illnesses" "cancer" "COVID symptoms" "'
+{txt}
+{com}.         
+.         local ques_dis q908_usual_trtmnt q908_trtmnt_now q908b_usual_trtmnt_other q909b_why_no_pub_oth q910A_case_indct q910_trtmnt_now q908b_trtmnt_now_other q911b_reason_other
+{txt}
+{com}.         
+.         
+.         foreach i of local disease_code {c -(}
+{txt}  2{com}.                 local label: word `i' of `disease'
+{txt}  3{com}.                 foreach q of local ques_dis {c -(}
+{txt}  4{com}.                         capture confirm var `q'_`i'
+{txt}  5{com}.                         if _rc != 0 {c -(}
+{txt}  6{com}.                                 dis as error "the variable `q'_`i' does not exist"
+{txt}  7{com}.                                 continue
+{txt}  8{com}.                         {c )-}
+{txt}  9{com}.                         
+.                         label var `q'_`i' "`q': `label'"
+{txt} 10{com}.                 {c )-}
+{txt} 11{com}.         {c )-}       
+{txt}
+{com}.         
+.         
+.         local why_code                          1                                               2                                                       3                                                       4                                       5                                                               6                                                                       7
+{txt}
+{com}.         local why_dis  `" "distance/transport issues" "absenteeism of doctors" "lack of medical infrastructure" "crowded" "lack of cleanliness/hygiene" "delayed medical attention in emergency" "did not receive proper treatment" "'
+{txt}
+{com}.         local ques_diswhy q909_why_no_public
+{txt}
+{com}.         
+.         foreach j of local why_code {c -(}
+{txt}  2{com}.                 local why: word `j' of `why_dis'
+{txt}  3{com}.                 foreach i of local disease_code {c -(}
+{txt}  4{com}.                         local label: word `i' of `disease'
+{txt}  5{com}.                 foreach q of local ques_diswhy {c -(}
+{txt}  6{com}.                         capture confirm var `q'__`j'_`i'
+{txt}  7{com}.                         if _rc != 0 {c -(}
+{txt}  8{com}.                                 dis as error "the variable `q'__`j'_`i' does not exist"
+{txt}  9{com}.                                 continue
+{txt} 10{com}.                         {c )-}
+{txt} 11{com}.                         label var `q'__`j'_`i' "no public hosp `label': `why'"
+{txt} 12{com}.                         label var `q'__888_`i' "no public hosp `label': other"
+{txt} 13{com}.                 {c )-}
+{txt} 14{com}.         {c )-}
+{txt} 15{com}.         {c )-}
+{txt}
+{com}.         
+.         
+.         
+.         local chng_code  1 2 3 4 5 6 7 8 9 10 11 
+{txt}
+{com}.         local chng  `" "distance/transport issues" "absenteeism of doctors" "lack of medical infrastructure" "crowded" "lack of cleanliness/hygiene" "delayed medical attention in emergency" "did not receive proper treatment" "fear of COVID infection" "denied admission" "fear of getting COVID test done" "fear of getting COVID vaccine" "'
+{txt}
+{com}.         local ques_chng q911_chng_trtmnt
+{txt}
+{com}.         
+.         
+.                 
+.         foreach j of local chng_code {c -(}
+{txt}  2{com}.                 local why: word `j' of `chng'
+{txt}  3{com}.                 foreach i of local disease_code {c -(}
+{txt}  4{com}.                         local label: word `i' of `disease'
+{txt}  5{com}.                 foreach q of local ques_chng {c -(}
+{txt}  6{com}.                         capture confirm var `q'__`j'_`i'
+{txt}  7{com}.                         if _rc != 0 {c -(}
+{txt}  8{com}.                                 dis as error "the variable `q'__`j'_`i' does not exist"
+{txt}  9{com}.                                 continue
+{txt} 10{com}.                         {c )-}
+{txt} 11{com}.                         label var `q'__`j'_`i' "no treatment `label': `why'"
+{txt} 12{com}.                         label var `q'__888_`i' "no treatment `label': other"
+{txt} 13{com}.                 {c )-}
+{txt} 14{com}.         {c )-}
+{txt} 15{com}.         {c )-}
+{txt}
+{com}.         
+.         
+.         
+.         *****************************************************************************************************
+.         **## Labelling Roster Variables: GATHERING 
+.         *****************************************************************************************************
+.         
+.         
+.         local gather_code   1                                           2                                       3
+{txt}
+{com}.         local gather `" "religious gathering" "political gathering" "social gathering" "'
+{txt}
+{com}.         local ques_gather q1001_gather_indct q1002_gather_name q1003_gather_pop q1004_perc_mask_gather q1005_social_dist q1006_gather_place
+{txt}
+{com}.         
+.         
+.                 
+.         foreach i of local gather_code {c -(}
+{txt}  2{com}.                 local label: word `i' of `gather'
+{txt}  3{com}.                 foreach q of local ques_gather {c -(}
+{txt}  4{com}.                         capture confirm var `q'_`i'
+{txt}  5{com}.                         if _rc != 0 {c -(}
+{txt}  6{com}.                                 dis as error "the variable `q'_`i' does not exist"
+{txt}  7{com}.                                 continue
+{txt}  8{com}.                         {c )-}
+{txt}  9{com}.                         
+.                         label var `q'_`i' "`q': `label'"
+{txt} 10{com}.                 {c )-}
+{txt} 11{com}.         {c )-}       
+{txt}
+{com}.         
+.         
+.         *****************************************************************************************************
+.         **## Labelling Roster Variables: WEDDINGS
+.         *****************************************************************************************************
+.         
+.         local wedding_code                      1                                                               2
+{txt}
+{com}.         local wedding  `" "in one year after April 2020" "in one year before April 2020" "'
+{txt}
+{com}.         local ques_wed q1007_wedding_total q1008_wedding_girls q1009_wedding_girls_25 q1010_wedding_girls_23 q1011_wedding_girls_20 q1012_wedding_girls_18 q1013_wedding_girls_16 q1014_wedding_girls_16_below weddings_sum_agewise
+{txt}
+{com}.         
+.         
+.         foreach i of local wedding_code {c -(}
+{txt}  2{com}.                 local label: word `i' of `wedding'
+{txt}  3{com}.                 foreach q of local ques_wed {c -(}
+{txt}  4{com}.                         capture confirm var `q'_`i'
+{txt}  5{com}.                         if _rc != 0 {c -(}
+{txt}  6{com}.                                 dis as error "the variable `q'_`i' does not exist"
+{txt}  7{com}.                                 continue
+{txt}  8{com}.                         {c )-}
+{txt}  9{com}.                         
+.                         label var `q'_`i' "`q': `label'"
+{txt} 10{com}.                 {c )-}
+{txt} 11{com}.         {c )-}       
+{txt}
+{com}.         
+.         
+.         *****************************************************************************************************
+.         **## Labelling Roster Variables: CONFLICTS 
+.         *****************************************************************************************************
+.         
+.         local conflict_code 1 2 3 4 5 6 7 8 
+{txt}
+{com}.         local conflict `" "conflict related to family land/property" "intrahousehold conflict (joint families)" "domestic violence" "alcohol abuse" "conflict related to business/trade" "religion/caste-based conflict" "water shortage conflict" "ntfp collection conflict" "' 
+{txt}
+{com}.         local ques_conflict conflict_rank
+{txt}
+{com}.         
+.         foreach i of local conflict_code {c -(}
+{txt}  2{com}.                 local label: word `i' of `conflict'
+{txt}  3{com}.                 foreach q of local ques_conflict {c -(}
+{txt}  4{com}.                         capture confirm var `q'_`i'
+{txt}  5{com}.                         if _rc != 0 {c -(}
+{txt}  6{com}.                                 dis as error "the variable `q'_`i' does not exist"
+{txt}  7{com}.                                 continue
+{txt}  8{com}.                         {c )-}
+{txt}  9{com}.                         
+.                         label var `q'_`i' "`q': `label'"
+{txt} 10{com}.                 {c )-}
+{txt} 11{com}.         {c )-}       
+{txt}
+{com}.         
+.         
+. 
+.         
+.         
+.         drop is_srijan_village is_srijan_block is_srijan_district sampled_srijan sampled_nonsrijan random //not required
+{txt}
+{com}.         
+.         order interview__key interview__id village_id village_name surveyor surveyor_other date_time_start vd_* x_vd_*
+{txt}
+{com}.         
+.         save "../03_processed/srijan_workfile", replace
+{txt}{p 0 4 2}
+file {bf}
+../03_processed/srijan_workfile.dta{rm}
+saved
+{p_end}
+
+{com}. 
+. project , creates("../03_processed/srijan_workfile.dta") 
+{txt}project srijan > do-file creates: {res}"03_processed/srijan_workfile.dta" filesig(618391556:2255662){txt}
+
+{com}. 
+{txt}end of do-file
+      name:  {res}plog_138
+       {txt}log:  {res}/Users/sreyamajumder/Dropbox/sreya_majumder/srijan_sreya analysis/02_scripts/03a_create_workfile.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}17 Dec 2021, 11:53:28
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

@@ -1,0 +1,38 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}plog_7
+       {txt}log:  {res}/Users/sreyamajumder/Dropbox/sreya_majumder/srijan_sreya analysis/02_scripts/01_create_village_sample.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}15 Dec 2021, 13:20:26
+{txt}
+{com}. *************************************************************************************************************************************
+. *! version 1.0  | 18 July 2021 | Hemanshu Kumar 
+. *  this file is part of the SRIJAN project headed by Rohini Somanathan, Priyanka Arora and Hemanshu Kumar
+. *************************************************************************************************************************************  
+. 
+. project , do("01a_import_census_village_amenities.do")
+{res}{txt}project srijan > Skipping {res}02_scripts/01a_import_census_village_amenities.do;{txt} no change in the {res}6{txt} files linked to it.
+
+{com}. 
+. project , do("01b_sampling_srijan_villages.do")
+{res}{txt}project srijan > do-file uses original: {res}"02_scripts/01b_sampling_srijan_villages.do" filesig(3768480065:15924){txt}
+{smcl}
+{txt}{sf}{ul off}{smcl}
+{txt}{sf}{ul off}project srijan > do-file creates: {res}"02_scripts/01b_sampling_srijan_villages.smcl" filesig(3260192557:78678){txt}
+
+{com}. 
+. project , do("01c_sampling_nonsrijan_villages.do")
+{res}{txt}project srijan > do-file uses original: {res}"02_scripts/01c_sampling_nonsrijan_villages.do" filesig(1241285779:17470){txt}
+{smcl}
+{txt}{sf}{ul off}{smcl}
+{txt}{sf}{ul off}project srijan > do-file creates: {res}"02_scripts/01c_sampling_nonsrijan_villages.smcl" filesig(178426470:91815){txt}
+
+{com}. 
+{txt}end of do-file
+      name:  {res}plog_7
+       {txt}log:  {res}/Users/sreyamajumder/Dropbox/sreya_majumder/srijan_sreya analysis/02_scripts/01_create_village_sample.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}15 Dec 2021, 13:20:40
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

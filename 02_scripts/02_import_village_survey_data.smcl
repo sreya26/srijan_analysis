@@ -1,0 +1,31 @@
+{smcl}
+{txt}{sf}{ul off}{.-}
+      name:  {res}plog_44
+       {txt}log:  {res}/Users/sreyamajumder/Dropbox/sreya_majumder/srijan_sreya analysis/02_scripts/02_import_village_survey_data.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}17 Dec 2021, 11:53:25
+{txt}
+{com}. *************************************************************************************************************************************
+. *! version 1.0  | 29 July 2021 | Hemanshu Kumar 
+. *  this file is part of the SRIJAN project headed by Rohini Somanathan, Priyanka Arora and Hemanshu Kumar
+. *************************************************************************************************************************************  
+. 
+. project , do("02a_append_village_survey_data.do")
+{res}{txt}project srijan > Skipping {res}02_scripts/02a_append_village_survey_data.do;{txt} no change in the {res}51{txt} files linked to it.
+
+{com}. 
+. project , do("02b_validate_missing.do")
+{res}{txt}project srijan > do-file uses original: {res}"02_scripts/02b_validate_missing.do" filesig(1587708333:48626){txt}
+{smcl}
+{txt}{sf}{ul off}{smcl}
+{txt}{sf}{ul off}project srijan > do-file creates: {res}"02_scripts/02b_validate_missing.smcl" filesig(313241501:94572){txt}
+
+{com}. 
+{txt}end of do-file
+      name:  {res}plog_44
+       {txt}log:  {res}/Users/sreyamajumder/Dropbox/sreya_majumder/srijan_sreya analysis/02_scripts/02_import_village_survey_data.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}17 Dec 2021, 11:53:26
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
